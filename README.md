@@ -6,7 +6,7 @@
 **Clone o repositório localmente:**
 
 ```sh
-git clone https://github.com/AiltonDaSilva10/laravel-filament-demo.git nome-do-projeto
+https://github.com/AiltonDaSilva10/laravel-component.git nome-do-projeto
 ```
 
 **Entrar na pasta do projecto 'nome-do-projeto':**
@@ -19,6 +19,12 @@ Instalar dependências do PHP:
 
 ```sh
 composer install
+```
+
+Instalar dependências do Node:
+
+```sh
+npm i && npm run build  
 ```
 
 **Crie o arquivo .env:**
@@ -67,13 +73,13 @@ composer run dev
 ```
 
 > **NOTA**  
-> Você está pronto para ir! Visite a url (http://127.0.0.1:8000 ou http://localhost:8000) no seu navegador
+> Você está pronto para ir! Visite a url (http://127.0.0.1:8000) no seu navegador
 
 ## Como foi instalada os pacotes dependência do Node
 
-**Pacote de dependência (Alpine)**
+**Pacote de dependência (Alpine.JS)**
 
-> **O que é Alpine?**  
+> **O que é Alpine.JS?**  
 > [É uma ferramenta robusta e minimalista para compor comportamento diretamente na sua marcação. Pense nela como o jQuery para a web moderna.](https://alpinejs.dev)
 
 ```sh

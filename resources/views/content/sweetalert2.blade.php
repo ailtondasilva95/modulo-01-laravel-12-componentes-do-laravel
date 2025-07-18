@@ -20,7 +20,7 @@
                 <button class="btn btn-pink confirm">
                     Confirmar
                 </button>
-                <button class="btn btn-dark cancel">
+                <button class="btn btn-indigo cancel">
                     Cancelar
                 </button>
                 <button class="btn btn-cyan tree-button">
@@ -29,8 +29,8 @@
                 <button class="btn btn-teal toast-top-end">
                     Toast
                 </button>
-                <button class="btn btn-default trigger1">
-                    Botão de disparo do sweetalert2
+                <button class="btn btn-orange trigger1">
+                    Com classes do bootstrap
                 </button>
             </div>
         </div>
