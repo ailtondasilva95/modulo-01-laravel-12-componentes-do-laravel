@@ -1,0 +1,98 @@
+// 1. Importa as funções do Bootstrap (necessárias para manipular mapas e variáveis)
+@import "bootstrap/scss/functions";
+
+// 1.1. Importa as variáveis padrão do Bootstrap (como $primary, $indigo etc.)
+@import "bootstrap/scss/variables";
+
+// 1.2. Adicionar cores personalizadas ao bootstrap para btn-color, text-color, bg-color
+$theme-colors: map-merge(
+    $theme-colors,
+    (
+        "indigo": indigo,
+        "purple": purple,
+        "orange": orange,
+        "yellow": yellow,
+        "green": green,
+        "black": black,
+        "blue": blue,
+        "gray": gray,
+        "teal": teal,
+        "cyan": cyan,
+        "pink": pink,
+        "red": red,
+    )
+);
+
+// 1.3. Importa mapas auxiliares do Bootstrap (ex: paletas de cores como $blues)
+@import "bootstrap/scss/maps";
+
+// 1.4. Importa definições iniciais dos utilitários CSS do Bootstrap
+@import "bootstrap/scss/utilities";
+
+// 1.5. Mescla todas as paletas de cor disponíveis (do Bootstrap) em um único mapa
+// ⚠️ ATENÇÃO: Isso gerará novos .text-color-{level} (por exemplo, .text-color-100 a 900)
+$all-colors: map-merge-multiple(
+    $indigos,
+    $purples,
+    $oranges,
+    $yellows,
+    $greens,
+    $teals,
+    $blues,
+    $pinks,
+    $cyans,
+    $grays,
+    $reds
+);
+
+$utilities: map-merge(
+    $utilities,
+    (
+        "color":
+            map-merge(
+                map-get($utilities, "color"),
+                (
+                    values:
+                        map-merge(
+                            map-get(map-get($utilities, "color"), "values"),
+                            ($all-colors)
+                        ),
+                )
+            ),
+    )
+);
+
+// 1.6. Importa o restante do Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// 3. Importar o Icheck Bootstrap
+@import "icheck-bootstrap/icheck-bootstrap.min.css";
+
+// 4. Importar o Bootstrap Icons
+@import "bootstrap-icons/font/bootstrap-icons.min.css";
+
+// 5. Importar o Flag Icons
+@import "flag-icons/css/flag-icons.min.css";
+
+// 6. Importar o Select2 e o seu tema para Bootstrap
+@import "select2/dist/css/select2.min.css";
+@import "select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css";
+
+// 7. Importar o FilePond e os seus plugins
+@import "filepond/dist/filepond.min.css";
+@import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
+@import "filepond-plugin-file-poster/dist/filepond-plugin-file-poster.min.css";
+@import "filepond-plugin-image-edit/dist/filepond-plugin-image-edit.min.css";
+
+// .bg-color-subtle .text-color-emphasis
+@each $color, $value in $theme-colors {
+    // .bg-{color}-subtle
+    .bg-#{$color}-subtle {
+        background-color: rgba(var(--bs-#{$color}-rgb), 0.1);
+    }
+
+    // .text-{color}-emphasis
+    .text-#{$color}-emphasis {
+        color: rgba(var(--bs-#{$color}-rgb), 0.75);
+    }
+}

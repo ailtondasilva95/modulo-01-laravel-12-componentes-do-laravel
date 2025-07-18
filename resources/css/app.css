@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap");
+
+body {
+    font-family: "Kode Mono", monospace;
+}
+
+/* Classes customizadas (btn-default) */
+.btn-default {
+    @extend .btn;
+    --bs-btn-color: #333333;
+    --bs-btn-border-color: #cccccc;
+    --bs-btn-hover-color: #333333;
+    --bs-btn-hover-bg: #e6e6e6;
+    --bs-btn-hover-border-color: #cccccc;
+    --bs-btn-focus-shadow-rgb: 140, 140, 140;
+    --bs-btn-active-color: #333333;
+    --bs-btn-active-bg: #d4d4d4;
+    --bs-btn-active-border-color: #cccccc;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #333333;
+    --bs-btn-disabled-border-color: #cccccc;
+    --bs-gradient: none;
+}
+
+/* Ajustes para o btn-default suportar tambem o modo Dark */
+:root[data-bs-theme="dark"] .btn-default {
+    --bs-btn-color: #f8f9fa;
+    --bs-btn-border-color: #6c757d;
+    --bs-btn-hover-color: #f8f9fa;
+    --bs-btn-hover-bg: #495057;
+    --bs-btn-hover-border-color: #6c757d;
+    --bs-btn-focus-shadow-rgb: 173, 181, 189;
+    --bs-btn-active-color: #f8f9fa;
+    --bs-btn-active-bg: #343a40;
+    --bs-btn-active-border-color: #6c757d;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #f8f9fa;
+    --bs-btn-disabled-border-color: #6c757d;
+}
+
+/* Ajustes para o SweetAlert2 suportar tambem o modo Dark */
+:root[data-bs-theme="dark"] {
+    .swal2-popup {
+        background: var(--bs-dark) !important;
+        color: var(--bs-light) !important;
+        border: 1px solid var(--bs-gray-700) !important;
+
+        .swal2-title {
+            color: var(--bs-light) !important;
+        }
+
+        .swal2-content {
+            color: var(--bs-gray-300) !important;
+        }
+
+        .swal2-input,
+        .swal2-file,
+        .swal2-textarea {
+            background-color: var(--bs-gray-800) !important;
+            border-color: var(--bs-gray-700) !important;
+            color: var(--bs-light) !important;
+        }
+    }
+}
+
+/* Ajustes para o Select2 suportar tambem o modo Dark */
+:root[data-bs-theme="dark"] .select2-container--bootstrap-5 {
+    /* Área de seleção */
+    .select2-selection {
+        background-color: var(--bs-body-bg);
+        color: var(--bs-body-color);
+        border-color: var(--bs-border-color);
+    }
+
+    /* Dropdown de opções */
+    .select2-dropdown {
+        background-color: var(--bs-body-bg);
+        color: var(--bs-body-color);
+        border-color: var(--bs-border-color);
+    }
+
+    /* Campo de pesquisa no dropdown */
+    .select2-search__field {
+        background-color: var(--bs-body-bg);
+        color: var(--bs-light) !important;
+        border-color: var(--bs-border-color);
+    }
+
+    /* Opções */
+    .select2-results__option {
+        background-color: var(--bs-body-bg);
+        color: var(--bs-body-color);
+    }
+
+    /* Estilo cor do placeholder */
+    .select2-selection__placeholder,
+    .select2-search__field::placeholder {
+        color: #adb5bd !important;
+    }
+
+    .select2-dropdown .select2-search .select2-search__field {
+        background: var(--bs-dark) !important;
+        color: var(--bs-light) !important;
+    }
+
+    /* Valor selecionado */
+    .select2-selection__rendered {
+        color: var(--bs-light) !important;
+    }
+
+    .select2-selection--multiple {
+        background: var(--bs-dark) !important;
+        color: var(--bs-light) !important;
+    }
+
+    /* Etiquetas em múltiplos (tags) */
+    .select2-selection--multiple
+        .select2-selection__rendered
+        .select2-selection__choice {
+        background-color: transparent !important;
+        color: #f8f9fa;
+        border: 1px solid #e9ecef;
+    }
+}
