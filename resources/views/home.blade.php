@@ -8,6 +8,9 @@
 
             <h2 class="text-center">Botões</h2>
             @include('content.button')
+
+            <h2 class="text-center">Modal</h2>
+            @include('content.modal')
             
             <h2 class="text-center">Sweetalert2</h2>
             @include('content.sweetalert2')
