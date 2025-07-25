@@ -6,7 +6,7 @@
 **Clone o repositório localmente:**
 
 ```sh
-https://github.com/AiltonDaSilva10/laravel-component.git nome-do-projeto
+https://github.com/ailtondasilva95/laravel-component.git nome-do-projeto
 ```
 
 **Entrar na pasta do projecto 'nome-do-projeto':**

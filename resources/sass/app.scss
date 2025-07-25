@@ -31,20 +31,6 @@ $theme-colors: map-merge(
 
 // 1.5. Mescla todas as paletas de cor disponíveis (do Bootstrap) em um único mapa
 // ⚠️ ATENÇÃO: Isso gerará novos .text-color-{level} (por exemplo, .text-color-100 a 900)
-$all-colors: map-merge-multiple(
-    $indigos,
-    $purples,
-    $oranges,
-    $yellows,
-    $greens,
-    $teals,
-    $blues,
-    $pinks,
-    $cyans,
-    $grays,
-    $reds
-);
-
 $utilities: map-merge(
     $utilities,
     (
@@ -55,7 +41,21 @@ $utilities: map-merge(
                     values:
                         map-merge(
                             map-get(map-get($utilities, "color"), "values"),
-                            ($all-colors)
+                            (
+                                map-merge-multiple(
+                                    $indigos,
+                                    $purples,
+                                    $oranges,
+                                    $yellows,
+                                    $greens,
+                                    $teals,
+                                    $blues,
+                                    $pinks,
+                                    $cyans,
+                                    $grays,
+                                    $reds
+                                )
+                            )
                         ),
                 )
             ),
@@ -65,34 +65,97 @@ $utilities: map-merge(
 // 1.6. Importa o restante do Bootstrap
 @import "bootstrap/scss/bootstrap";
 
-// 3. Importar o Icheck Bootstrap
-@import "icheck-bootstrap/icheck-bootstrap.min.css";
-
-// 4. Importar o Bootstrap Icons
-@import "bootstrap-icons/font/bootstrap-icons.min.css";
-
-// 5. Importar o Flag Icons
-@import "flag-icons/css/flag-icons.min.css";
-
-// 6. Importar o Select2 e o seu tema para Bootstrap
-@import "select2/dist/css/select2.min.css";
-@import "select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css";
-
-// 7. Importar o FilePond e os seus plugins
-@import "filepond/dist/filepond.min.css";
-@import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
-@import "filepond-plugin-file-poster/dist/filepond-plugin-file-poster.min.css";
-@import "filepond-plugin-image-edit/dist/filepond-plugin-image-edit.min.css";
-
 // .bg-color-subtle .text-color-emphasis
 @each $color, $value in $theme-colors {
-    // .bg-{color}-subtle
     .bg-#{$color}-subtle {
         background-color: rgba(var(--bs-#{$color}-rgb), 0.1);
     }
 
-    // .text-{color}-emphasis
     .text-#{$color}-emphasis {
         color: rgba(var(--bs-#{$color}-rgb), 0.75);
+    }
+}
+
+/* === INPUT GROUP UNIFICADO - Versão Completa === */
+
+.input-group {
+    /* Unir elementos removendo bordas internas */
+    > :not(:first-child):not(:last-child) {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    > :first-child:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: none;
+    }
+
+    > :last-child:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: none;
+    }
+
+    /* Background transparente para input-group-text */
+    > .input-group-text {
+        background-color: transparent;
+        border-color: $input-border-color;
+    }
+
+    /* Estilos comuns para form-control e form-select */
+    > .form-control,
+    > .form-select {
+        border-color: $input-border-color;
+
+        // Remover foco individual
+        &:focus {
+            border-color: $input-border-color;
+            box-shadow: none;
+        }
+    }
+
+    /* Foco do grupo inteiro */
+    &:focus-within {
+        box-shadow: $input-btn-focus-box-shadow;
+        border-radius: $input-border-radius;
+        position: relative;
+        z-index: 3;
+
+        /* Aplicar cor de foco a todos os elementos */
+        > .input-group-text,
+        > .form-control,
+        > .form-select {
+            border-color: $input-focus-border-color;
+        }
+    }
+}
+
+/* Remover foco individual de todos os elementos */
+.form-control:focus,
+.form-select:focus {
+    box-shadow: none;
+}
+
+/* Ajustes para tamanhos diferentes */
+.input-group {
+    &.input-group-sm {
+        &:focus-within {
+            border-radius: $input-border-radius-sm;
+        }
+    }
+
+    &.input-group-lg {
+        &:focus-within {
+            border-radius: $input-border-radius-lg;
+        }
+    }
+}
+
+/* Correção para form-select (garantir altura consistente) */
+.form-select {
+    &:focus {
+        box-shadow: none;
     }
 }

@@ -5,13 +5,9 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 // 1. Importar o Alpine
 import Alpine from "alpinejs";
-window.Alpine = Alpine;
-Alpine.start();
-
-// 1.2 Importar o plugin de mascara do Alpine
 import mask from "@alpinejs/mask";
 Alpine.plugin(mask);
-window.mask = mask;
+Alpine.start();
 
 // 2. Importar o Bootstrap
 import * as bootstrap from "bootstrap";
@@ -19,6 +15,14 @@ window.bootstrap = bootstrap;
 
 // 3. Importar o FlatPickr
 import flatpickr from "flatpickr";
+import { Portuguese } from "flatpickr/dist/l10n/pt.js";
+import { Mandarin } from "flatpickr/dist/l10n/zh.js";
+import { Spanish } from "flatpickr/dist/l10n/es.js";
+import { Italian } from "flatpickr/dist/l10n/it.js";
+import { Russian } from "flatpickr/dist/l10n/ru.js";
+import { German } from "flatpickr/dist/l10n/de.js";
+import { French } from "flatpickr/dist/l10n/fr.js";
+flatpickr.localize(Portuguese); // Usar a tradução em português
 window.flatpickr = flatpickr;
 
 // 4. Importar o SweetAlert2
@@ -35,11 +39,11 @@ select2();
 
 // 6. Importar o JS do FilePond
 import * as FilePond from "filepond";
+import pt_BR from "filepond/locale/pt-br.js";
+FilePond.setOptions(pt_BR);
 window.FilePond = FilePond;
 
 // 6.1.
-import pt_BR from "filepond/locale/pt-br.js";
-FilePond.setOptions(pt_BR);
 
 // // 6.2.
 // import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
@@ -129,5 +133,3 @@ window.pintura = pintura;
 // // 4.5. Importar o plugin list do FullCalendar
 // import listPlugin from "@fullcalendar/list";
 // window.listPlugin = listPlugin;
-
-

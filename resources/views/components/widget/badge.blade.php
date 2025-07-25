@@ -1,17 +1,16 @@
-@props(['type', 'label' => '', 'icon' => null, 'rounded' => false, 'outline' => false])
-
 <span
     {{ $attributes->class([
         'badge border',
+        'rounded-pill' => $pill,
+        'rounded-circle py-2' => $circle,
         $outline ? "bg-{$type}-subtle text-{$type}-emphasis" : "text-bg-{$type}",
-        'rounded-pill' => $rounded,
     ]) }}>
 
-     @if($label)
+    @isset($label)
         {{ __($label) }}
-    @endif
+    @endisset
 
-     @if($icon)
-        <i class="{{ $icon }}"></i>
-    @endif
+    @isset($icon)
+        <i class="bi bi-{{ $icon }}"></i>
+    @endisset
 </span>

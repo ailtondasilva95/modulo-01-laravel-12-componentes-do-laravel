@@ -1,13 +1,9 @@
-@props(['label' => '', 'icon' => null, 'rounded' => false, 'spinner' => false])
-
-<button {{ $attributes->class(['btn', 'rounded-pill' => $rounded]) }}>
-
-    @if ($label)
+<button {{ $attributes->class(['btn', 'rounded-pill' => $pill, 'rounded-circle py-2' => $circle]) }}>
+    @isset($label)
         {{ __($label) }}
-    @endif
-
-    @if ($icon)
-        <i class="{{ $icon }}"></i>
-    @endif
-
+    @endisset
+    
+    @isset($icon)
+        <i class="bi bi-{{ $icon }}"></i>
+    @endisset
 </button>

@@ -8,30 +8,14 @@
         </h2>
         <div id="main-Swal" class="accordion-collapse collapse" data-bs-parent="#Swal">
             <div class="accordion-body text-center">
-                <button class="btn btn-default basic">
-                    Básica
-                </button>
-                <button class="btn btn-success success">
-                    Sucesso
-                </button>
-                <button class="btn btn-danger error">
-                    Erro
-                </button>
-                <button class="btn btn-pink confirm">
-                    Confirmar
-                </button>
-                <button class="btn btn-indigo cancel">
-                    Cancelar
-                </button>
-                <button class="btn btn-cyan tree-button">
-                    Três Botões
-                </button>
-                <button class="btn btn-teal toast-top-end">
-                    Toast
-                </button>
-                <button class="btn btn-orange trigger1">
-                    Com classes do bootstrap
-                </button>
+                <x-form.button class="btn-default basic" label="Básica" />
+                <x-form.button class="btn-default success" label="Sucesso" />
+                <x-form.button class="btn-default error" label="Erro" />
+                <x-form.button class="btn-default confirm" label="Confirmar" />
+                <x-form.button class="btn-default cancel" label="Cancelar" />
+                <x-form.button class="btn-default tree-button" label="Três Botões" />
+                <x-form.button class="btn-default toast-top-end" label="Toast" />
+                <x-form.button class="btn-default bootstrap-class" label="Com classes do bootstrap" />
             </div>
         </div>
     </div>
@@ -156,7 +140,8 @@
             });
         });
 
-        $('.trigger1').on('click', () => {
+        // Sweetalert2 com classes do bootstrap
+        $('.bootstrap-class').on('click', () => {
             Swal.fire({
                 title: "Atenção",
                 text: "Alerta que segue o tema do Bootstrap",

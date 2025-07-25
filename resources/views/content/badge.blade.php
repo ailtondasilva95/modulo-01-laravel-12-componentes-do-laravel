@@ -30,34 +30,40 @@
                     <x-widget.badge type="info" label="info" outline />
                 </div>
                 <div class="text-center mb-2">
-                    <x-widget.badge type="secondary" label="secondary" rounded />
-                    <x-widget.badge type="primary" label="primary" rounded />
-                    <x-widget.badge type="warning" label="warning" rounded />
-                    <x-widget.badge type="success" label="success" rounded />
-                    <x-widget.badge type="danger" label="danger" rounded />
-                    <x-widget.badge type="light" label="light" rounded />
-                    <x-widget.badge type="dark" label="dark" rounded />
-                    <x-widget.badge type="info" label="info" rounded />
+                    <x-widget.badge type="secondary" label="secondary" pill />
+                    <x-widget.badge type="primary" label="primary" pill />
+                    <x-widget.badge type="warning" label="warning" pill />
+                    <x-widget.badge type="success" label="success" pill />
+                    <x-widget.badge type="danger" label="danger" pill />
+                    <x-widget.badge type="light" label="light" pill />
+                    <x-widget.badge type="dark" label="dark" pill />
+                    <x-widget.badge type="info" label="info" pill />
                 </div>
                 <div class="text-center mb-2">
-                    <x-widget.badge type="secondary" label="secondary" rounded outline />
-                    <x-widget.badge type="primary" label="primary" rounded outline />
-                    <x-widget.badge type="warning" label="warning" rounded outline />
-                    <x-widget.badge type="success" label="success" rounded outline />
-                    <x-widget.badge type="danger" label="danger" rounded outline />
-                    <x-widget.badge type="light" label="light" rounded outline />
-                    <x-widget.badge type="dark" label="dark" rounded outline />
-                    <x-widget.badge type="info" label="info" rounded outline />
+                    <x-widget.badge type="secondary" label="secondary" pill outline />
+                    <x-widget.badge type="primary" label="primary" pill outline />
+                    <x-widget.badge type="warning" label="warning" pill outline />
+                    <x-widget.badge type="success" label="success" pill outline />
+                    <x-widget.badge type="danger" label="danger" pill outline />
+                    <x-widget.badge type="light" label="light" pill outline />
+                    <x-widget.badge type="dark" label="dark" pill outline />
+                    <x-widget.badge type="info" label="info" pill outline />
                 </div>
-                <div class="text-center">
-                    <x-widget.badge type="success" label="success" icon="bi bi-github" />
-                    <x-widget.badge type="success" label="success" icon="bi bi-github" rounded outline />
-                    <x-widget.badge type="success" icon="bi bi-github" />
-                    <x-widget.badge type="success" icon="bi bi-github" rounded outline />
-                    <x-widget.badge type="success" icon="bi bi-github" rounded />
-                    <x-widget.badge type="success" icon="bi bi-github" outline />
-                    <x-widget.badge type="success" label="success" icon="bi bi-github" rounded />
-                    <x-widget.badge type="success" label="success" icon="bi bi-github" outline />
+                <div class="text-center mb-2">
+                    <x-widget.badge type="success" label="success" icon="github" />
+                    <x-widget.badge type="success" label="success" icon="github" pill outline />
+                    <x-widget.badge type="success" label="success" icon="github" pill />
+                    <x-widget.badge type="success" label="success" icon="github" outline />
+                </div>
+                <div class="text-center mb-2">
+                    <x-widget.badge type="success" icon="github" />
+                    <x-widget.badge type="success" icon="github" pill outline />
+                    <x-widget.badge type="success" icon="github" pill />
+                    <x-widget.badge type="success" icon="github" outline />
+                </div>
+                <div class="text-center mb-2">
+                    <x-widget.badge type="success" icon="github" circle outline />
+                    <x-widget.badge type="success" icon="github" circle />
                 </div>
             </div>
         </div>
@@ -101,42 +107,48 @@
                     <x-widget.badge type="red" label="red" outline />
                 </div>
                 <div class="text-center mb-2">
-                    <x-widget.badge type="yellow" label="yellow" rounded />
-                    <x-widget.badge type="indigo" label="indigo" rounded />
-                    <x-widget.badge type="purple" label="purple" rounded />
-                    <x-widget.badge type="orange" label="orange" rounded />
-                    <x-widget.badge type="green" label="green" rounded />
-                    <x-widget.badge type="black" label="black" rounded />
-                    <x-widget.badge type="blue" label="blue" rounded />
-                    <x-widget.badge type="gray" label="gray" rounded />
-                    <x-widget.badge type="teal" label="teal" rounded />
-                    <x-widget.badge type="cyan" label="cyan" rounded />
-                    <x-widget.badge type="pink" label="pink" rounded />
-                    <x-widget.badge type="red" label="red" rounded />
+                    <x-widget.badge type="yellow" label="yellow" pill />
+                    <x-widget.badge type="indigo" label="indigo" pill />
+                    <x-widget.badge type="purple" label="purple" pill />
+                    <x-widget.badge type="orange" label="orange" pill />
+                    <x-widget.badge type="green" label="green" pill />
+                    <x-widget.badge type="black" label="black" pill />
+                    <x-widget.badge type="blue" label="blue" pill />
+                    <x-widget.badge type="gray" label="gray" pill />
+                    <x-widget.badge type="teal" label="teal" pill />
+                    <x-widget.badge type="cyan" label="cyan" pill />
+                    <x-widget.badge type="pink" label="pink" pill />
+                    <x-widget.badge type="red" label="red" pill />
                 </div>
                 <div class="text-center mb-2">
-                    <x-widget.badge type="yellow" label="yellow" rounded outline />
-                    <x-widget.badge type="indigo" label="indigo" rounded outline />
-                    <x-widget.badge type="purple" label="purple" rounded outline />
-                    <x-widget.badge type="orange" label="orange" rounded outline />
-                    <x-widget.badge type="green" label="green" rounded outline />
-                    <x-widget.badge type="black" label="black" rounded outline />
-                    <x-widget.badge type="blue" label="blue" rounded outline />
-                    <x-widget.badge type="gray" label="gray" rounded outline />
-                    <x-widget.badge type="teal" label="teal" rounded outline />
-                    <x-widget.badge type="cyan" label="cyan" rounded outline />
-                    <x-widget.badge type="pink" label="pink" rounded outline />
-                    <x-widget.badge type="red" label="red" rounded outline />
+                    <x-widget.badge type="yellow" label="yellow" pill outline />
+                    <x-widget.badge type="indigo" label="indigo" pill outline />
+                    <x-widget.badge type="purple" label="purple" pill outline />
+                    <x-widget.badge type="orange" label="orange" pill outline />
+                    <x-widget.badge type="green" label="green" pill outline />
+                    <x-widget.badge type="black" label="black" pill outline />
+                    <x-widget.badge type="blue" label="blue" pill outline />
+                    <x-widget.badge type="gray" label="gray" pill outline />
+                    <x-widget.badge type="teal" label="teal" pill outline />
+                    <x-widget.badge type="cyan" label="cyan" pill outline />
+                    <x-widget.badge type="pink" label="pink" pill outline />
+                    <x-widget.badge type="red" label="red" pill outline />
                 </div>
-                <div class="text-center">
-                    <x-widget.badge type="orange" label="orange" icon="bi bi-github" />
-                    <x-widget.badge type="orange" label="orange" icon="bi bi-github" rounded outline />
-                    <x-widget.badge type="orange" icon="bi bi-github" />
-                    <x-widget.badge type="orange" icon="bi bi-github" rounded outline />
-                    <x-widget.badge type="orange" icon="bi bi-github" rounded />
-                    <x-widget.badge type="orange" icon="bi bi-github" outline />
-                    <x-widget.badge type="orange" label="orange" icon="bi bi-github" rounded />
-                    <x-widget.badge type="orange" label="orange" icon="bi bi-github" outline />
+                <div class="text-center mb-2">
+                    <x-widget.badge type="orange" label="orange" icon="github" />
+                    <x-widget.badge type="orange" label="orange" icon="github" pill outline />
+                    <x-widget.badge type="orange" label="orange" icon="github" pill />
+                    <x-widget.badge type="orange" label="orange" icon="github" outline />
+                </div>
+                <div class="text-center mb-2">
+                    <x-widget.badge type="orange" icon="github" />
+                    <x-widget.badge type="orange" icon="github" pill outline />
+                    <x-widget.badge type="orange" icon="github" pill />
+                    <x-widget.badge type="orange" icon="github" outline />
+                </div>
+                <div class="text-center mb-2">
+                    <x-widget.badge type="orange" icon="github" circle outline />
+                    <x-widget.badge type="orange" icon="github" circle />
                 </div>
             </div>
         </div>
