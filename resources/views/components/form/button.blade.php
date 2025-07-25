@@ -7,7 +7,7 @@
     @endif
 
     @if ($icon)
-        <i class="bi bi-{{ $icon }}"></i>
+        <i class="{{ $icon }}"></i>
     @endif
 
 </button>

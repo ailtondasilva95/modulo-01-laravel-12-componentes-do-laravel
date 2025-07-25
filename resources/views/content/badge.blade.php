@@ -50,14 +50,14 @@
                     <x-widget.badge type="info" label="info" rounded outline />
                 </div>
                 <div class="text-center">
-                    <x-widget.badge type="success" label="success" icon="github" />
-                    <x-widget.badge type="success" label="success" icon="github" rounded outline />
-                    <x-widget.badge type="success" icon="github" />
-                    <x-widget.badge type="success" icon="github" rounded outline />
-                    <x-widget.badge type="success" icon="github" rounded />
-                    <x-widget.badge type="success" icon="github" outline />
-                    <x-widget.badge type="success" label="success" icon="github" rounded />
-                    <x-widget.badge type="success" label="success" icon="github" outline />
+                    <x-widget.badge type="success" label="success" icon="bi bi-github" />
+                    <x-widget.badge type="success" label="success" icon="bi bi-github" rounded outline />
+                    <x-widget.badge type="success" icon="bi bi-github" />
+                    <x-widget.badge type="success" icon="bi bi-github" rounded outline />
+                    <x-widget.badge type="success" icon="bi bi-github" rounded />
+                    <x-widget.badge type="success" icon="bi bi-github" outline />
+                    <x-widget.badge type="success" label="success" icon="bi bi-github" rounded />
+                    <x-widget.badge type="success" label="success" icon="bi bi-github" outline />
                 </div>
             </div>
         </div>
@@ -129,14 +129,14 @@
                     <x-widget.badge type="red" label="red" rounded outline />
                 </div>
                 <div class="text-center">
-                    <x-widget.badge type="orange" label="orange" icon="github" />
-                    <x-widget.badge type="orange" label="orange" icon="github" rounded outline />
-                    <x-widget.badge type="orange" icon="github" />
-                    <x-widget.badge type="orange" icon="github" rounded outline />
-                    <x-widget.badge type="orange" icon="github" rounded />
-                    <x-widget.badge type="orange" icon="github" outline />
-                    <x-widget.badge type="orange" label="orange" icon="github" rounded />
-                    <x-widget.badge type="orange" label="orange" icon="github" outline />
+                    <x-widget.badge type="orange" label="orange" icon="bi bi-github" />
+                    <x-widget.badge type="orange" label="orange" icon="bi bi-github" rounded outline />
+                    <x-widget.badge type="orange" icon="bi bi-github" />
+                    <x-widget.badge type="orange" icon="bi bi-github" rounded outline />
+                    <x-widget.badge type="orange" icon="bi bi-github" rounded />
+                    <x-widget.badge type="orange" icon="bi bi-github" outline />
+                    <x-widget.badge type="orange" label="orange" icon="bi bi-github" rounded />
+                    <x-widget.badge type="orange" label="orange" icon="bi bi-github" outline />
                 </div>
             </div>
         </div>

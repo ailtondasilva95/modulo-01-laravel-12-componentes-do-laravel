@@ -50,14 +50,14 @@
                     <x-form.button class="btn-outline-info" label="info" rounded />
                 </div>
                 <div class="text-center mb-2">
-                    <x-form.button class="btn-success" label="success" icon="github" />
-                    <x-form.button class="btn-outline-success" label="success" icon="github" rounded />
-                    <x-form.button class="btn-success" icon="github" />
-                    <x-form.button class="btn-outline-success" icon="github" rounded />
-                    <x-form.button class="btn-success" icon="github" rounded />
-                    <x-form.button class="btn-outline-success" icon="github" />
-                    <x-form.button class="btn-success" label="success" icon="github" rounded />
-                    <x-form.button class="btn-outline-success" label="success" icon="github" />
+                    <x-form.button class="btn-success" label="success" icon="bi bi-github" />
+                    <x-form.button class="btn-outline-success" label="success" icon="bi bi-github" rounded />
+                    <x-form.button class="btn-success" icon="bi bi-github" />
+                    <x-form.button class="btn-outline-success" icon="bi bi-github" rounded />
+                    <x-form.button class="btn-success" icon="bi bi-github" rounded />
+                    <x-form.button class="btn-outline-success" icon="bi bi-github" />
+                    <x-form.button class="btn-success" label="success" icon="bi bi-github" rounded />
+                    <x-form.button class="btn-outline-success" label="success" icon="bi bi-github" />
                 </div>
             </div>
         </div>
@@ -129,14 +129,14 @@
                     <x-form.button class="btn-outline-red" label="red" rounded />
                 </div>
                 <div class="text-center mb-2">
-                    <x-form.button class="btn-orange" label="orange" icon="github" />
-                    <x-form.button class="btn-outline-orange" label="orange" icon="github" rounded />
-                    <x-form.button class="btn-orange" icon="github" />
-                    <x-form.button class="btn-outline-orange" icon="github" rounded />
-                    <x-form.button class="btn-orange" icon="github" rounded />
-                    <x-form.button class="btn-outline-orange" icon="github" />
-                    <x-form.button class="btn-orange" label="orange" icon="github" rounded />
-                    <x-form.button class="btn-outline-orange" label="orange" icon="github" />
+                    <x-form.button class="btn-orange" label="orange" icon="bi bi-github" />
+                    <x-form.button class="btn-outline-orange" label="orange" icon="bi bi-github" rounded />
+                    <x-form.button class="btn-orange" icon="bi bi-github" />
+                    <x-form.button class="btn-outline-orange" icon="bi bi-github" rounded />
+                    <x-form.button class="btn-orange" icon="bi bi-github" rounded />
+                    <x-form.button class="btn-outline-orange" icon="bi bi-github" />
+                    <x-form.button class="btn-orange" label="orange" icon="bi bi-github" rounded />
+                    <x-form.button class="btn-outline-orange" label="orange" icon="bi bi-github" />
                 </div>
                 <div class="text-center">
                     <x-form.button class="btn-default" label="default" />
