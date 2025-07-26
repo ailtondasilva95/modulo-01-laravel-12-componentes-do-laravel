@@ -21,7 +21,6 @@ document
 //     language: "pt",
 // });
 
-// const initialTheme = html.getAttribute("data-bs-theme");
-// if (initialTheme === "dark") {
-//     document.body.classList.add("flatpickr-dark");
-// }
+const html = document.documentElement;
+const theme = html.getAttribute("data-bs-theme") || "light";
+console.log(theme === "dark" ? "Tema escuro ativo" : "Tema claro ativo");

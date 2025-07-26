@@ -20,21 +20,6 @@
             
             <h2 class="text-center">Componentes de formulário</h2>
             @include('content.inputs-fields')
-{{-- 
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="fp-test">
-                    <i class="bi bi-calendar-event"></i>
-                </label>
-                <input type="date" id="fp-test" class="form-control" placeholder="Selecione uma data" />
-            </div>
-
-            @pushOnce('scripts')
-                <script type="module">
-                    flatpickr("#fp-test", {
-                        dateFormat: "d/m/Y",
-                    });
-                </script>
-            @endPushOnce --}}
 
         </div>
     @endsection

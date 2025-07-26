@@ -3,6 +3,10 @@ window.axios = axios;
 
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
+// Idioma do site
+const currentLang = document.documentElement.getAttribute("lang");
+console.log("Idioma atual:", currentLang);
+
 // 1. Importar o Alpine
 import Alpine from "alpinejs";
 import mask from "@alpinejs/mask";
@@ -27,13 +31,31 @@ window.weekSelectPlugin = weekSelectPlugin;
 
 // 3.2. Importar os idiomas do FlatPickr
 import { Portuguese } from "flatpickr/dist/l10n/pt.js";
+import { Default } from "flatpickr/dist/l10n/default.js";
 import { Mandarin } from "flatpickr/dist/l10n/zh.js";
 import { Spanish } from "flatpickr/dist/l10n/es.js";
 import { Italian } from "flatpickr/dist/l10n/it.js";
 import { Russian } from "flatpickr/dist/l10n/ru.js";
 import { German } from "flatpickr/dist/l10n/de.js";
 import { French } from "flatpickr/dist/l10n/fr.js";
-flatpickr.localize(Portuguese);
+
+if (currentLang === "pt") {
+    flatpickr.localize(Portuguese);
+} else if (currentLang === "zh-CN") {
+    flatpickr.localize(Mandarin);
+} else if (currentLang === "es") {
+    flatpickr.localize(Spanish);
+} else if (currentLang === "it") {
+    flatpickr.localize(Italian);
+} else if (currentLang === "ru") {
+    flatpickr.localize(Russian);
+} else if (currentLang === "de") {
+    flatpickr.localize(German);
+} else if (currentLang === "fr") {
+    flatpickr.localize(French);
+} else {
+    flatpickr.localize(Default);
+}
 
 // 4. Importar o SweetAlert2
 import Swal from "sweetalert2";
