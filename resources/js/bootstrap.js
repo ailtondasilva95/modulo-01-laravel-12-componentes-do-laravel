@@ -15,6 +15,17 @@ window.bootstrap = bootstrap;
 
 // 3. Importar o FlatPickr
 import flatpickr from "flatpickr";
+window.flatpickr = flatpickr;
+
+// 3.1. Importar os plugins do FlatPickr
+import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate.js";
+import weekSelectPlugin from "flatpickr/dist/plugins/weekSelect/weekSelect.js";
+import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect/index.js";
+window.confirmDatePlugin = confirmDatePlugin;
+window.monthSelectPlugin = monthSelectPlugin;
+window.weekSelectPlugin = weekSelectPlugin;
+
+// 3.2. Importar os idiomas do FlatPickr
 import { Portuguese } from "flatpickr/dist/l10n/pt.js";
 import { Mandarin } from "flatpickr/dist/l10n/zh.js";
 import { Spanish } from "flatpickr/dist/l10n/es.js";
@@ -22,8 +33,7 @@ import { Italian } from "flatpickr/dist/l10n/it.js";
 import { Russian } from "flatpickr/dist/l10n/ru.js";
 import { German } from "flatpickr/dist/l10n/de.js";
 import { French } from "flatpickr/dist/l10n/fr.js";
-flatpickr.localize(Portuguese); // Usar a tradução em português
-window.flatpickr = flatpickr;
+flatpickr.localize(Portuguese);
 
 // 4. Importar o SweetAlert2
 import Swal from "sweetalert2";

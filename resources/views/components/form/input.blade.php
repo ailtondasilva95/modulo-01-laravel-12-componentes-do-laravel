@@ -3,33 +3,17 @@
     $dotName = preg_replace('/\[(\d+)?\]/', '.$1', $name);
     $dotName = str_replace(['[', ']'], ['.', ''], $dotName);
 
-    // ID único
-    $id = $dotName . '-' . uniqid();
-
     // Valor antigo ou padrão
     $inputValue = old($dotName, $value);
 
-    // Verifica máscaras
-    $hasStaticMask = filled($mask);
-    $hasDynamicMask = $attributes->has('mask:dynamic');
-
-    // Ícones
-    $hasLeftIcon = !!$icon;
-    $hasRightIcon = !!$rightIcon;
-    $isPassword = $type === 'password';
-
-    // Marca de campo obrigatório
-    $requiredMark = $required
-        ? '<sup class="text-danger" data-bs-toggle="tooltip" title="Campo obrigatório">*</sup>'
-        : '';
+    // ID único
+    $id = $dotName . '-' . uniqid();
 @endphp
 
 @if ($label)
     <div class="d-flex justify-content-between">
 
-        <label for="{{ $id }}" class="form-label mb-0">
-            {{ $label }}{!! $requiredMark !!}
-        </label>
+        <label for="{{ $id }}" class="form-label mb-0">{{ $label }}{!! $requiredMark() !!}</label>
 
         @if ($corner)
             <small class="text-muted form-text">{{ $corner }}</small>
@@ -37,9 +21,9 @@
     </div>
 @endif
 
-<div class="input-group" x-data="{ show: false }">
+<div class="input-group" @if ($isPasswordType()) x-data="{ show: false }" @endif>
     {{-- Ícone esquerdo --}}
-    @if ($hasLeftIcon)
+    @if ($icon)
         <label class="input-group-text" for="{{ $id }}">
             <i class="bi bi-{{ $icon }}"></i>
         </label>
@@ -47,24 +31,24 @@
 
     {{-- Input --}}
     <input type="{{ $type }}" id="{{ $id }}" name="{{ $dotName }}"
-        placeholder="{{ $placeholder }}" @if ($inputValue && !$isPassword) value="{{ $inputValue }}" @endif
-        {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($dotName)])->except(['mask', 'mask:dynamic']) }}
-        @if ($isPassword) :type="show ? 'text' : 'password'" autocomplete="off" @endif
-        @if ($hasStaticMask || $hasDynamicMask) x-data @endif
-        @if ($hasStaticMask) x-mask="{{ $mask }}" @endif
-        @if ($hasDynamicMask) x-mask:dynamic="{{ $attributes->get('mask:dynamic') }}" @endif />
+        @if ($hasStaticMask()) x-data x-mask="{{ $mask }}" @endif
+        @if ($placeholder) placeholder="{{ $placeholder }}" @endif
+        @if ($inputValue && !$isPasswordType()) value="{{ $inputValue }}" @endif
+        @if ($isPasswordType()) :type="show ? 'text' : 'password'" autocomplete="off" @endif
+        @if ($hasDynamicMask()) x-data x-mask:dynamic="{{ $attributes->get('mask:dynamic') }}" @endif
+        {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($dotName)])->except(['mask', 'mask:dynamic']) }} />
 
-    {{-- Toggle de senha (apenas se for password) --}}
-    @if ($isPassword)
-        <label class="input-group-text" for="{{ $id }}" x-on:click="show = !show" style="cursor: pointer">
-            <i :class="show ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+    {{-- Ícone direito --}}
+    @if ($rightIcon)
+        <label class="input-group-text" for="{{ $id }}">
+            <i class="bi bi-{{ $rightIcon }}"></i>
         </label>
     @endif
 
-    {{-- Ícone direito --}}
-    @if ($hasRightIcon && !$isPassword)
-        <label class="input-group-text" for="{{ $id }}">
-            <i class="bi bi-{{ $rightIcon }}"></i>
+    {{-- Toggle de senha (apenas se for password) --}}
+    @if ($isPasswordType())
+        <label class="input-group-text" for="{{ $id }}" x-on:click="show = !show" style="cursor: pointer">
+            <i :class="show ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
         </label>
     @endif
 

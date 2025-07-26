@@ -16,6 +16,8 @@
 
 /* 6. Importar flatpickr */
 @import "flatpickr/dist/flatpickr.min.css";
+@import "flatpickr/dist/plugins/monthSelect/style.css";
+@import "flatpickr/dist/plugins/confirmDate/confirmDate.css";
 
 /* 7. Importar o FilePond e os seus plugins */
 @import "filepond/dist/filepond.min.css";
@@ -148,6 +150,10 @@ body {
 
 /* Ajustes para o Flatpickr suportar o modo Dark do Bootstrap 5 */
 :root[data-bs-theme="dark"] {
+    .flatpickr-monthSelect-month {
+        color: var(--bs-heading-color);
+        background: #3f4458;
+    }
     .flatpickr-calendar {
         background: transparent;
         opacity: 0;
