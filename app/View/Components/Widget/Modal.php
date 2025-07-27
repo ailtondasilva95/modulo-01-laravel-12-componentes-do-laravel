@@ -10,6 +10,7 @@ class Modal extends Component
 {
     /**
      * Create a new component instance.
+     * 
      * @param string $id Identificador único do modal
      * @param string|null $title Título do modal
      * @param string|null $footer Rodapé do modal

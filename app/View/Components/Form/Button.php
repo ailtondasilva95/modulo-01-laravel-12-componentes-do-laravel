@@ -10,6 +10,7 @@ class Button extends Component
 {
     /**
      * Create a new component instance.
+     * 
      * @param string|null $icon Ícone do botão
      * @param string|null $label Texto do rótulo do botão
      * @param bool $pill Define se o botão tem bordas arredondadas

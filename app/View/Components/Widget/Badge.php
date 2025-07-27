@@ -10,6 +10,7 @@ class Badge extends Component
 {
     /**
      * Create a new component instance.
+     * 
      * @param string|null $icon Ícone do badge
      * @param string|null $type Tipo de badge (ex: success, danger, etc.)
      * @param string|null $label Texto do badge

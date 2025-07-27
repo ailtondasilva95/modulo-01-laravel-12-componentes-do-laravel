@@ -8,6 +8,8 @@ use Illuminate\View\Component;
 
 class Flatpickr extends Component
 {
+    use Traits\FormFieldHelper;
+    
     /**
      * Create a new component instance.
      * 
@@ -40,51 +42,6 @@ class Flatpickr extends Component
         public bool $required = false,
     ) {
         $this->processFieldData();
-    }
-
-    /**
-     * Processa os dados do campo
-     */
-    private function processFieldData(): void
-    {
-        $this->dotName = $this->convertToDotNotation($this->name);
-        $this->value = old($this->dotName, $this->value);
-        $this->id = $this->id ?? $this->generateId();
-
-        // Define formato padrão baseado no tipo se não for especificado
-        if (empty($this->format)) {
-            $this->setDefaultFormat();
-        }
-    }
-
-    /**
-     * Converte nome com colchetes para dot notation para erros e old
-     */
-    private function convertToDotNotation(string $name): string
-    {
-        $dotName = preg_replace('/\[(\d+)?\]/', '.$1', $name);
-        return str_replace(['[', ']'], ['.', ''], $dotName);
-    }
-
-    /**
-     * Gera um ID único para o campo
-     */
-    private function generateId(): string
-    {
-        return str_replace(['.', '[', ']'], ['-', '', ''], $this->name) . '-' . uniqid();
-    }
-
-    /**
-     * Verifica se o campo é obrigatório.
-     * Se não for obrigatório, retorna uma string vazia. Caso contrário, retorna o asterisco vermelho.
-     */
-    public function requiredMark(): string
-    {
-        if (!$this->required) {
-            return '';
-        }
-
-        return '<sup class="text-danger" data-bs-toggle="tooltip" title="campo obrigatório">*</sup>';
     }
 
     /**

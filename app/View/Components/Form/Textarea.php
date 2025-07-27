@@ -6,24 +6,22 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Input extends Component
+class Textarea extends Component
 {
     use Traits\FormFieldHelper;
-
+    
     /**
      * Create a new component instance.
      * 
      * @param string|null $id ID do campo (será gerado automaticamente se não informado)
      * @param string $name Nome do campo (ex: user[name], product[0][price])
      * @param string|null $icon Ícone à esquerda do campo
-     * @param string|null $mask Máscara para o campo, pode ser estáticas ou dinâmicas via Alpine.js
-     * @param string|null $label Texto do rótulo do campo (ex: Nome Completo, Email)
+     * @param string|null $label Texto do rótulo do campo
      * @param string|null $value Valor do campo (valor padrão)
      * @param string|null $corner Texto de canto (ex: dica, informação adicional)
      * @param string|null $dotName Nome do campo em formato dot notation para erros e old (gerado automaticamente)
      * @param string|null $rightIcon Ícone à direita do campo
-     * @param string|null $placeholder Texto de placeholder (ex: Digite seu nome...)
-     * @param string $type Tipo do campo (text, email, password, number, etc.)
+     * @param string|null $placeholder Texto de placeholder
      * @param bool $required Define se o campo é obrigatório
      * @return void
      */
@@ -31,41 +29,16 @@ class Input extends Component
         public ?string $id,
         public string $name,
         public ?string $icon,
-        public ?string $mask,
         public ?string $label,
         public ?string $value,
         public ?string $corner,
         public ?string $dotName,
         public ?string $rightIcon,
         public ?string $placeholder,
-        public string $type = 'text',
         public bool $required = false,
-    ) {
+    )
+    {
         $this->processFieldData();
-    }
-
-    /**
-     * Verifica se o campo é do tipo password
-     */
-    public function isPasswordType(): bool
-    {
-        return $this->type === 'password';
-    }
-
-    /**
-     * Verifica se o campo tem máscara estática
-     */
-    public function hasStaticMask(): bool
-    {
-        return filled($this->mask) && is_string($this->mask) && !empty(trim($this->mask));
-    }
-
-    /**
-     * Verifica se o campo tem máscara dinâmica
-     */
-    public function hasDynamicMask(): bool
-    {
-        return $this->attributes->has('mask:dynamic') && filled($this->attributes->get('mask:dynamic'));
     }
 
     /**
@@ -73,6 +46,6 @@ class Input extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form.input');
+        return view('components.form.textarea');
     }
 }

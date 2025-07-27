@@ -10,6 +10,7 @@ class Avatar extends Component
 {
     /**
      * Create a new component instance.
+     * 
      * @param string|null $src URL da imagem do avatar
      * @param string|null $type Tipo de avatar (ex: user, admin, etc.)
      * @param string|null $label Texto do rótulo do avatar
