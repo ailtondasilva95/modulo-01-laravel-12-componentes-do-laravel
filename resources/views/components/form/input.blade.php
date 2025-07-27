@@ -1,15 +1,3 @@
-@php
-    // Dot notation para erros e old
-    $dotName = preg_replace('/\[(\d+)?\]/', '.$1', $name);
-    $dotName = str_replace(['[', ']'], ['.', ''], $dotName);
-
-    // Valor antigo ou padrão
-    $inputValue = old($dotName, $value);
-
-    // ID único
-    $id = $dotName . '-' . uniqid();
-@endphp
-
 @if ($label)
     <div class="d-flex justify-content-between">
 
@@ -33,7 +21,7 @@
     <input type="{{ $type }}" id="{{ $id }}" name="{{ $dotName }}"
         @if ($hasStaticMask()) x-data x-mask="{{ $mask }}" @endif
         @if ($placeholder) placeholder="{{ $placeholder }}" @endif
-        @if ($inputValue && !$isPasswordType()) value="{{ $inputValue }}" @endif
+        @if ($value && !$isPasswordType()) value="{{ $value }}" @endif
         @if ($isPasswordType()) :type="show ? 'text' : 'password'" autocomplete="off" @endif
         @if ($hasDynamicMask()) x-data x-mask:dynamic="{{ $attributes->get('mask:dynamic') }}" @endif
         {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($dotName)])->except(['mask', 'mask:dynamic']) }} />

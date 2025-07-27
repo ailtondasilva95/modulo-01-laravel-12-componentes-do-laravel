@@ -1,15 +1,3 @@
-@php
-    // Dot notation para erros e old
-    $dotName = preg_replace('/\[(\d+)?\]/', '.$1', $name);
-    $dotName = str_replace(['[', ']'], ['.', ''], $dotName);
-
-    // ID único
-    $id = $dotName . '-' . uniqid();
-
-    // Valor antigo ou padrão
-    $inputValue = old($dotName, $value);
-@endphp
-
 @if ($label)
     <div class="d-flex justify-content-between">
 
@@ -31,7 +19,7 @@
 
     {{-- Input --}}
     <input id="{{ $id }}" name="{{ $dotName }}"
-        @if ($inputValue) value="{{ $inputValue }}" @endif
+        @if ($value) value="{{ $value }}" @endif
         @if ($placeholder) placeholder="{{ $placeholder }}" @endif
         {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($dotName)]) }} />
 

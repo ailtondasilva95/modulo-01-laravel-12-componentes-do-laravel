@@ -10,34 +10,68 @@ class Flatpickr extends Component
 {
     /**
      * Create a new component instance.
-     * @param string $name Nome do campo
+     * 
+     * @param string|null $id ID do campo (será gerado automaticamente se não informado)
+     * @param string $name Nome do campo (ex: user[name], product[0][price])
      * @param string|null $icon Ícone à esquerda do campo
      * @param string|null $label Texto do rótulo do campo
-     * @param string|null $value Valor do campo
+     * @param string|null $value Valor do campo (valor padrão)
      * @param string|null $corner Texto de canto (ex: dica, informação adicional)
      * @param string|null $format Formato de data/hora (ex: d/m/Y H:i)
-     * @param string|null $rightIcon Ícone à direita do campo right-icon
+     * @param string|null $dotName Nome do campo em formato dot notation para erros e old (gerado automaticamente)
+     * @param string|null $rightIcon Ícone à direita do campo
      * @param string|null $placeholder Texto de placeholder
-     * @param string $type Tipo do campo (date, datetime, month, week, time )
+     * @param string $type Tipo do campo (date, datetime, month, week, time.)
      * @param bool $required Define se o campo é obrigatório
      * @return void
      */
     public function __construct(
+        public ?string $id,
         public string $name,
         public ?string $icon,
         public ?string $label,
         public ?string $value,
         public ?string $corner,
         public ?string $format,
+        public ?string $dotName,
         public ?string $rightIcon,
         public ?string $placeholder,
         public ?string $type = null,
         public bool $required = false,
     ) {
+        $this->processFieldData();
+    }
+
+    /**
+     * Processa os dados do campo
+     */
+    private function processFieldData(): void
+    {
+        $this->dotName = $this->convertToDotNotation($this->name);
+        $this->value = old($this->dotName, $this->value);
+        $this->id = $this->id ?? $this->generateId();
+
         // Define formato padrão baseado no tipo se não for especificado
         if (empty($this->format)) {
             $this->setDefaultFormat();
         }
+    }
+
+    /**
+     * Converte nome com colchetes para dot notation para erros e old
+     */
+    private function convertToDotNotation(string $name): string
+    {
+        $dotName = preg_replace('/\[(\d+)?\]/', '.$1', $name);
+        return str_replace(['[', ']'], ['.', ''], $dotName);
+    }
+
+    /**
+     * Gera um ID único para o campo
+     */
+    private function generateId(): string
+    {
+        return str_replace(['.', '[', ']'], ['-', '', ''], $this->name) . '-' . uniqid();
     }
 
     /**
@@ -47,10 +81,10 @@ class Flatpickr extends Component
     public function requiredMark(): string
     {
         if (!$this->required) {
-        return '';
-    }
-    
-    return '<sup class="text-danger" data-bs-toggle="tooltip" title="campo obrigatório">*</sup>';
+            return '';
+        }
+
+        return '<sup class="text-danger" data-bs-toggle="tooltip" title="campo obrigatório">*</sup>';
     }
 
     /**
