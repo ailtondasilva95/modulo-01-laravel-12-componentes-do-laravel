@@ -20,12 +20,6 @@
 
             <h2 class="text-center">Componentes de formulário</h2>
             @include('content.inputs-fields')
-            
-
-            {{-- @push('css')
-            @endpush
-            @push('scripts')
-            @endpush --}}
 
         </div>
     @endsection

@@ -2,6 +2,9 @@
 
 namespace App\View\Components\Form\Traits;
 
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
+
 trait FormFieldHelper
 {
     /**
@@ -9,8 +12,17 @@ trait FormFieldHelper
      */
     private function processFieldData(): void
     {
+        // Garante que $this->name esteja definido
+        if (!isset($this->name)) {
+            throw new \InvalidArgumentException('O atributo $name é obrigatório em componentes que usam FormFieldHelper.');
+        }
+
         $this->dotName = $this->convertToDotNotation($this->name);
-        $this->value = old($this->dotName, $this->value);
+
+        if (property_exists($this, 'value') && isset($this->value)) {
+            $this->value = old($this->dotName, $this->value);
+        }
+
         $this->id = $this->id ?? $this->generateId();
     }
 
@@ -21,8 +33,10 @@ trait FormFieldHelper
      */
     private function convertToDotNotation(string $name): string
     {
-        $dotName = preg_replace('/\[(\d+)?\]/', '.$1', $name);
-        return str_replace(['[', ']'], ['.', ''], $dotName);
+        // Substitui [índice] por .índice, mesmo se vazio
+        $name = preg_replace('/\[([^\]]*)\]/', '.$1', $name);
+        // Remove múltiplos pontos e pontos no início/fim
+        return trim(preg_replace('/\.+/', '.', $name), '.');
     }
 
     /**
@@ -31,7 +45,8 @@ trait FormFieldHelper
      */
     private function generateId(): string
     {
-        return str_replace(['.', '[', ']'], ['-', '', ''], $this->name) . '-' . uniqid();
+        // já trata ., [, ], espaços, etc. // ou uniqid() completo
+        return Str::slug($this->name, '-') . '-' . substr(uniqid(), -6);
     }
 
     /**
@@ -41,9 +56,33 @@ trait FormFieldHelper
     public function requiredMark(): string
     {
         if (!$this->required) {
-            return '';
+            return new HtmlString('');
         }
 
-        return '<sup class="text-danger" data-bs-toggle="tooltip" title="campo obrigatório">*</sup>';
+        return new HtmlString('<sup class="text-danger" data-bs-toggle="tooltip" title="campo obrigatório">*</sup>');
+    }
+
+    /**
+     * Verifica se há erros de validação para este campo
+     */
+    public function hasError(): bool
+    {
+        return session()->has('errors') && session('errors')->has($this->dotName);
+    }
+
+    /**
+     * Obtém a mensagem de erro para este campo
+     */
+    public function getErrorMessage(): ?string
+    {
+        return $this->hasError() ? session('errors')->first($this->dotName) : null;
+    }
+
+    /**
+     * Verifica se o campo tem valor
+     */
+    public function hasValue(): bool
+    {
+        return filled($this->value);
     }
 }

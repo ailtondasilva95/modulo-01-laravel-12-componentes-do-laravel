@@ -9,43 +9,80 @@ use Illuminate\View\Component;
 class Flatpickr extends Component
 {
     use Traits\FormFieldHelper;
-    
+
     /**
-     * Create a new component instance.
-     * 
-     * @param string|null $id ID do campo (será gerado automaticamente se não informado)
-     * @param string $name Nome do campo (ex: user[name], product[0][price])
-     * @param string|null $icon Ícone à esquerda do campo
-     * @param string|null $label Texto do rótulo do campo
-     * @param string|null $value Valor do campo (valor padrão)
-     * @param string|null $corner Texto de canto (ex: dica, informação adicional)
-     * @param string|null $format Formato de data/hora (ex: d/m/Y H:i)
-     * @param string|null $dotName Nome do campo em formato dot notation para erros e old (gerado automaticamente)
-     * @param string|null $rightIcon Ícone à direita do campo
-     * @param string|null $placeholder Texto de placeholder
-     * @param string $type Tipo do campo (date, datetime, month, week, time.)
-     * @param bool $required Define se o campo é obrigatório
+     * ID único do campo.
+     *
+     * Gerado automaticamente por `generateId()` se não for fornecido.
+     * Usado principalmente para associar labels com inputs via atributo `for`.
+     *
+     * Exemplo: "permissions-create-5f34a1b2c"
+     *
+     * @var string
+     */
+    public string $id;
+
+    /**
+     * Nome do campo em notação de ponto (dot notation).
+     *
+     * Converte nomes com colchetes (ex: user[profile][name]) para formato compatível
+     * com `old()` e `errors()` do Laravel (ex: user.profile.name).
+     *
+     * Usado para recuperar valores antigos e verificar erros de validação.
+     *
+     * @var string
+     */
+    public string $dotName;
+
+    /**
+     * Cria uma nova instância do componente Flatpickr.
+     *
+     * Renderiza um input com suporte a seleção de data/hora usando Flatpickr.js.
+     * Compatível com:
+     * - Vários formatos (data, hora, mês, semana)
+     * - Ícones esquerdo/direito
+     * - Placeholder
+     * - Texto de canto (ex: dica)
+     * - Validação Laravel (old input, erros)
+     * - Acessibilidade e IDs únicos
+     *
+     * @param  string      $name         Nome do campo (ex: 'start_at'). Usado em `name` e `id`.
+     * @param  ?string     $label        Rótulo exibido acima do campo (opcional).
+     * @param  ?string     $value        Valor inicial (data no formato Y-m-d H:i:s, substituído por `old()`).
+     * @param  ?string     $placeholder  Texto de placeholder (ex: '31/12/2025').
+     * @param  ?string     $type         Tipo de seleção: 'date', 'datetime', 'time', 'month', 'week'. Padrão: 'date'.
+     * @param  ?string     $format       Formato de exibição. Se não informado, usa padrão baseado no tipo.
+     * @param  ?string     $icon         Ícone à esquerda (ex: 'bi bi-calendar').
+     * @param  ?string     $rightIcon    Ícone à direita (ex: 'bi bi-clock').
+     * @param  ?string     $corner       Texto no canto inferior (ex: "máx. 30 dias à frente").
+     * @param  bool        $required     Define se o campo é obrigatório.
      * @return void
      */
     public function __construct(
-        public ?string $id,
         public string $name,
         public ?string $icon,
         public ?string $label,
         public ?string $value,
         public ?string $corner,
         public ?string $format,
-        public ?string $dotName,
         public ?string $rightIcon,
         public ?string $placeholder,
-        public ?string $type = null,
         public bool $required = false,
+        public ?string $type = null
     ) {
         $this->processFieldData();
+
+        if (!$this->format) {
+            $this->setDefaultFormat();
+        }
     }
 
     /**
-     * Define o formato padrão baseado no tipo do campo
+     * Define o formato padrão baseado no tipo do campo.
+     *
+     * Usado quando `$format` não é fornecido.
+     *
+     * @return void
      */
     private function setDefaultFormat(): void
     {
@@ -59,22 +96,9 @@ class Flatpickr extends Component
     }
 
     /**
-     * Verifica se é um tipo de campo de data
-     */
-    public function isDateType(): bool
-    {
-        return in_array($this->type, [
-            'datetime-local',
-            'datetime',
-            'month',
-            'date',
-            'week',
-            'time'
-        ]);
-    }
-
-    /**
-     * Verifica se precisa de seleção de hora
+     * Verifica se o campo precisa de seleção de hora.
+     *
+     * @return bool
      */
     public function needsTime(): bool
     {
@@ -86,7 +110,9 @@ class Flatpickr extends Component
     }
 
     /**
-     * Verifica se precisa ocultar o calendário (apenas hora/mês/semana)
+     * Verifica se o calendário deve ser ocultado (ex: apenas hora).
+     *
+     * @return bool
      */
     public function noCalendar(): bool
     {

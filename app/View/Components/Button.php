@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Form;
+namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -15,6 +15,7 @@ class Button extends Component
      * @param string|null $label Texto do rótulo do botão
      * @param bool $pill Define se o botão tem bordas arredondadas
      * @param bool $circle Define se o botão é circular
+     * @param bool $class Define o estilo pradrão do botão
      * @return void
      */
     public function __construct(
@@ -22,6 +23,7 @@ class Button extends Component
         public ?string $label,
         public bool $pill = false,
         public bool $circle = false,
+        public string $class = 'btn-default',
     ) {
         //
     }
@@ -31,6 +33,6 @@ class Button extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form.button');
+        return view('components.button');
     }
 }

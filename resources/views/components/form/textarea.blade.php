@@ -18,9 +18,9 @@
     @endif
 
     {{-- Textarea --}}
-    <textarea id="{{ $id }}" name="{{ $dotName }}"
+    <textarea id="{{ $id }}" name="{{ $dotName }}" rows="{{ $rows }}"
         @if ($placeholder) placeholder="{{ $placeholder }}" @endif
-        {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($dotName)]) }}>{{ $value }}</textarea>
+        {{ $attributes->class(['form-control', 'is-invalid' => $hasError()]) }}>{{ $value }}</textarea>
 
     {{-- Ícone direito --}}
     @if ($rightIcon)
@@ -29,8 +29,8 @@
         </label>
     @endif
 
-    {{-- Erro de validação --}}
-    @error($dotName)
-        <div class="invalid-feedback">{{ $message }}</div>
+    {{-- Erro de validação d-block --}}
+    @error($hasError())
+        <div class="invalid-feedback">{{ $getErrorMessage() }}</div>
     @enderror
 </div>

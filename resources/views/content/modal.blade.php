@@ -11,7 +11,7 @@
             <div class="accordion-body text-center">
 
                 {{-- Modal Normal --}}
-                <x-form.button class="btn-default" label="Modal Normal" data-bs-toggle="modal"
+                <x-button class="btn-default" label="Modal Normal" data-bs-toggle="modal"
                     data-bs-target="#modalNormal" />
 
                 <x-widget.modal id="modalNormal" title="Modal Normal">
@@ -19,7 +19,7 @@
                 </x-widget.modal>
 
                 {{-- Modal Normal sem titulo --}}
-                <x-form.button class="btn-default" label="Modal Normal sem Titulo" data-bs-toggle="modal"
+                <x-button class="btn-default" label="Modal Normal sem Titulo" data-bs-toggle="modal"
                     data-bs-target="#modalNormalNoTitle" />
 
                 <x-widget.modal id="modalNormalNoTitle">
@@ -28,7 +28,7 @@
                 </x-widget.modal>
 
                 {{-- Modal Estático --}}
-                <x-form.button class="btn-default" label="Modal Estático" data-bs-toggle="modal"
+                <x-button class="btn-default" label="Modal Estático" data-bs-toggle="modal"
                     data-bs-target="#estatico" />
 
                 <x-widget.modal id="estatico" title="Modal Estático" static>
@@ -36,7 +36,7 @@
                 </x-widget.modal>
 
                 {{-- Modal Centralizado --}}
-                <x-form.button class="btn-default" label="Modal Centralizado" data-bs-toggle="modal"
+                <x-button class="btn-default" label="Modal Centralizado" data-bs-toggle="modal"
                     data-bs-target="#centralizado" />
 
                 <x-widget.modal id="centralizado" title="Modal Centralizado" centered>
@@ -45,14 +45,14 @@
                     Você pode fechá-lo normalmente.
 
                     <x-slot name="footer">
-                        <x-form.button class="btn-secondary" label="Fechar" data-bs-dismiss="modal" />
-                        <x-form.button class="btn-primary" label="Salvar alterações" />
+                        <x-button class="btn-secondary" label="Fechar" data-bs-dismiss="modal" />
+                        <x-button class="btn-primary" label="Salvar alterações" />
                     </x-slot>
 
                 </x-widget.modal>
 
                 {{-- Modal Estático e Centralizado --}}
-                <x-form.button class="btn-default" label="Modal Estático e Centralizado" data-bs-toggle="modal"
+                <x-button class="btn-default" label="Modal Estático e Centralizado" data-bs-toggle="modal"
                     data-bs-target="#estaticoEcentralizado" />
 
                 <x-widget.modal id="estaticoEcentralizado" title="Modal Estático e Centralizado" static centered>
@@ -61,8 +61,8 @@
                     Não pode ser fechado ao clicar fora dele ou pressionar a tecla ESC.
 
                     <x-slot name="footer">
-                        <x-form.button class="btn-secondary" label="Fechar" data-bs-dismiss="modal" />
-                        <x-form.button class="btn-primary" label="Salvar alterações" />
+                        <x-button class="btn-secondary" label="Fechar" data-bs-dismiss="modal" />
+                        <x-button class="btn-primary" label="Salvar alterações" />
                     </x-slot>
 
                 </x-widget.modal>

@@ -112,15 +112,6 @@ npm i -D sass
 npm i bootstrap @popperjs/core
 ```
 
-**Pacote de dependência (Icheck Bootstrap)**
-
-> **O que é Icheck Bootstrap?**  
-> [É uma Caixas de seleção e botões de opção (radio/checkbox) em CSS puro para Bootstrap.](https://bantikyan.github.io/icheck-bootstrap)
-
-```sh
-npm i icheck-bootstrap
-```
-
 **Pacote de dependência (Bootstrap Icons)**
 
 > **O que é Icheck Bootstrap Icons?**  

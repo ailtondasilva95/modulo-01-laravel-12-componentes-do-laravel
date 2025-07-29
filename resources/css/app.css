@@ -1,25 +1,22 @@
 /* 1. Importar a fonte de letra */
 @import url("https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap");
 
-/* 2. Importar o Icheck Bootstrap */
-@import "icheck-bootstrap/icheck-bootstrap.min.css";
-
-/* 3. Importar o Bootstrap Icons */
+/* 2. Importar o Bootstrap Icons */
 @import "bootstrap-icons/font/bootstrap-icons.min.css";
 
-/* 4. Importar o Flag Icons */
+/* 3. Importar o Flag Icons */
 @import "flag-icons/css/flag-icons.min.css";
 
-/* 5. Importar o Select2 e o seu tema para Bootstrap */
+/* 4. Importar o Select2 e o seu tema para Bootstrap */
 @import "select2/dist/css/select2.min.css";
 @import "select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css";
 
-/* 6. Importar flatpickr */
+/* 5. Importar flatpickr */
 @import "flatpickr/dist/flatpickr.min.css";
 @import "flatpickr/dist/plugins/monthSelect/style.css";
 @import "flatpickr/dist/plugins/confirmDate/confirmDate.css";
 
-/* 7. Importar o FilePond e os seus plugins */
+/* 6. Importar o FilePond e os seus plugins */
 @import "filepond/dist/filepond.min.css";
 @import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
 @import "filepond-plugin-file-poster/dist/filepond-plugin-file-poster.min.css";

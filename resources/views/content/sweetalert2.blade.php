@@ -8,14 +8,14 @@
         </h2>
         <div id="main-Swal" class="accordion-collapse collapse" data-bs-parent="#Swal">
             <div class="accordion-body text-center">
-                <x-form.button class="btn-default basic" label="Básica" />
-                <x-form.button class="btn-default success" label="Sucesso" />
-                <x-form.button class="btn-default error" label="Erro" />
-                <x-form.button class="btn-default confirm" label="Confirmar" />
-                <x-form.button class="btn-default cancel" label="Cancelar" />
-                <x-form.button class="btn-default tree-button" label="Três Botões" />
-                <x-form.button class="btn-default toast-top-end" label="Toast" />
-                <x-form.button class="btn-default bootstrap-class" label="Com classes do bootstrap" />
+                <x-button id="basic" label="Básica" />
+                <x-button id="success" label="Sucesso" />
+                <x-button id="error" label="Erro" />
+                <x-button id="confirm" label="Confirmar" />
+                <x-button id="cancel" label="Cancelar" />
+                <x-button id="tree-button" label="Três Botões" />
+                <x-button id="toast-top-end" label="Toast" />
+                <x-button id="bootstrap-class" label="Com classes do bootstrap" />
             </div>
         </div>
     </div>
@@ -24,12 +24,12 @@
 @push('scripts')
     <script type="module">
         // Básica
-        $('.basic').on('click', () => {
+        $('#basic').on('click', () => {
             Swal.fire("SweetAlert2 is working!");
         });
 
         // Mensagem de Sucesso
-        $('.success').on('click', () => {
+        $('#success').on('click', () => {
             Swal.fire({
                 icon: "success",
                 title: "Good job!",
@@ -38,7 +38,7 @@
         });
 
         // Mensagem de erro
-        $('.error').on('click', () => {
+        $('#error').on('click', () => {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -48,7 +48,7 @@
         });
 
         // Confirmar
-        $('.confirm').on('click', () => {
+        $('#confirm').on('click', () => {
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -69,7 +69,7 @@
         });
 
         // Cancelar
-        $('.cancel').on('click', () => {
+        $('#cancel').on('click', () => {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: "btn btn-success",
@@ -105,7 +105,7 @@
         });
 
         // Três Botões
-        $('.tree-button').on('click', () => {
+        $('#tree-button').on('click', () => {
             Swal.fire({
                 title: "Do you want to save the changes?",
                 showDenyButton: true,
@@ -122,7 +122,7 @@
         });
 
         // Exemplo de Toast
-        $('.toast-top-end').on('click', () => {
+        $('#toast-top-end').on('click', () => {
             const Toast = Swal.mixin({
                 toast: true,
                 position: "top-end",
@@ -141,7 +141,7 @@
         });
 
         // Sweetalert2 com classes do bootstrap
-        $('.bootstrap-class').on('click', () => {
+        $('#bootstrap-class').on('click', () => {
             Swal.fire({
                 title: "Atenção",
                 text: "Alerta que segue o tema do Bootstrap",

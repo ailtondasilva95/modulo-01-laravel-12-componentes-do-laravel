@@ -21,10 +21,10 @@
     <input type="{{ $type }}" id="{{ $id }}" name="{{ $dotName }}"
         @if ($hasStaticMask()) x-data x-mask="{{ $mask }}" @endif
         @if ($placeholder) placeholder="{{ $placeholder }}" @endif
-        @if ($value && !$isPasswordType()) value="{{ $value }}" @endif
+        @if ($hasValue() && !$isPasswordType()) value="{{ $value }}" @endif
         @if ($isPasswordType()) :type="show ? 'text' : 'password'" autocomplete="off" @endif
         @if ($hasDynamicMask()) x-data x-mask:dynamic="{{ $attributes->get('mask:dynamic') }}" @endif
-        {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($dotName)])->except(['mask', 'mask:dynamic']) }} />
+        {{ $attributes->class(['form-control', 'is-invalid' => $hasError()])->except(['mask', 'mask:dynamic']) }} />
 
     {{-- Ícone direito --}}
     @if ($rightIcon)
@@ -40,8 +40,8 @@
         </label>
     @endif
 
-    {{-- Erro de validação --}}
-    @error($dotName)
-        <div class="invalid-feedback">{{ $message }}</div>
+    {{-- Erro de validação d-block --}}
+    @error($hasError())
+        <div class="invalid-feedback">{{ $getErrorMessage() }}</div>
     @enderror
 </div>

@@ -19,9 +19,9 @@
 
     {{-- Input --}}
     <input id="{{ $id }}" name="{{ $dotName }}"
-        @if ($value) value="{{ $value }}" @endif
+        @if ($hasValue()) value="{{ $value }}" @endif
         @if ($placeholder) placeholder="{{ $placeholder }}" @endif
-        {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($dotName)]) }} />
+        {{ $attributes->class(['form-control', 'is-invalid' => $hasError()]) }} />
 
     {{-- Ícone direito --}}
     @if ($rightIcon)
@@ -30,9 +30,9 @@
         </label>
     @endif
 
-    {{-- Erro de validação --}}
-    @error($dotName)
-        <div class="invalid-feedback">{{ $message }}</div>
+    {{-- Erro de validação d-block --}}
+    @error($hasError())
+        <div class="invalid-feedback">{{ $getErrorMessage() }}</div>
     @enderror
 </div>
 
