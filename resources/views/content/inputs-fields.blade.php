@@ -5,10 +5,10 @@
     {{-- Campo de entrada com máscara usando Alpine e o seu plugin (alpinejs/mask) --}}
     @include('content.forms.input-mask')
 
-    {{-- Campo de entrada do tipo radio com (Icheck Bootstrap) --}}
+    {{-- Campo de entrada do tipo radio --}}
     @include('content.forms.radio')
 
-    {{-- Campo de entrada do tipo checkbox com (Icheck Bootstrap) --}}
+    {{-- Campo de entrada do tipo checkbox --}}
     @include('content.forms.checkbox')
 
     {{-- Campo de entrada de TextArea --}}
