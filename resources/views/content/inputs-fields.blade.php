@@ -16,4 +16,7 @@
 
     {{-- Campo de entrada de data/hora com (Flatpickr) --}}
     @include('content.forms.flatpickr')
+
+    {{-- Campo de entrada select com (Select2) --}}
+    @include('content.forms.select2')
 </div>

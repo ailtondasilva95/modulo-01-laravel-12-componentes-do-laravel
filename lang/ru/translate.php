@@ -6,7 +6,7 @@ return [
     'description' => 'Componentes do Laravel usando Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons e SweetAlert2',
 
     'select2' => [
-        'noResults' => 'No results found',
-        'searching' => 'Searching…'
+        'noResults' => 'Совпадений не найдено',
+        'searching' => 'Поиск…'
     ]
 ];

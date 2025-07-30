@@ -1,6 +1,7 @@
 <x-layout.app>
     @section('content')
-        <div class="container-fluid">
+        <div class="container mb-4">
+
             <h6 class="text-center mt-3 mb-4 text-orange-500">{{ __('translate.description') }}</h6>
 
             <h2 class="text-center">Badges</h2>
@@ -23,7 +24,6 @@
 
             <h2 class="text-center">Componentes de formulário</h2>
             @include('content.inputs-fields')
-
         </div>
     @endsection
 </x-layout.app>

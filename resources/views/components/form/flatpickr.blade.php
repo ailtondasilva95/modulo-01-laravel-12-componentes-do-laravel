@@ -30,35 +30,33 @@
         </label>
     @endif
 
-    {{-- Erro de validação d-block --}}
+    {{-- Erro de validação --}}
     @error($hasError())
-        <div class="invalid-feedback">{{ $getErrorMessage() }}</div>
+        <div class="invalid-feedback d-block">{{ $getErrorMessage() }}</div>
     @enderror
 </div>
 
 @push('scripts')
     <script type="module">
-        document.addEventListener('DOMContentLoaded', function() {
-            flatpickr("#{{ $id }}", {
-                plugins: [
-                    @if ($type === 'month')
-                        new monthSelectPlugin({
-                                dateFormat: "{{ $format }}"
-                            }),
-                    @elseif ($type === 'week')
-                        new weekSelectPlugin({}),
-                    @elseif ($type === 'datetime-local' || $type === 'datetime')
-                        new confirmDatePlugin({
-                                confirmText: 'Confirmar',
-                                confirmIcon: '',
-                            }),
-                    @endif
-                ],
-                weekNumbers: {{ $type === 'week' ? 'true' : 'false' }},
-                noCalendar: {{ $noCalendar() ? 'true' : 'false' }},
-                enableTime: {{ $needsTime() ? 'true' : 'false' }},
-                dateFormat: "{{ $format }}",
-            });
+        flatpickr("#{{ $id }}", {
+            plugins: [
+                @if ($type === 'month')
+                    new monthSelectPlugin({
+                            dateFormat: "{{ $format }}"
+                        }),
+                @elseif ($type === 'week')
+                    new weekSelectPlugin({}),
+                @elseif ($type === 'datetime-local' || $type === 'datetime')
+                    new confirmDatePlugin({
+                            confirmText: 'Confirmar',
+                            confirmIcon: '',
+                        }),
+                @endif
+            ],
+            weekNumbers: {{ $type === 'week' ? 'true' : 'false' }},
+            noCalendar: {{ $noCalendar() ? 'true' : 'false' }},
+            enableTime: {{ $needsTime() ? 'true' : 'false' }},
+            dateFormat: "{{ $format }}",
         });
     </script>
 @endPush

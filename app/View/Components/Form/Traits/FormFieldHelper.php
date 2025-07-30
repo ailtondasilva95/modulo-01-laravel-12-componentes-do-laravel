@@ -52,8 +52,9 @@ trait FormFieldHelper
     /**
      * Verifica se o campo é obrigatório.
      * Se não for obrigatório, retorna uma string vazia. Caso contrário, retorna o asterisco vermelho.
+     * @return HtmlString
      */
-    public function requiredMark(): string
+    public function requiredMark(): HtmlString
     {
         if (!$this->required) {
             return new HtmlString('');

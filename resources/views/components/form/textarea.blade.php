@@ -29,8 +29,8 @@
         </label>
     @endif
 
-    {{-- Erro de validação d-block --}}
+    {{-- Erro de validação --}}
     @error($hasError())
-        <div class="invalid-feedback">{{ $getErrorMessage() }}</div>
+        <div class="invalid-feedback d-block">{{ $getErrorMessage() }}</div>
     @enderror
 </div>
