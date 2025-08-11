@@ -10,40 +10,13 @@ class Checkbox extends Component
 {
     use Traits\FormFieldHelper;
 
-    /**
-     * ID único do campo.
-     *
-     * Gerado automaticamente por `generateId()` se não for fornecido.
-     * Usado principalmente para associar labels com inputs via atributo `for`.
-     *
-     * Exemplo: "permissions-create-5f34a1b2c"
-     *
-     * @var string
-     */
+    /** @var string ID único do campo */
     public string $id;
 
-    /**
-     * Nome do campo em notação de ponto (dot notation).
-     *
-     * Converte nomes com colchetes (ex: user[profile][name]) para formato compatível
-     * com `old()` e `errors()` do Laravel (ex: user.profile.name).
-     *
-     * Usado para recuperar valores antigos e verificar erros de validação.
-     *
-     * @var string
-     */
+    /** @var string Nome do campo em dot notation (para old() e erros) */
     public string $dotName;
 
-    /**
-     * Os valores atualmente marcados (checked) no grupo de checkboxes.
-     *
-     * Pode vir de:
-     * - Dados antigos (old) após falha de validação
-     * - Valor passado no atributo 'checked'
-     * - Array vazio, se nenhum valor estiver selecionado
-     *
-     * @var array<int|string, mixed>
-     */
+    /**  @var array Valores marcados (baseados em old() ou no valor passado) */
     public array $checkedValues;
 
     /**
@@ -80,6 +53,15 @@ class Checkbox extends Component
         $this->checkedValues = $this->determineCheckedValues();
     }
 
+    /**
+     * Determina os valores que devem estar marcados (checked) no checkbox.
+     *
+     * Prioriza os valores enviados no `old()` (após submissão com erro), seguidos pelos
+     * valores fornecidos diretamente no atributo `$checked`. Se nenhum estiver presente,
+     * retorna um array vazio.
+     *
+     * @return array Lista de valores marcados (como strings).
+     */
     private function determineCheckedValues(): array
     {
         $oldInput = old($this->dotName);
@@ -98,11 +80,28 @@ class Checkbox extends Component
         return [];
     }
 
+    /**
+     * Verifica se um valor específico está marcado (checked).
+     *
+     * Utilizado na view para definir o atributo `checked` em cada input.
+     *
+     * @param string $optionValue Valor da opção a ser verificada.
+     * @return bool Verdadeiro se o valor estiver na lista de marcados.
+     */
     public function isChecked(string $optionValue): bool
     {
         return in_array($optionValue, $this->checkedValues);
     }
 
+    /**
+     * Gera um ID único e seguro para um input checkbox baseado no valor da opção.
+     *
+     * Substitui caracteres especiais (como ponto e colchetes) por hífens para garantir
+     * compatibilidade com IDs HTML. Útil para associar labels com inputs via `for`.
+     *
+     * @param string $optionValue Valor da opção (ex: "admin", "user.create").
+     * @return string ID HTML seguro (ex: "permissions-option-admin").
+     */
     public function getOptionId(string $optionValue): string
     {
         $cleanValue = str_replace(['.', '[', ']'], '-', $optionValue);
@@ -110,6 +109,9 @@ class Checkbox extends Component
         return $this->id . '-option-' . trim($cleanValue, '-');
     }
 
+    /**
+     * Get the view / contents that represent the component.
+     */
     public function render(): View|Closure|string
     {
         return view('components.form.checkbox');

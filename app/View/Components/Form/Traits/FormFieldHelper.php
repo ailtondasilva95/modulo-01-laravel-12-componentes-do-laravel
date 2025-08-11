@@ -12,7 +12,6 @@ trait FormFieldHelper
      */
     private function processFieldData(): void
     {
-        // Garante que $this->name esteja definido
         if (!isset($this->name)) {
             throw new \InvalidArgumentException('O atributo $name é obrigatório em componentes que usam FormFieldHelper.');
         }
@@ -56,11 +55,11 @@ trait FormFieldHelper
      */
     public function requiredMark(): HtmlString
     {
-        if (!$this->required) {
-            return new HtmlString('');
+        if ($this->required) {
+            return new HtmlString('<sup class="text-danger" data-bs-toggle="tooltip" title="campo obrigatório">*</sup>');
         }
-
-        return new HtmlString('<sup class="text-danger" data-bs-toggle="tooltip" title="campo obrigatório">*</sup>');
+        
+        return new HtmlString('');
     }
 
     /**
@@ -69,14 +68,6 @@ trait FormFieldHelper
     public function hasError(): bool
     {
         return session()->has('errors') && session('errors')->has($this->dotName);
-    }
-
-    /**
-     * Obtém a mensagem de erro para este campo
-     */
-    public function getErrorMessage(): ?string
-    {
-        return $this->hasError() ? session('errors')->first($this->dotName) : null;
     }
 
     /**

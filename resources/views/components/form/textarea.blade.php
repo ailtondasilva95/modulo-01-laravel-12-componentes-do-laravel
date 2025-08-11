@@ -1,7 +1,9 @@
 @if ($label)
     <div class="d-flex justify-content-between">
 
-        <label for="{{ $id }}" class="form-label mb-0">{{ $label }}{!! $requiredMark() !!}</label>
+        <label for="{{ $id }}" class="form-label mb-0">
+            {{ $label }}{!! $requiredMark() !!}
+        </label>
 
         @if ($corner)
             <small class="text-muted form-text">{{ $corner }}</small>
@@ -18,7 +20,7 @@
     @endif
 
     {{-- Textarea --}}
-    <textarea id="{{ $id }}" name="{{ $dotName }}" rows="{{ $rows }}"
+    <textarea id="{{ $id }}" name="{{ $name }}" rows="{{ $rows }}"
         @if ($placeholder) placeholder="{{ $placeholder }}" @endif
         {{ $attributes->class(['form-control', 'is-invalid' => $hasError()]) }}>{{ $value }}</textarea>
 
@@ -30,7 +32,7 @@
     @endif
 
     {{-- Erro de validação --}}
-    @error($hasError())
-        <div class="invalid-feedback d-block">{{ $getErrorMessage() }}</div>
-    @enderror
+    @if ($hasError())
+        <div class="invalid-feedback d-block">{{ $dotName }}</div>
+    @endif
 </div>

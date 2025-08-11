@@ -1,5 +1,7 @@
 @if ($label)
-    <label class="form-label">{{ $label }}{!! $requiredMark() !!}</label>
+    <label class="form-label mb-0">
+        {{ $label }}{!! $requiredMark() !!}
+    </label>
 @endif
 
 <div>
@@ -7,7 +9,7 @@
         <div class="form-check {{ $switch ? 'form-switch' : '' }} {{ $inline ? 'form-check-inline' : '' }}">
             {{-- Input Checkbox --}}
             <input type="checkbox" id="{{ $getOptionId($optionValue) }}" name="{{ $name }}"
-                value="{{ $optionValue }}" style="cursor: pointer" @checked($isChecked($optionValue))
+                value="{{ $optionValue }}" @checked($isChecked($optionValue)) style="cursor: pointer"
                 {{ $attributes->class(['form-check-input', 'is-invalid' => $hasError()]) }}>
             {{-- Label do Input --}}
             <label class="form-check-label" for="{{ $getOptionId($optionValue) }}" style="cursor: pointer">
@@ -22,7 +24,7 @@
     @endif
 
     {{-- Erro de validação --}}
-    @error($hasError())
-        <div class="invalid-feedback d-block">{{ $getErrorMessage() }}</div>
-    @enderror
+    @if ($hasError())
+        <div class="invalid-feedback d-block">{{ $dotName }}</div>
+    @endif
 </div>

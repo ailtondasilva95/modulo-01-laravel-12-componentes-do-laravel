@@ -3,35 +3,17 @@
 namespace App\View\Components\Form;
 
 use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class Radio extends Component
 {
     use Traits\FormFieldHelper;
 
-    /**
-     * ID único do campo.
-     *
-     * Gerado automaticamente por `generateId()` se não for fornecido.
-     * Usado principalmente para associar labels com inputs via atributo `for`.
-     *
-     * Exemplo: "permissions-create-5f34a1b2c"
-     *
-     * @var string
-     */
+    /** @var string ID único do campo */
     public string $id;
 
-    /**
-     * Nome do campo em notação de ponto (dot notation).
-     *
-     * Converte nomes com colchetes (ex: user[profile][name]) para formato compatível
-     * com `old()` e `errors()` do Laravel (ex: user.profile.name).
-     *
-     * Usado para recuperar valores antigos e verificar erros de validação.
-     *
-     * @var string
-     */
+    /** @var string Nome do campo em dot notation (para old() e erros) */
     public string $dotName;
 
     /**

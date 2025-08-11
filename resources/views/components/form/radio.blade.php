@@ -1,13 +1,15 @@
 @if ($label)
-    <label class="form-label">{{ $label }}{!! $requiredMark() !!}</label>
+    <label class="form-label mb-0">
+        {{ $label }}{!! $requiredMark() !!}
+    </label>
 @endif
 
 <div>
     @foreach ($options as $optionValue => $optionLabel)
         <div class="form-check {{ $inline ? 'form-check-inline' : '' }}">
             {{-- Input Radio --}}
-            <input type="radio" id="{{ $getOptionId($optionValue) }}" name="{{ $dotName }}"
-                value="{{ $optionValue }}" style="cursor: pointer" @checked($isChecked($optionValue))
+            <input type="radio" id="{{ $getOptionId($optionValue) }}" name="{{ $name }}"
+                value="{{ $optionValue }}" @checked($isChecked($optionValue)) style="cursor: pointer"
                 {{ $attributes->class(['form-check-input', 'is-invalid' => $hasError()]) }} />
             {{-- Label do Input --}}
             <label class="form-check-label" for="{{ $getOptionId($optionValue) }}" style="cursor: pointer">
@@ -22,7 +24,7 @@
     @endif
 
     {{-- Erro de validação --}}
-    @error($hasError())
-        <div class="invalid-feedback d-block">{{ $getErrorMessage() }}</div>
-    @enderror
+    @if ($hasError())
+        <div class="invalid-feedback d-block">{{ $dotName }}</div>
+    @endif
 </div>

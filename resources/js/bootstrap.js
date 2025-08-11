@@ -3,10 +3,6 @@ window.axios = axios;
 
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
-// Idioma do site
-const currentLang = document.documentElement.getAttribute("lang");
-console.log("Idioma atual:", currentLang);
-
 // 1. Importar o Alpine
 import Alpine from "alpinejs";
 import mask from "@alpinejs/mask";
@@ -17,11 +13,23 @@ Alpine.start();
 import * as bootstrap from "bootstrap";
 window.bootstrap = bootstrap;
 
-// 3. Importar o FlatPickr
+// 3. Importar o SweetAlert2
+import Swal from "sweetalert2";
+window.Swal = Swal;
+
+// 4. Importar o jQuery
+import jQuery from 'jquery';
+window.$ = window.jQuery = jQuery;
+
+// 5. Importar o Select2
+import select2 from "select2";
+select2();
+
+// 6. Importar o FlatPickr
 import flatpickr from "flatpickr";
 window.flatpickr = flatpickr;
 
-// 3.1. Importar os plugins do FlatPickr
+// 6.1. Importar os plugins do FlatPickr
 import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate.js";
 import weekSelectPlugin from "flatpickr/dist/plugins/weekSelect/weekSelect.js";
 import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect/index.js";
@@ -29,9 +37,8 @@ window.confirmDatePlugin = confirmDatePlugin;
 window.monthSelectPlugin = monthSelectPlugin;
 window.weekSelectPlugin = weekSelectPlugin;
 
-// 3.2. Importar os idiomas do FlatPickr
+// 6.2. Importar os idiomas do FlatPickr
 import { Portuguese } from "flatpickr/dist/l10n/pt.js";
-import { Default } from "flatpickr/dist/l10n/default.js";
 import { Mandarin } from "flatpickr/dist/l10n/zh.js";
 import { Spanish } from "flatpickr/dist/l10n/es.js";
 import { Italian } from "flatpickr/dist/l10n/it.js";
@@ -39,108 +46,45 @@ import { Russian } from "flatpickr/dist/l10n/ru.js";
 import { German } from "flatpickr/dist/l10n/de.js";
 import { French } from "flatpickr/dist/l10n/fr.js";
 
-if (currentLang === "pt") {
-    flatpickr.localize(Portuguese);
-} else if (currentLang === "zh-CN") {
-    flatpickr.localize(Mandarin);
-} else if (currentLang === "es") {
-    flatpickr.localize(Spanish);
-} else if (currentLang === "it") {
-    flatpickr.localize(Italian);
-} else if (currentLang === "ru") {
-    flatpickr.localize(Russian);
-} else if (currentLang === "de") {
+// 7. Importar o JS do bootstrap-fileinput
+import "bootstrap-fileinput/js/plugins/sortable.min.js";
+import "bootstrap-fileinput/js/fileinput.min.js";
+import "bootstrap-fileinput/themes/bs5/theme.min.js";
+
+// 7.1. Importar os idiomas do bootstrap-fileinput
+import "bootstrap-fileinput/js/locales/de.js";
+import "bootstrap-fileinput/js/locales/es.js";
+import "bootstrap-fileinput/js/locales/fr.js";
+import "bootstrap-fileinput/js/locales/it.js";
+import "bootstrap-fileinput/js/locales/pt.js";
+import "bootstrap-fileinput/js/locales/ru.js";
+import "bootstrap-fileinput/js/locales/zh.js";
+
+// Configuração de multi-idiomas no bootstrap-fileinput e o flatPickr
+if (document.documentElement.getAttribute("lang") === "de") {
+    $.fn.fileinput.defaults.language = "de";
     flatpickr.localize(German);
-} else if (currentLang === "fr") {
+} else if (document.documentElement.getAttribute("lang") === "en") {
+    $.fn.fileinput.defaults.language = "en";
+} else if (document.documentElement.getAttribute("lang") === "es") {
+    $.fn.fileinput.defaults.language = "es";
+    flatpickr.localize(Spanish);
+} else if (document.documentElement.getAttribute("lang") === "fr") {
+    $.fn.fileinput.defaults.language = "fr";
     flatpickr.localize(French);
+} else if (document.documentElement.getAttribute("lang") === "it") {
+    $.fn.fileinput.defaults.language = "it";
+    flatpickr.localize(Italian);
+} else if (document.documentElement.getAttribute("lang") === "zh-CN") {
+    $.fn.fileinput.defaults.language = "zh";
+    flatpickr.localize(Mandarin);
+} else if (document.documentElement.getAttribute("lang") === "ru") {
+    $.fn.fileinput.defaults.language = "ru";
+    flatpickr.localize(Russian);
 } else {
-    flatpickr.localize(Default);
+    $.fn.fileinput.defaults.language = "pt";
+    flatpickr.localize(Portuguese);
 }
-
-// 4. Importar o SweetAlert2
-import Swal from "sweetalert2";
-window.Swal = Swal;
-
-// 5. Importar o jQuery
-import jQuery from "jquery";
-window.$ = jQuery;
-
-// 5. Importar o Select2
-import select2 from "select2";
-select2();
-
-// 6. Importar o JS do FilePond
-import * as FilePond from "filepond";
-import pt_BR from "filepond/locale/pt-br.js";
-FilePond.setOptions(pt_BR);
-window.FilePond = FilePond;
-
-// 6.1.
-
-// // 6.2.
-// import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
-// window.FilePondPluginImageExifOrientation = FilePondPluginImageExifOrientation;
-
-// 6.3.
-import FilePondPluginImageValidateSize from "filepond-plugin-image-validate-size";
-window.FilePondPluginImageValidateSize = FilePondPluginImageValidateSize;
-
-// 6.4.
-import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-size";
-window.FilePondPluginFileValidateSize = FilePondPluginFileValidateSize;
-
-// 6.5.
-import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
-window.FilePondPluginFileValidateType = FilePondPluginFileValidateType;
-
-// // 6.6.
-// import FilePondPluginImageTransform from "filepond-plugin-image-transform";
-// window.FilePondPluginImageTransform = FilePondPluginImageTransform; //
-
-// 6.7.
-import FilePondPluginFileMetadata from "filepond-plugin-file-metadata";
-window.FilePondPluginFileMetadata = FilePondPluginFileMetadata;
-
-// // 6.8.
-// import FilePondPluginImagePreview from "filepond-plugin-image-preview";
-// window.FilePondPluginImagePreview = FilePondPluginImagePreview; //
-
-// // 6.9.
-// import FilePondPluginImageResize from "filepond-plugin-image-resize";
-// window.FilePondPluginImageResize = FilePondPluginImageResize; //
-
-// 6.10.
-import FilePondPluginFileEncode from "filepond-plugin-file-encode";
-window.FilePondPluginFileEncode = FilePondPluginFileEncode;
-
-// 6.11.
-import FilePondPluginFilePoster from "filepond-plugin-file-poster";
-window.FilePondPluginFilePoster = FilePondPluginFilePoster;
-
-// 6.12.
-import FilePondPluginFileRename from "filepond-plugin-file-rename";
-window.FilePondPluginFileRename = FilePondPluginFileRename;
-
-// // 6.13.
-// import FilePondPluginImageCrop from "filepond-plugin-image-crop";
-// window.FilePondPluginImageCrop = FilePondPluginImageCrop; //
-
-// // 6.14.
-// import FilePondPluginImageEdit from "filepond-plugin-image-edit";
-// window.FilePondPluginImageEdit = FilePondPluginImageEdit; //
-
-// // 6.15.
-// import FilePondPluginImageFilter from "filepond-plugin-image-filter";
-// window.FilePondPluginImageFilter = FilePondPluginImageFilter; //
-
-// 6.16.1.
-import FilePondPluginImageEditor from "@pqina/filepond-plugin-image-editor";
-window.FilePondPluginImageEditor = FilePondPluginImageEditor;
-
-// 6.16.2.
-// import pintura from "@pqina/pintura";
-import * as pintura from "@pqina/pintura";
-window.pintura = pintura;
 
 // // 4. Importar o FullCalendar
 // import { Calendar } from "@fullcalendar/core";

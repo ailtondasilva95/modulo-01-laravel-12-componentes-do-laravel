@@ -2,34 +2,21 @@
 
 namespace App\View\Components\Form;
 
-use App\View\Components\Form\Traits\FormFieldHelper;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Select2 extends Component
 {
-    use FormFieldHelper;
+    use Traits\FormFieldHelper;
 
-    /**
-     * ID único do campo.
-     *
-     * @var ?string
-     */
-    public ?string $id = null;
+    /** @var string ID único do campo */
+    public string $id;
 
-    /**
-     * Nome do campo em notação de ponto (dot notation).
-     *
-     * @var ?string
-     */
-    public ?string $dotName = null;
+    /** @var string Nome do campo em dot notation (para old() e erros) */
+    public string $dotName;
 
-    /**
-     * Valores selecionados (baseados em old() ou no valor passado).
-     *
-     * @var array
-     */
+    /**  @var array Valores selecionados (baseados em old() ou no valor passado) */
     public array $selectedValues;
 
     /**
@@ -39,7 +26,7 @@ class Select2 extends Component
      * @param  ?string      $icon               Ícone à esquerda do campo (ex: 'pencil').
      * @param  ?string      $label              Rótulo exibido acima do campo.
      * @param  array        $options            Opções no formato ['value' => 'Label'].
-     * @param  ?string      $corner             Texto no canto inferior direito (ex: "máx. 100 caracteres").
+     * @param  ?string      $corner             Texto no canto superior direito (ex: "máx. 200 caracteres").
      * @param  ?string      $rightIcon          Ícone à direita do campo (ex: 'bi bi-info-circle').
      * @param  ?string      $placeholder        Texto quando nada está selecionado.
      * @param  array|string|null    $selected   Valores pré-selecionados.
@@ -106,7 +93,7 @@ class Select2 extends Component
     }
 
     /**
-     * Retorna a view do componente.
+     * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {

@@ -10,28 +10,10 @@ class Flatpickr extends Component
 {
     use Traits\FormFieldHelper;
 
-    /**
-     * ID único do campo.
-     *
-     * Gerado automaticamente por `generateId()` se não for fornecido.
-     * Usado principalmente para associar labels com inputs via atributo `for`.
-     *
-     * Exemplo: "permissions-create-5f34a1b2c"
-     *
-     * @var string
-     */
+    /** @var string ID único do campo */
     public string $id;
 
-    /**
-     * Nome do campo em notação de ponto (dot notation).
-     *
-     * Converte nomes com colchetes (ex: user[profile][name]) para formato compatível
-     * com `old()` e `errors()` do Laravel (ex: user.profile.name).
-     *
-     * Usado para recuperar valores antigos e verificar erros de validação.
-     *
-     * @var string
-     */
+    /** @var string Nome do campo em dot notation (para old() e erros) */
     public string $dotName;
 
     /**
@@ -47,19 +29,20 @@ class Flatpickr extends Component
      * - Acessibilidade e IDs únicos
      *
      * @param  string      $name         Nome do campo (ex: 'start_at'). Usado em `name` e `id`.
+     * @param  ?string     $type         Tipo de seleção: 'date', 'datetime', 'time', 'month', 'week'. Padrão: 'date'.
+     * @param  ?string     $icon         Ícone à esquerda (ex: 'bi bi-calendar').
      * @param  ?string     $label        Rótulo exibido acima do campo (opcional).
      * @param  ?string     $value        Valor inicial (data no formato Y-m-d H:i:s, substituído por `old()`).
-     * @param  ?string     $placeholder  Texto de placeholder (ex: '31/12/2025').
-     * @param  ?string     $type         Tipo de seleção: 'date', 'datetime', 'time', 'month', 'week'. Padrão: 'date'.
+     * @param  ?string     $corner       Texto no canto superior direito (ex: "máx. 200 caracteres").
      * @param  ?string     $format       Formato de exibição. Se não informado, usa padrão baseado no tipo.
-     * @param  ?string     $icon         Ícone à esquerda (ex: 'bi bi-calendar').
      * @param  ?string     $rightIcon    Ícone à direita (ex: 'bi bi-clock').
-     * @param  ?string     $corner       Texto no canto inferior (ex: "máx. 30 dias à frente").
+     * @param  ?string     $placeholder  Texto de placeholder (ex: '31/12/2025').
      * @param  bool        $required     Define se o campo é obrigatório.
      * @return void
      */
     public function __construct(
         public string $name,
+        public ?string $type,
         public ?string $icon,
         public ?string $label,
         public ?string $value,
@@ -68,7 +51,6 @@ class Flatpickr extends Component
         public ?string $rightIcon,
         public ?string $placeholder,
         public bool $required = false,
-        public ?string $type = null
     ) {
         $this->processFieldData();
 

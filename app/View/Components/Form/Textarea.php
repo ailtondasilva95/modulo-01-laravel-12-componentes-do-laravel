@@ -10,28 +10,10 @@ class Textarea extends Component
 {
     use Traits\FormFieldHelper;
 
-    /**
-     * ID único do campo.
-     *
-     * Gerado automaticamente por `generateId()` se não for fornecido.
-     * Usado principalmente para associar labels com inputs via atributo `for`.
-     *
-     * Exemplo: "permissions-create-5f34a1b2c"
-     *
-     * @var string
-     */
+    /** @var string ID único do campo */
     public string $id;
 
-    /**
-     * Nome do campo em notação de ponto (dot notation).
-     *
-     * Converte nomes com colchetes (ex: user[profile][name]) para formato compatível
-     * com `old()` e `errors()` do Laravel (ex: user.profile.name).
-     *
-     * Usado para recuperar valores antigos e verificar erros de validação.
-     *
-     * @var string
-     */
+    /** @var string Nome do campo em dot notation (para old() e erros) */
     public string $dotName;
 
     /**
@@ -45,12 +27,12 @@ class Textarea extends Component
      * - Acessibilidade e IDs únicos
      *
      * @param  string      $name        Nome do campo (ex: 'bio'). Usado em `name` e `id`.
+     * @param  ?string     $icon        Ícone à esquerda do campo (ex: 'pencil').
      * @param  ?string     $label       Rótulo exibido acima do campo (opcional).
      * @param  ?string     $value       Valor inicial do campo (substituído por `old()` se houver).
-     * @param  ?string     $placeholder Texto de placeholder (quando o campo está vazio).
-     * @param  ?string     $icon        Ícone à esquerda do campo (ex: 'pencil').
+     * @param  ?string     $corner      Texto no canto superior direito (ex: "máx. 200 caracteres").
      * @param  ?string     $rightIcon   Ícone à direita do campo (ex: 'bi bi-info-circle').
-     * @param  ?string     $corner      Texto ou ícone exibido no canto inferior direito (ex: "máx. 200 caracteres").
+     * @param  ?string     $placeholder Texto de placeholder (quando o campo está vazio).
      * @param  bool        $required    Define se o campo é obrigatório (exibe * e marca `required`).
      * @param  int         $rows        Número de linhas visíveis do textarea (padrão: 4).
      * @return void

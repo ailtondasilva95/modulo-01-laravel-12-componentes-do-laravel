@@ -10,28 +10,10 @@ class Input extends Component
 {
     use Traits\FormFieldHelper;
 
-    /**
-     * ID único do campo.
-     *
-     * Gerado automaticamente por `generateId()` se não for fornecido.
-     * Usado principalmente para associar labels com inputs via atributo `for`.
-     *
-     * Exemplo: "permissions-create-5f34a1b2c"
-     *
-     * @var string
-     */
+    /** @var string ID único do campo */
     public string $id;
 
-    /**
-     * Nome do campo em notação de ponto (dot notation).
-     *
-     * Converte nomes com colchetes (ex: user[profile][name]) para formato compatível
-     * com `old()` e `errors()` do Laravel (ex: user.profile.name).
-     *
-     * Usado para recuperar valores antigos e verificar erros de validação.
-     *
-     * @var string
-     */
+    /** @var string Nome do campo em dot notation (para old() e erros) */
     public string $dotName;
 
     /**
@@ -47,15 +29,15 @@ class Input extends Component
      * - Acessibilidade e IDs únicos
      *
      * @param  string      $name         Nome do campo (ex: 'email'). Usado em `name` e `id`.
+     * @param  ?string     $icon         Ícone à esquerda (ex: 'bi bi-envelope'). Deve ser compatível com o frontend.
+     * @param  ?string     $mask         Máscara estática (ex: '999 999 999'). Usada com Alpine.JS e o Alpinejs Mask.
      * @param  ?string     $label        Rótulo exibido acima do campo (opcional).
      * @param  ?string     $value        Valor inicial do campo (substituído por `old()` se houver).
-     * @param  ?string     $placeholder  Texto de placeholder (quando o campo está vazio).
-     * @param  ?string     $type         Tipo do input (text, email, password, number, etc.). Padrão: 'text'.
-     * @param  ?string     $icon         Ícone à esquerda (ex: 'bi bi-envelope'). Deve ser compatível com o frontend.
+     * @param  ?string     $corner       Texto no canto superior direito (ex: "máx. 100 caracteres").
      * @param  ?string     $rightIcon    Ícone à direita (ex: 'bi bi-eye').
-     * @param  ?string     $corner       Texto no canto inferior direito (ex: "máx. 100 caracteres").
-     * @param  ?string     $mask         Máscara estática (ex: '999 999 999'). Usada com Alpine.JS e o Alpinejs Mask.
+     * @param  ?string     $placeholder  Texto de placeholder (quando o campo está vazio).
      * @param  bool        $required     Define se o campo é obrigatório (exibe * e marca `required`).
+     * @param  ?string     $type         Tipo do input (text, email, password, number, etc.). Padrão: 'text'.
      * @return void
      */
     public function __construct(
@@ -83,6 +65,16 @@ class Input extends Component
     public function isPasswordType(): bool
     {
         return $this->type === 'password';
+    }
+
+    /**
+     * Verifica se o campo é do tipo color.
+     *
+     * @return bool
+     */
+    public function isColor(): bool
+    {
+        return $this->type === 'color';
     }
 
     /**

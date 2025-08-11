@@ -1,7 +1,9 @@
 @if ($label)
     <div class="d-flex justify-content-between">
 
-        <label for="{{ $id }}" class="form-label mb-0">{{ $label }}{!! $requiredMark() !!}</label>
+        <label for="{{ $id }}" class="form-label mb-0">
+            {{ $label }}{!! $requiredMark() !!}
+        </label>
 
         @if ($corner)
             <small class="text-muted form-text">{{ $corner }}</small>
@@ -18,7 +20,7 @@
     @endif
 
     {{-- Input --}}
-    <input id="{{ $id }}" name="{{ $dotName }}"
+    <input id="{{ $id }}" name="{{ $name }}"
         @if ($hasValue()) value="{{ $value }}" @endif
         @if ($placeholder) placeholder="{{ $placeholder }}" @endif
         {{ $attributes->class(['form-control', 'is-invalid' => $hasError()]) }} />
@@ -31,14 +33,17 @@
     @endif
 
     {{-- Erro de validação --}}
-    @error($hasError())
-        <div class="invalid-feedback d-block">{{ $getErrorMessage() }}</div>
-    @enderror
+    @if ($hasError())
+        <div class="invalid-feedback d-block">{{ $dotName }}</div>
+    @endif
 </div>
 
 @push('scripts')
     <script type="module">
-        flatpickr("#{{ $id }}", {
+        // Id do componente
+        const input = document.getElementById(@json($id));
+
+        flatpickr(input, {
             plugins: [
                 @if ($type === 'month')
                     new monthSelectPlugin({
@@ -48,7 +53,7 @@
                     new weekSelectPlugin({}),
                 @elseif ($type === 'datetime-local' || $type === 'datetime')
                     new confirmDatePlugin({
-                            confirmText: 'Confirmar',
+                            confirmText: "{{ __('flatpickr.confirm') }}",
                             confirmIcon: '',
                         }),
                 @endif

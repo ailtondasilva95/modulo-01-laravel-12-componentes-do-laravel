@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    {{-- Author --}}
-    <meta name="author" content="Ailton Domingos Dias da Silva">
-
-    {{-- Description --}}
-    <meta name="description" content="{{ __('lang.description') }}">
-
     {{-- CSRF-TOLKEN --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Title --}}
     <meta name="title" content="{{ config('app.name') }}">
 
+    {{-- Author --}}
+    <meta name="author" content="Ailton Domingos Dias da Silva">
+
+    {{-- Description --}}
+    <meta name="description" content="{{ __('lang.description') }}">
+
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('favicon.ico') }}">
 
-    <title>@yield('title', config('app.name', 'Laravel'))</title>
+    <title>@yield('title', config('app.name'))</title>
 
-    {{-- Styles Vite --}}
-    @vite(['resources/sass/app.scss', 'resources/css/app.css'])
+    {{-- Vite --}}
+    @vite(['resources/sass/app.scss', 'resources/css/app.css', 'resources/js/app.js'])
 
     {{-- Custom Styles --}}
     @stack('css')
@@ -35,9 +35,6 @@
 
     {{-- Content --}}
     @yield('content')
-
-    {{-- Scripts Vite --}}
-    @vite(['resources/js/app.js'])
 
     {{-- Custom Scripts --}}
     @stack('scripts')
