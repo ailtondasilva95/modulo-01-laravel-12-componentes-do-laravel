@@ -7,6 +7,9 @@
             <h2 class="text-center">Badges</h2>
             @include('content.badge')
 
+            <h2 class="text-center">Alertas</h2>
+            @include('content.alert')
+
             <h2 class="text-center">Botões</h2>
             @include('content.button')
 
@@ -27,25 +30,6 @@
 
             <h2 class="text-center">Componentes de formulário</h2>
             @include('content.inputs-fields')
-
-            
-
-            <div class="mt-2">
-                <div class="mt-2 alert alert-primary alert-dismissible fade show" role="alert">
-                    <h5 class="alert-heading"><i class="bi bi-alarm me-2"></i> Well done!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    <hr>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, aliquid minima earum doloremque
-                        commodi expedita quos, <a href="#" class="alert-link">an example link</a> error blanditiis
-                        tempora
-                        libero neque magni tenetur omnis illo veritatis eius ipsum eaque quia!
-                    </p>
-                    <hr>
-                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
-                    </p>
-                </div>
-            </div>
         </div>
     @endsection
 </x-layout.app>
