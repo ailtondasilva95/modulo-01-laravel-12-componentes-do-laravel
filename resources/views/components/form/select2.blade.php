@@ -14,15 +14,15 @@
 <div class="input-group">
 
     {{-- Ícone esquerdo --}}
-    @if ($icon)
-        <span class="input-group-text">
-            <i class="bi bi-{{ $icon }}"></i>
-        </span>
+    @if ($leftIcon)
+        <label class="input-group-text" for="{{ $id }}">
+            <i class="bi bi-{{ $leftIcon }}"></i>
+        </label>
     @endif
 
     {{-- Select com o select2 --}}
     <select name="{{ $name }}" id="{{ $id }}" {{ $multiple ? 'multiple' : '' }}
-        {{ $attributes->class(['form-select select2', 'is-invalid' => $hasError()]) }}
+        {{ $attributes->class(['form-select select2', "form-select-{$size}", 'is-invalid' => $hasError()]) }}
         data-placeholder="{{ $placeholder }}">
 
         <option></option>
@@ -35,32 +35,33 @@
     </select>
 
     {{-- Ícone direito --}}
-    @if ($rightIcon)
-        <span class="input-group-text">
-            <i class="bi bi-{{ $rightIcon }}"></i>
-        </span>
-    @endif
-
-    {{-- Erro de validação --}}
-    @if ($hasError())
-        <div class="invalid-feedback d-block">{{ $dotName }}</div>
+    @if ($icon)
+        <label class="input-group-text" for="{{ $id }}">
+            <i class="bi bi-{{ $icon }}"></i>
+        </label>
     @endif
 </div>
 
+{{-- Erro de validação --}}
+@if ($hasError())
+    <div class="invalid-feedback d-block">{{ $errors->first($dotName) }}</div>
+@endif
+
 @pushOnce('scripts')
     <script type="module">
-        $(".select2").select2({
-            width: $(this).data("width") ? $(this).data("width") : $(this).hasClass("w-100") ? "100%" : "style",
-            placeholder: $(this).data("placeholder"),
-            theme: "bootstrap-5",
-            language: {
-                noResults: function() {
-                    return "{{ __('select2.noResults') }}";
-                },
-                searching: function() {
-                    return "{{ __('select2.searching') }}";
-                }
-            }
+        $(() => {
+            $(".select2").each(function() {
+                $(this).select2({
+                    width: $(this).data("width") ?
+                        $(this).data("width") : $(this).hasClass("w-100") ? "100%" : "style",
+                    placeholder: $(this).data("placeholder"),
+                    theme: "bootstrap-5",
+                    language: {
+                        noResults: () => @json(__('select2.noResults')),
+                        searching: () => @json(__('select2.searching'))
+                    }
+                });
+            });
         });
     </script>
 @endPushOnce

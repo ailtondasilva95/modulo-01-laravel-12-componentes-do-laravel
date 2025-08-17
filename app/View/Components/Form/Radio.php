@@ -27,14 +27,14 @@ class Radio extends Component
      * - Texto de ajuda
      * - Acessibilidade (IDs únicos e labels associadas)
      *
-     * @param  string      $name         Nome do campo (ex: 'gender'). Usado em `name` dos inputs.
-     * @param  ?string     $label        Rótulo exibido acima do grupo (opcional).
-     * @param  ?string     $value        Valor padrão do campo (raramente usado diretamente).
-     * @param  ?array      $options      Opções no formato ['valor' => 'Rótulo']. Pode ser nulo (padrão: vazio).
-     * @param  ?string     $helpText     Texto de ajuda exibido abaixo do grupo.
-     * @param  ?string     $checkedValue Valor atualmente selecionado (substituído por `old()` se houver).
-     * @param  bool        $required     Define se o campo é obrigatório (exibe * e marca como required).
-     * @param  bool        $inline       Se verdadeiro, exibe os radios em linha (form-check-inline).
+     * @param  string  $name         Nome do campo (ex: 'gender'). Usado em `name` dos inputs.
+     * @param  ?string $label        Rótulo exibido acima do grupo (opcional).
+     * @param  ?string $value        Valor padrão do campo (raramente usado diretamente).
+     * @param  ?array  $options      Opções no formato ['valor' => 'Rótulo']. Pode ser nulo (padrão: vazio).
+     * @param  ?string $helpText     Texto de ajuda exibido abaixo do grupo.
+     * @param  ?string $checkedValue Valor atualmente selecionado (substituído por `old()` se houver).
+     * @param  bool    $required     Define se o campo é obrigatório (exibe * e marca como required).
+     * @param  bool    $inline       Se verdadeiro, exibe os radios em linha (form-check-inline).
      * @return void
      */
     public function __construct(
@@ -60,11 +60,11 @@ class Radio extends Component
     }
 
     /**
-     * Gera um ID único para cada opção de radio
+     * Gera um ID único para uma opção específica.
      */
     public function getOptionId(string $optionValue): string
     {
-        return $this->id . '-' . str_replace(['.', '[', ']'], ['-', '', ''], $optionValue);
+        return $this->makeChildId("option-$optionValue");
     }
 
     /**

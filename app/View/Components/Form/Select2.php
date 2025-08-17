@@ -22,29 +22,30 @@ class Select2 extends Component
     /**
      * Cria uma nova instância do componente Select2.
      *
-     * @param  string       $name               Nome do campo (ex: 'tags[]'). Use '[]' para múltiplos.
-     * @param  ?string      $icon               Ícone à esquerda do campo (ex: 'pencil').
-     * @param  ?string      $label              Rótulo exibido acima do campo.
-     * @param  array        $options            Opções no formato ['value' => 'Label'].
-     * @param  ?string      $corner             Texto no canto superior direito (ex: "máx. 200 caracteres").
-     * @param  ?string      $rightIcon          Ícone à direita do campo (ex: 'bi bi-info-circle').
-     * @param  ?string      $placeholder        Texto quando nada está selecionado.
-     * @param  array|string|null    $selected   Valores pré-selecionados.
-     * @param  bool         $multiple           Habilita seleção múltipla.
-     * @param  bool         $required           Define se é obrigatório.
+     * @param  string            $name        Nome do campo (ex: 'tags[]'). Use '[]' para múltiplos.
+     * @param  ?string           $icon        Ícone à direita do campo (ex: 'pencil').
+     * @param  ?string           $label       Rótulo exibido acima do campo.
+     * @param  ?string           $corner      Texto no canto superior direito (ex: "máx. 200 caracteres").
+     * @param  ?string           $leftIcon    Ícone à esquerda (ex: 'envelope').
+     * @param  ?string           $placeholder Texto quando nada está selecionado.
+     * @param  array|string|null $selected    Valores pré-selecionados.
+     * @param  bool              $multiple    Habilita seleção múltipla.
+     * @param  bool              $required    Define se é obrigatório.
+     * @param  array             $options     Opções no formato ['value' => 'Label'].
      * @return void
      */
     public function __construct(
         public string $name,
         public ?string $icon,
         public ?string $label,
-        public array $options,
         public ?string $corner,
-        public ?string $rightIcon,
+        public ?string $leftIcon,
         public ?string $placeholder,
         public array|string|null $selected,
         public bool $multiple = false,
-        public bool $required = false
+        public bool $required = false,
+        public array $options = [],
+        public string $size = 'md',
     ) {
         // Garante que o nome termine com [] se for múltiplo
         if ($this->multiple && !str_ends_with($this->name, '[]')) {
@@ -67,11 +68,11 @@ class Select2 extends Component
         $oldInput = old($this->dotName);
 
         if ($oldInput !== null) {
-            return is_array($oldInput) ? $oldInput : [(string) $oldInput];
+            return array_map('strval', is_array($oldInput) ? $oldInput : [$oldInput]);
         }
 
         if (is_array($this->selected)) {
-            return $this->selected;
+            return array_map('strval', $this->selected);
         }
 
         if ($this->selected !== null) {
@@ -89,7 +90,7 @@ class Select2 extends Component
      */
     public function isSelected(string $value): bool
     {
-        return in_array($value, $this->selectedValues);
+        return in_array((string) $value, $this->selectedValues, true);
     }
 
     /**

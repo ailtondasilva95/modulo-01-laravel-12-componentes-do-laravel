@@ -12,14 +12,12 @@
 @endif
 
 {{-- Input --}}
-<div class="file-loading">
-    <input type="file" id="{{ $id }}" name="{{ $name }}" {{ $multiple ? 'multiple' : '' }}
-        {{ $attributes->class(['file-loading', 'is-invalid' => $hasError()]) }} accept="{{ $getAcceptAttr() }}" />
-</div>
+<input type="file" id="{{ $id }}" name="{{ $name }}" {{ $multiple ? 'multiple' : '' }}
+    {{ $attributes->class(['file-loading', 'is-invalid' => $hasError()]) }} accept="{{ $getAcceptAttr() }}" />
 
 {{-- Erro de validação --}}
 @if ($hasError())
-    <div class="invalid-feedback d-block">{{ $dotName }}</div>
+    <div class="invalid-feedback d-block">{{ $errors->first($dotName) }}</div>
 @endif
 
 @once
@@ -41,32 +39,30 @@
 
 @push('scripts')
     <script type="module">
-        // Id do componente
-        const input = document.getElementById(@json($id));
+        $(() => {
+            $(@json("#$id")).fileinput({
+                allowedFileExtensions: @json($extensions), // Extensões aceites
+                maxFileCount: @json($maxFileCount), // Quantidade máxima de arquivos aceites
+                maxFileSize: @json($maxFileSize), // Tamanho máximo de cada arquivo aceite em KB
+                browseClass: "btn btn-sm btn-default", // classe do botão procurar
+                mainClass: "d-flex justify-content-end",
+                showCaption: false, // O input do arquivo
+                showRemove: false, // Botão remover
+                showUpload: false, // Botão enviar
 
-        $(input).fileinput({
-            allowedFileExtensions: @json($extensions), // Extensões aceites
-            maxFileCount: @json($maxFileCount), // Quantidade máxima de arquivos aceites
-            maxFileSize: @json($maxFileSize), // Tamanho máximo de cada arquivo aceite em KB
-            browseClass: "btn btn-sm btn-default", // classe do botão procurar
-            mainClass: "d-flex justify-content-end",
-            showCaption: false, // O input do arquivo
-            showRemove: false, // Botão remover
-            showUpload: false, // Botão enviar
-            theme: 'bs5',
+                initialPreviewAsData: true,
+                initialPreview: @json($previewFile),
+                initialPreviewConfig: @json($getInitialPreviewConfig()),
+                previewFileIconSettings: @json($getPreviewFileIconSettings()), // Configurações de ícones
 
-            initialPreviewAsData: true,
-            initialPreview: @json($previewFile),
-            initialPreviewConfig: @json($getInitialPreviewConfig()),
-            previewFileIconSettings: @json($getPreviewFileIconSettings()), // Configurações de ícones
-
-            fileActionSettings: {
-                showRotate: false,
-                showRemove: false,
-                showUpload: false,
-                showZoom: false,
-                showDrag: false,
-            }
+                fileActionSettings: {
+                    showRotate: false,
+                    showRemove: false,
+                    showUpload: false,
+                    showZoom: false,
+                    showDrag: false,
+                }
+            });
         });
     </script>
 @endpush

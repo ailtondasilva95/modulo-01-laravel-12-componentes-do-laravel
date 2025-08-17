@@ -11,11 +11,11 @@
     </div>
 @endif
 
-<div class="input-group">
+<div class="input-group input-group-{{ $size }}">
     {{-- Ícone esquerdo --}}
-    @if ($icon)
+    @if ($leftIcon)
         <label class="input-group-text" for="{{ $id }}">
-            <i class="bi bi-{{ $icon }}"></i>
+            <i class="bi bi-{{ $leftIcon }}"></i>
         </label>
     @endif
 
@@ -26,42 +26,41 @@
         {{ $attributes->class(['form-control', 'is-invalid' => $hasError()]) }} />
 
     {{-- Ícone direito --}}
-    @if ($rightIcon)
+    @if ($icon)
         <label class="input-group-text" for="{{ $id }}">
-            <i class="bi bi-{{ $rightIcon }}"></i>
+            <i class="bi bi-{{ $icon }}"></i>
         </label>
-    @endif
-
-    {{-- Erro de validação --}}
-    @if ($hasError())
-        <div class="invalid-feedback d-block">{{ $dotName }}</div>
     @endif
 </div>
 
+{{-- Erro de validação --}}
+@if ($hasError())
+    <div class="invalid-feedback d-block">{{ $errors->first($dotName) }}</div>
+@endif
+
 @push('scripts')
     <script type="module">
-        // Id do componente
-        const input = document.getElementById(@json($id));
-
-        flatpickr(input, {
-            plugins: [
-                @if ($type === 'month')
-                    new monthSelectPlugin({
-                            dateFormat: "{{ $format }}"
-                        }),
-                @elseif ($type === 'week')
-                    new weekSelectPlugin({}),
-                @elseif ($type === 'datetime-local' || $type === 'datetime')
-                    new confirmDatePlugin({
-                            confirmText: "{{ __('flatpickr.confirm') }}",
-                            confirmIcon: '',
-                        }),
-                @endif
-            ],
-            weekNumbers: {{ $type === 'week' ? 'true' : 'false' }},
-            noCalendar: {{ $noCalendar() ? 'true' : 'false' }},
-            enableTime: {{ $needsTime() ? 'true' : 'false' }},
-            dateFormat: "{{ $format }}",
+        $(() => {
+            flatpickr($(@json("#$id")), {
+                plugins: [
+                    @if ($type === 'month')
+                        new monthSelectPlugin({
+                                dateFormat: @json($format)
+                            }),
+                    @elseif ($type === 'week')
+                        new weekSelectPlugin(),
+                    @elseif ($type === 'datetime-local' || $type === 'datetime')
+                        new confirmDatePlugin({
+                                confirmText: @json(__('flatpickr.confirm')),
+                                confirmIcon: '',
+                            }),
+                    @endif
+                ],
+                weekNumbers: {{ $type === 'week' ? 'true' : 'false' }},
+                noCalendar: {{ $noCalendar() ? 'true' : 'false' }},
+                enableTime: {{ $needsTime() ? 'true' : 'false' }},
+                dateFormat: @json($format),
+            });
         });
     </script>
 @endPush

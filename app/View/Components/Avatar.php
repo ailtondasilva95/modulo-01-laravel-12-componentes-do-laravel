@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Widget;
+namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -47,6 +47,6 @@ class Avatar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.widget.avatar');
+        return view('components.avatar');
     }
 }

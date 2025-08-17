@@ -10,26 +10,22 @@
                 <x-form.textarea name="field-textarea" placeholder="sem rótulo (etiqueta)" />
             </div>
             <div class="mb-2">
-                <x-form.textarea name="field-textarea-label" label="Label" placeholder="com rótulo (etiqueta)" />
+                <x-form.textarea name="field-textarea-label-required" label="Rótulo" required
+                    placeholder="com rótulo (etiqueta) e com marcação de entrada obrigatória" />
             </div>
             <div class="mb-2">
-                <x-form.textarea name="field-textarea-required" label="Área de texto"
-                    placeholder="com entrada obrigatória" required />
+                <x-form.textarea name="field-textarea-corner" label="Rótulo" corner="com informação adicional" />
             </div>
             <div class="mb-2">
-                <x-form.textarea name="field-textarea-corner" label="Área de texto"
-                    placeholder="com informação adicional" corner="Ex: um texto longo" />
-            </div>
-            <div class="mb-2">
-                <x-form.textarea name="field-textarea-icon" label="Área de texto" icon="chat-dots"
-                    placeholder="com ícone à esquerda" />
-            </div>
-            <div class="mb-2">
-                <x-form.textarea name="field-textarea-icon-right" label="Área de texto" right-icon="chat-dots"
+                <x-form.textarea name="field-textarea-icon" label="Rótulo" icon="chat-dots"
                     placeholder="com ícone à direita" />
             </div>
             <div class="mb-2">
-                <x-form.textarea name="field-textarea-icons" label="Área de texto" icon="chat-dots" right-icon="pen"
+                <x-form.textarea name="field-textarea-icon-left" label="Rótulo" left-icon="chat-dots"
+                    placeholder="com ícone à esquerda" />
+            </div>
+            <div class="mb-2">
+                <x-form.textarea name="field-textarea-icons" label="Rótulo" icon="chat-dots" left-icon="pen"
                     placeholder="com ícone nos dois lados" />
             </div>
         </div>

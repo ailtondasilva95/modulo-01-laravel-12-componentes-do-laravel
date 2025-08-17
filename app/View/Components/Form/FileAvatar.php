@@ -26,13 +26,13 @@ class FileAvatar extends Component
      * - Validação Laravel (old input, erros)
      * - Acessibilidade e IDs únicos
      *
-     * @param  string      $name         Nome do campo (ex: 'email'). Usado em `name` e `id`.
-     * @param  ?string     $previewImage          URL ou caminho da imagem atual (para preview inicial).
-     * @param  ?string     $label        Rótulo exibido acima do campo (opcional).
-     * @param  ?string     $corner       Texto no canto superior direito do preview (ex: "máx. 100 caracteres").
-     * @param  array       $extensions   Lista de extensões permitidas (sem ponto).
-     * @param  int         $maxFileSize  Tamanho máximo do arquivo em **quilobytes (KB)**.
-     * @param  bool        $required     Define se o campo é obrigatório (exibe * e marca `required`).
+     * @param  string  $name         Nome do campo (ex: 'email'). Usado em `name` e `id`.
+     * @param  ?string $previewImage          URL ou caminho da imagem atual (para preview inicial).
+     * @param  ?string $label        Rótulo exibido acima do campo (opcional).
+     * @param  ?string $corner       Texto no canto superior direito do preview (ex: "máx. 100 caracteres").
+     * @param  array   $extensions   Lista de extensões permitidas (sem ponto).
+     * @param  int     $maxFileSize  Tamanho máximo do arquivo em **quilobytes (KB)**.
+     * @param  bool    $required     Define se o campo é obrigatório (exibe * e marca `required`).
      * @return void
      */
     public function __construct(

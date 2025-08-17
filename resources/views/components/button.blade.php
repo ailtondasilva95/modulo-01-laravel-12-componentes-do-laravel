@@ -6,4 +6,6 @@
     @isset($icon)
         <i class="bi bi-{{ $icon }}"></i>
     @endisset
+
+    {{ $slot }}
 </button>

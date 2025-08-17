@@ -28,29 +28,30 @@ class Flatpickr extends Component
      * - Validação Laravel (old input, erros)
      * - Acessibilidade e IDs únicos
      *
-     * @param  string      $name         Nome do campo (ex: 'start_at'). Usado em `name` e `id`.
-     * @param  ?string     $type         Tipo de seleção: 'date', 'datetime', 'time', 'month', 'week'. Padrão: 'date'.
-     * @param  ?string     $icon         Ícone à esquerda (ex: 'bi bi-calendar').
-     * @param  ?string     $label        Rótulo exibido acima do campo (opcional).
-     * @param  ?string     $value        Valor inicial (data no formato Y-m-d H:i:s, substituído por `old()`).
-     * @param  ?string     $corner       Texto no canto superior direito (ex: "máx. 200 caracteres").
-     * @param  ?string     $format       Formato de exibição. Se não informado, usa padrão baseado no tipo.
-     * @param  ?string     $rightIcon    Ícone à direita (ex: 'bi bi-clock').
-     * @param  ?string     $placeholder  Texto de placeholder (ex: '31/12/2025').
-     * @param  bool        $required     Define se o campo é obrigatório.
+     * @param  string  $name        Nome do campo (ex: 'start_at'). Usado em `name` e `id`.
+     * @param  ?string $icon        Ícone à direita do campo (ex: 'pencil').
+     * @param  ?string $label       Rótulo exibido acima do campo (opcional).
+     * @param  ?string $value       Valor inicial (data no formato Y-m-d H:i:s, substituído por `old()`).
+     * @param  ?string $corner      Texto no canto superior direito (ex: "máx. 200 caracteres").
+     * @param  ?string $format      Formato de exibição. Se não informado, usa padrão baseado no tipo.
+     * @param  ?string $leftIcon    Ícone à esquerda (ex: 'envelope').
+     * @param  ?string $placeholder Texto de placeholder (ex: '31/12/2025').
+     * @param  bool    $required    Define se o campo é obrigatório.
+     * @param  ?string $type        Tipo de seleção: 'date', 'datetime', 'time', 'month', 'week'. Padrão: 'date'.
      * @return void
      */
     public function __construct(
         public string $name,
-        public ?string $type,
         public ?string $icon,
         public ?string $label,
         public ?string $value,
         public ?string $corner,
         public ?string $format,
-        public ?string $rightIcon,
+        public ?string $leftIcon,
         public ?string $placeholder,
         public bool $required = false,
+        public ?string $type = 'date',
+        public string $size = 'md',
     ) {
         $this->processFieldData();
 

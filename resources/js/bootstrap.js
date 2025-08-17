@@ -18,7 +18,7 @@ import Swal from "sweetalert2";
 window.Swal = Swal;
 
 // 4. Importar o jQuery
-import jQuery from 'jquery';
+import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
 
 // 5. Importar o Select2
@@ -47,7 +47,6 @@ import { German } from "flatpickr/dist/l10n/de.js";
 import { French } from "flatpickr/dist/l10n/fr.js";
 
 // 7. Importar o JS do bootstrap-fileinput
-import "bootstrap-fileinput/js/plugins/sortable.min.js";
 import "bootstrap-fileinput/js/fileinput.min.js";
 import "bootstrap-fileinput/themes/bs5/theme.min.js";
 
@@ -61,24 +60,24 @@ import "bootstrap-fileinput/js/locales/ru.js";
 import "bootstrap-fileinput/js/locales/zh.js";
 
 // Configuração de multi-idiomas no bootstrap-fileinput e o flatPickr
-if (document.documentElement.getAttribute("lang") === "de") {
+if (document.documentElement.lang === "de") {
     $.fn.fileinput.defaults.language = "de";
     flatpickr.localize(German);
-} else if (document.documentElement.getAttribute("lang") === "en") {
+} else if (document.documentElement.lang === "en") {
     $.fn.fileinput.defaults.language = "en";
-} else if (document.documentElement.getAttribute("lang") === "es") {
+} else if (document.documentElement.lang === "es") {
     $.fn.fileinput.defaults.language = "es";
     flatpickr.localize(Spanish);
-} else if (document.documentElement.getAttribute("lang") === "fr") {
+} else if (document.documentElement.lang === "fr") {
     $.fn.fileinput.defaults.language = "fr";
     flatpickr.localize(French);
-} else if (document.documentElement.getAttribute("lang") === "it") {
+} else if (document.documentElement.lang === "it") {
     $.fn.fileinput.defaults.language = "it";
     flatpickr.localize(Italian);
-} else if (document.documentElement.getAttribute("lang") === "zh-CN") {
+} else if (document.documentElement.lang === "zh-CN") {
     $.fn.fileinput.defaults.language = "zh";
     flatpickr.localize(Mandarin);
-} else if (document.documentElement.getAttribute("lang") === "ru") {
+} else if (document.documentElement.lang === "ru") {
     $.fn.fileinput.defaults.language = "ru";
     flatpickr.localize(Russian);
 } else {

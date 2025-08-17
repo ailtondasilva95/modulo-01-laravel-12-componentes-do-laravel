@@ -7,16 +7,16 @@
         </h2>
         <div id="main-flag-icons" class="accordion-collapse collapse" data-bs-parent="#flag-icons">
             <div class="accordion-body text-center">
-                <x-widget.flag-icons code="ao" />
-                <x-widget.flag-icons code="pt" />
-                <x-widget.flag-icons code="br" />
-                <x-widget.flag-icons code="ru" />
-                <x-widget.flag-icons code="fr" />
-                <x-widget.flag-icons code="it" />
-                <x-widget.flag-icons code="jp" />
-                <x-widget.flag-icons code="mz" />
-                <x-widget.flag-icons code="cn" />
-                <x-widget.flag-icons code="tw" />
+                <i class="fi fi-ao"></i>
+                <i class="fi fi-pt"></i>
+                <i class="fi fi-br"></i>
+                <i class="fi fi-ru"></i>
+                <i class="fi fi-fr"></i>
+                <i class="fi fi-it"></i>
+                <i class="fi fi-jp"></i>
+                <i class="fi fi-mz"></i>
+                <i class="fi fi-cn"></i>
+                <i class="fi fi-cv"></i>
             </div>
         </div>
     </div>

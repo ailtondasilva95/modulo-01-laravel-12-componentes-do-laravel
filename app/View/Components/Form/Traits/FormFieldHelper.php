@@ -10,7 +10,7 @@ trait FormFieldHelper
     /**
      * Processa os dados do campo
      */
-    private function processFieldData(): void
+    protected function processFieldData(): void
     {
         if (!isset($this->name)) {
             throw new \InvalidArgumentException('O atributo $name é obrigatório em componentes que usam FormFieldHelper.');
@@ -30,7 +30,7 @@ trait FormFieldHelper
      * Ex: user[emails][0] -> user.emails.0
      * Ex: product[price] -> product.price
      */
-    private function convertToDotNotation(string $name): string
+    protected function convertToDotNotation(string $name): string
     {
         // Substitui [índice] por .índice, mesmo se vazio
         $name = preg_replace('/\[([^\]]*)\]/', '.$1', $name);
@@ -39,13 +39,19 @@ trait FormFieldHelper
     }
 
     /**
-     * Gera um ID único para o campo
-     * Baseado no nome do campo + timestamp para garantir unicidade
+     * Gera um ID único e consistente baseado no nome
      */
-    private function generateId(): string
+    protected function generateId(): string
     {
-        // já trata ., [, ], espaços, etc. // ou uniqid() completo
-        return Str::slug($this->name, '-') . '-' . substr(uniqid(), -6);
+        return Str::slug($this->name, '-') . '-' . substr(md5($this->name), 0, 6);
+    }
+
+    /**
+     * Gera um ID "filho" para elementos relacionados
+     */
+    protected function makeChildId(string $suffix): string
+    {
+        return $this->id . '-' . Str::slug($suffix, '-');
     }
 
     /**
@@ -55,10 +61,10 @@ trait FormFieldHelper
      */
     public function requiredMark(): HtmlString
     {
-        if ($this->required) {
+        if (property_exists($this, 'required') && $this->required) {
             return new HtmlString('<sup class="text-danger" data-bs-toggle="tooltip" title="campo obrigatório">*</sup>');
         }
-        
+
         return new HtmlString('');
     }
 

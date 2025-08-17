@@ -13,9 +13,9 @@
 
 <div class="input-group">
     {{-- Ícone esquerdo --}}
-    @if ($icon)
+    @if ($leftIcon)
         <label class="input-group-text" for="{{ $id }}">
-            <i class="bi bi-{{ $icon }}"></i>
+            <i class="bi bi-{{ $leftIcon }}"></i>
         </label>
     @endif
 
@@ -25,14 +25,14 @@
         {{ $attributes->class(['form-control', 'is-invalid' => $hasError()]) }}>{{ $value }}</textarea>
 
     {{-- Ícone direito --}}
-    @if ($rightIcon)
+    @if ($icon)
         <label class="input-group-text" for="{{ $id }}">
-            <i class="bi bi-{{ $rightIcon }}"></i>
+            <i class="bi bi-{{ $icon }}"></i>
         </label>
     @endif
-
-    {{-- Erro de validação --}}
-    @if ($hasError())
-        <div class="invalid-feedback d-block">{{ $dotName }}</div>
-    @endif
 </div>
+
+{{-- Erro de validação --}}
+@if ($hasError())
+    <div class="invalid-feedback d-block">{{ $errors->first($dotName) }}</div>
+@endif

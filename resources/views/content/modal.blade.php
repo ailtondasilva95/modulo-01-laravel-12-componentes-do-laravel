@@ -14,32 +14,32 @@
                 <x-button class="btn-default" label="Modal Normal" data-bs-toggle="modal"
                     data-bs-target="#modalNormal" />
 
-                <x-widget.modal id="modalNormal" title="Modal Normal">
+                <x-modal id="modalNormal" title="Modal Normal">
                     Este é um modal normal.
-                </x-widget.modal>
+                </x-modal>
 
                 {{-- Modal Normal sem titulo --}}
                 <x-button class="btn-default" label="Modal Normal sem Titulo" data-bs-toggle="modal"
                     data-bs-target="#modalNormalNoTitle" />
 
-                <x-widget.modal id="modalNormalNoTitle">
+                <x-modal id="modalNormalNoTitle">
                     Este é um modal normal sem título.
                     Você pode adicionar conteúdo aqui.
-                </x-widget.modal>
+                </x-modal>
 
                 {{-- Modal Estático --}}
                 <x-button class="btn-default" label="Modal Estático" data-bs-toggle="modal"
                     data-bs-target="#estatico" />
 
-                <x-widget.modal id="estatico" title="Modal Estático" static>
+                <x-modal id="estatico" title="Modal Estático" static>
                     Este modal não pode ser fechado ao clicar fora dele ou pressionar a tecla ESC.
-                </x-widget.modal>
+                </x-modal>
 
                 {{-- Modal Centralizado --}}
                 <x-button class="btn-default" label="Modal Centralizado" data-bs-toggle="modal"
                     data-bs-target="#centralizado" />
 
-                <x-widget.modal id="centralizado" title="Modal Centralizado" centered>
+                <x-modal id="centralizado" title="Modal Centralizado" centered>
 
                     Este modal é centralizado verticalmente na tela.
                     Você pode fechá-lo normalmente.
@@ -49,13 +49,13 @@
                         <x-button class="btn-primary" label="Salvar alterações" />
                     </x-slot>
 
-                </x-widget.modal>
+                </x-modal>
 
                 {{-- Modal Estático e Centralizado --}}
                 <x-button class="btn-default" label="Modal Estático e Centralizado" data-bs-toggle="modal"
                     data-bs-target="#estaticoEcentralizado" />
 
-                <x-widget.modal id="estaticoEcentralizado" title="Modal Estático e Centralizado" static centered>
+                <x-modal id="estaticoEcentralizado" title="Modal Estático e Centralizado" static centered>
 
                     Este modal é estático e também centralizado verticalmente.
                     Não pode ser fechado ao clicar fora dele ou pressionar a tecla ESC.
@@ -65,7 +65,7 @@
                         <x-button class="btn-primary" label="Salvar alterações" />
                     </x-slot>
 
-                </x-widget.modal>
+                </x-modal>
 
             </div>
         </div>

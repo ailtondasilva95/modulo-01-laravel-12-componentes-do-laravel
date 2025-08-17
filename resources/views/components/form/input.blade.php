@@ -11,11 +11,12 @@
     </div>
 @endif
 
-<div class="input-group" @if ($isPasswordType()) x-data="{ show: false }" @endif>
+<div class="input-group input-group-{{ $size }}"
+    @if ($isPasswordType()) x-data="{ show: false }" @endif>
     {{-- Ícone esquerdo --}}
-    @if ($icon)
+    @if ($leftIcon)
         <label class="input-group-text" for="{{ $id }}">
-            <i class="bi bi-{{ $icon }}"></i>
+            <i class="bi bi-{{ $leftIcon }}"></i>
         </label>
     @endif
 
@@ -29,9 +30,9 @@
         {{ $attributes->class(['form-control', 'form-control-color' => $isColor(), 'is-invalid' => $hasError()])->except(['mask', 'mask:dynamic']) }} />
 
     {{-- Ícone direito --}}
-    @if ($rightIcon)
+    @if ($icon)
         <label class="input-group-text" for="{{ $id }}">
-            <i class="bi bi-{{ $rightIcon }}"></i>
+            <i class="bi bi-{{ $icon }}"></i>
         </label>
     @endif
 
@@ -41,9 +42,9 @@
             <i :class="show ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
         </label>
     @endif
-
-    {{-- Erro de validação --}}
-    @if ($hasError())
-        <div class="invalid-feedback d-block">{{ $dotName }}</div>
-    @endif
 </div>
+
+{{-- Erro de validação --}}
+@if ($hasError())
+    <div class="invalid-feedback d-block">{{ $errors->first($dotName) }}</div>
+@endif

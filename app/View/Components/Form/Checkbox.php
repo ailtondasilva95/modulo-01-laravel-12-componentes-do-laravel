@@ -28,27 +28,31 @@ class Checkbox extends Component
      * - Layout inline ou vertical
      * - Exibição como switches do Bootstrap
      *
-     * @param  string  $name           Nome do campo (ex: "permissions[]"). Usado em `name=""` do input.
-     * @param  ?string $label          Rótulo do grupo exibido acima dos checkboxes (opcional).
-     * @param  ?array  $options        Opções no formato ['valor' => 'Rótulo']. Pode ser nulo (padrão: array vazio).
-     * @param  ?string $helpText       Texto de ajuda exibido abaixo do grupo (opcional).
-     * @param  array|string|null $checked  Valores marcados inicialmente. Pode ser string (único valor), array ou nulo.
-     * @param  bool    $required       Define se o campo é obrigatório (adiciona * e valida).
-     * @param  bool    $switch         Se verdadeiro, exibe os checkboxes como switches toggle (Bootstrap form-switch).
-     * @param  bool    $inline         Se verdadeiro, exibe os checkboxes em linha (form-check-inline).
+     * @param  string            $name     Nome do campo (ex: "permissions[]"). Usado em `name=""` do input.
+     * @param  ?string           $label    Rótulo do grupo exibido acima dos checkboxes (opcional).
+     * @param  ?string           $helpText Texto de ajuda exibido abaixo do grupo (opcional).
+     * @param  array|string|null $checked  Valores marcados inicialmente. Pode ser string , array ou nulo.
+     * @param  bool              $required Define se o campo é obrigatório (adiciona * e valida).
+     * @param  bool              $switch   Se verdadeiro, exibe os checkboxes como switches toggle (form-switch).
+     * @param  bool              $inline   Se verdadeiro, exibe os checkboxes em linha (form-check-inline).
+     * @param  array             $options  Opções no formato ['valor' => 'Rótulo']. (padrão: array vazio).
      * @return void
      */
     public function __construct(
         public string $name,
         public ?string $label,
-        public ?array $options,
         public ?string $helpText,
         public array|string|null $checked,
         public bool $required = false,
         public bool $switch = false,
-        public bool $inline = false
+        public bool $inline = false,
+        public array $options = []
     ) {
-        $this->options = $this->options ?? [];
+        // Se não terminar com [] e houver múltiplas opções, força o formato array
+        if (count($options) > 1 && !str_ends_with($name, '[]')) {
+            $this->name .= '[]';
+        }
+        
         $this->processFieldData();
         $this->checkedValues = $this->determineCheckedValues();
     }
@@ -64,20 +68,7 @@ class Checkbox extends Component
      */
     private function determineCheckedValues(): array
     {
-        $oldInput = old($this->dotName);
-        if ($oldInput !== null) {
-            return is_array($oldInput) ? $oldInput : [(string) $oldInput];
-        }
-
-        if (is_array($this->checked)) {
-            return $this->checked;
-        }
-
-        if ($this->checked !== null) {
-            return [(string) $this->checked];
-        }
-
-        return [];
+        return (array) old($this->dotName, $this->checked ?? []);
     }
 
     /**
@@ -94,19 +85,11 @@ class Checkbox extends Component
     }
 
     /**
-     * Gera um ID único e seguro para um input checkbox baseado no valor da opção.
-     *
-     * Substitui caracteres especiais (como ponto e colchetes) por hífens para garantir
-     * compatibilidade com IDs HTML. Útil para associar labels com inputs via `for`.
-     *
-     * @param string $optionValue Valor da opção (ex: "admin", "user.create").
-     * @return string ID HTML seguro (ex: "permissions-option-admin").
+     * Gera um ID único para uma opção específica.
      */
     public function getOptionId(string $optionValue): string
     {
-        $cleanValue = str_replace(['.', '[', ']'], '-', $optionValue);
-        $cleanValue = preg_replace('/-+/', '-', $cleanValue);
-        return $this->id . '-option-' . trim($cleanValue, '-');
+        return $this->makeChildId("option-$optionValue");
     }
 
     /**

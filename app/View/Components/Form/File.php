@@ -22,15 +22,16 @@ class File extends Component
      * 
      * Usa o plugin Krajee File Input para interface avançada.
      *
-     * @param string $name Nome do campo (atributo name)
-     * @param ?string $label Rótulo do campo
-     * @param ?array $previewFile Arquivos de pré-visualização
-     * @param ?string $corner Texto auxiliar no canto superior direito
-     * @param ?array $extensions Extensões permitidas (ex: ['pdf', 'docx'])
-     * @param ?int $maxFileCount Número máximo de arquivos (quando multiple=true)
-     * @param ?int $maxFileSize Tamanho máximo por arquivo (em KB)
-     * @param bool $multiple Permite seleção múltipla de arquivos
-     * @param bool $required Indica se o campo é obrigatório
+     * @param  string  $name         Nome do campo (atributo name)
+     * @param  ?string $label        Rótulo do campo
+     * @param  ?array  $previewFile  Arquivos de pré-visualização
+     * @param  ?string $corner       Texto auxiliar no canto superior direito
+     * @param  ?array  $extensions   Extensões permitidas (ex: ['pdf', 'docx'])
+     * @param  ?int    $maxFileCount Número máximo de arquivos (quando multiple=true)
+     * @param  ?int    $maxFileSize  Tamanho máximo por arquivo (em KB)
+     * @param  bool    $multiple     Permite seleção múltipla de arquivos
+     * @param  bool    $required     Indica se o campo é obrigatório
+     * @return void
      */
     public function __construct(
         public string $name,

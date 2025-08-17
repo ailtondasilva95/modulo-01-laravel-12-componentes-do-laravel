@@ -25,6 +25,6 @@
 
     {{-- Erro de validação --}}
     @if ($hasError())
-        <div class="invalid-feedback d-block">{{ $dotName }}</div>
+        <div class="invalid-feedback d-block">{{ $errors->first($dotName) }}</div>
     @endif
 </div>

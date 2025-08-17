@@ -8,14 +8,14 @@
         <div class="accordion-body">
             <div class="row">
                 <div class="col-4">
-                    <x-form.checkbox name="notifications0[]" :checked="old('notifications', ['email', 'push'])" :options="[
+                    <x-form.checkbox name="field-checkbox-1" :checked="old('notifications', ['email', 'push'])" :options="[
                         'push' => 'Push Notification',
                         'email' => 'Email',
                         'sms' => 'SMS',
                     ]" />
                 </div>
                 <div class="col-4">
-                    <x-form.checkbox name="permissions[]" label="Permissões"
+                    <x-form.checkbox name="field-checkbox-2" label="Permissões"
                         help-text="Selecione as permissões do usuário" :checked="old('permissions', $userPermissions ?? [])" :options="[
                             'view' => 'Visualizar',
                             'edit' => 'Editar',
@@ -24,7 +24,7 @@
                         ]" />
                 </div>
                 <div class="col-4">
-                    <x-form.checkbox name="notifications[]" label="Notificações" switch :checked="old('notifications', ['email', 'push'])"
+                    <x-form.checkbox name="field-checkbox-3" label="Notificações" switch :checked="old('notifications', ['email', 'push'])"
                         :options="[
                             'push' => 'Push Notification',
                             'email' => 'Email',
@@ -32,7 +32,7 @@
                         ]" />
                 </div>
                 <div class="col-auto mt-5">
-                    <x-form.checkbox name="interests[]" label="Áreas de Interesse" required inline
+                    <x-form.checkbox name="field-checkbox-inline-checked-help" label="Áreas de Interesse" inline
                         help-text="Selecione suas áreas de interesse" :checked="old('interests', $userInterests ?? [])" :options="[
                             'technology' => 'Tecnologia',
                             'sports' => 'Esportes',

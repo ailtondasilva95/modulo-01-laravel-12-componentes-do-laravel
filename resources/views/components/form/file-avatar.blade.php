@@ -11,14 +11,13 @@
     </div>
 @endif
 
-
 {{-- Input --}}
 <input type="file" id="{{ $id }}" name="{{ $name }}" accept="{{ $getAcceptAttr() }}"
-    {{ $attributes->class(['file-loading', 'is-invalid' => $hasError()]) }} />
+    {{ $attributes->class(['is-invalid' => $hasError()]) }} />
 
 {{-- Erro de validação --}}
 @if ($hasError())
-    <div class="invalid-feedback d-block">{{ $dotName }}</div>
+    <div class="invalid-feedback d-block">{{ $errors->first($dotName) }}</div>
 @endif
 
 @once
@@ -34,30 +33,29 @@
 
 @push('scripts')
     <script type="module">
-        // Id do componente
-        const input = document.getElementById(@json($id));
+        $(() => {
+            $(@json("#$id")).fileinput({
+                // Imagem inicial (avatar padrão)
+                initialPreview: @json($previewImage) ? '<img src="' + @json($previewImage) +
+                    '">' : [],
 
-        $(input).fileinput({
-            // Imagem inicial (avatar padrão)
-            initialPreview: @json($previewImage) ? '<img src="' + @json($previewImage) + '">' : [],
+                allowedFileExtensions: @json($extensions), // Extensões aceites
+                maxFileSize: @json($maxFileSize), // Tamanho máximo de cada arquivo aceite em KB
+                browseClass: "btn btn-sm btn-default", // classe do botão procurar
+                mainClass: "d-flex justify-content-end",
+                initialPreviewFileType: 'image',
+                showCaption: false, // O input do arquivo
+                showRemove: false, // Botão remover
+                showUpload: false, // Botão enviar
 
-            allowedFileExtensions: @json($extensions), // Extensões aceites
-            maxFileSize: @json($maxFileSize), // Tamanho máximo de cada arquivo aceite em KB
-            browseClass: "btn btn-sm btn-default", // classe do botão procurar
-            mainClass: "d-flex justify-content-end",
-            initialPreviewFileType: 'image',
-            showCaption: false, // O input do arquivo
-            showRemove: false, // Botão remover
-            showUpload: false, // Botão enviar
-            theme: 'bs5',
-
-            fileActionSettings: {
-                showRotate: false,
-                showRemove: false,
-                showUpload: false,
-                showZoom: false,
-                showDrag: false,
-            },
+                fileActionSettings: {
+                    showRotate: false,
+                    showRemove: false,
+                    showUpload: false,
+                    showZoom: false,
+                    showDrag: false,
+                },
+            });
         });
     </script>
 @endpush

@@ -21,7 +21,7 @@
             </div>
 
             <div class="mb-2">
-                <x-form.file-avatar name="input-avatar-2" label="Foto de Perfil" corner="escolha uma imagem" required
+                <x-form.file-avatar name="input-avatar-4" label="Foto de Perfil" corner="escolha uma imagem" required
                     :extensions="['png', 'jpg']" :preview-image="Storage::url('images/default-avatar.png')" />
             </div>
 
@@ -45,14 +45,6 @@
             <div class="mb-2">
                 <x-form.file name="input-file-5" label="Anexo 5" corner="Máximo 10 arquivos)" multiple :maxFileSize="5120"
                     :maxFileCount="10" :extensions="['pdf', 'zip', 'txt', 'jpg', 'docx', 'mp4']" :preview-file="[
-                        'https://kartik-v.github.io/bootstrap-fileinput-samples/samples/SampleDOCFile_100kb.doc',
-                        'https://kartik-v.github.io/bootstrap-fileinput-samples/samples/SampleTextFile_10kb.txt',
-                        'https://kartik-v.github.io/bootstrap-fileinput-samples/samples/SamplePPTFile_500kb.ppt',
-                        'https://kartik-v.github.io/bootstrap-fileinput-samples/samples/SampleXLSFile_38kb.xls',
-                        'https://kartik-v.github.io/bootstrap-fileinput-samples/samples/pdf-sample.pdf',
-                        'https://kartik-v.github.io/bootstrap-fileinput-samples/samples/small.mp4',
-                        'https://github.com/vinta/awesome-python/archive/refs/heads/master.zip',
-                        'https://raw.githubusercontent.com/python/cpython/main/Lib/this.py',
                         Storage::url('images/default-avatar.png'),
                         Storage::url('images/avatar.jpg'),
                     ]" />

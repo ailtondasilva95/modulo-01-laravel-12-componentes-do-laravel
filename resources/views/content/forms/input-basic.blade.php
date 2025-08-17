@@ -10,37 +10,40 @@
                 <x-form.input name="field" placeholder="sem rótulo (etiqueta)" />
             </div>
             <div class="mb-2">
-                <x-form.input name="field-label" label="Label" placeholder="com rótulo (etiqueta)" />
+                <x-form.input name="field-sm" size="sm" placeholder="com tamanho pequeno" />
             </div>
             <div class="mb-2">
-                <x-form.input name="field-required" label="Name" placeholder="com entrada obrigatória" required />
+                <x-form.input name="field-lg" size="lg" placeholder="com tamanho grande" />
             </div>
             <div class="mb-2">
-                <x-form.input name="field-corner" label="E-mail" placeholder="com informação adicional"
-                    corner="Ex: example@gmail.com" />
+                <x-form.input name="field-label-required" label="Rótulo" required
+                    placeholder="com rótulo (etiqueta) e com marcação de entrada obrigatória" />
             </div>
             <div class="mb-2">
-                <x-form.input name="field-icon" label="Username" icon="person" placeholder="com ícone à esquerda" />
+                <x-form.input name="field-corner" label="Rótulo" corner="com informação adicional" />
             </div>
             <div class="mb-2">
-                <x-form.input name="field-icon-right" label="Username" right-icon="person"
-                    placeholder="com ícone à direita" />
+                <x-form.input name="field-icon" label="Rótulo" icon="person" placeholder="com ícone à direita" />
             </div>
             <div class="mb-2">
-                <x-form.input name="field-icons" label="Username" icon="person" right-icon="pen"
+                <x-form.input name="field-icon-left" label="Rótulo" left-icon="person"
+                    placeholder="com ícone à esquerda" />
+            </div>
+            <div class="mb-2">
+                <x-form.input name="field-icons" label="Rótulo" icon="person" left-icon="pen"
                     placeholder="com ícone nos dois lados" />
             </div>
             <div class="mb-2">
-                <x-form.input type="password" name="field-password" label="Palavra-passe" placeholder="palavra-passe" />
+                <x-form.input type="password" name="field-password" label="Rótulo" placeholder="palavra-passe" />
             </div>
             <div class="mb-2">
-                <x-form.input type="search" name="field-search" placeholder="pesquisar" right-icon="search" />
+                <x-form.input type="search" name="field-search" placeholder="pesquisar" icon="search" />
             </div>
             <div class="mb-2">
-                <x-form.input type="number" name="field-number" label="Número" placeholder="número" />
+                <x-form.input type="number" name="field-number" label="Rótulo" placeholder="número" />
             </div>
             <div class="mb-2">
-                <x-form.input type="color" name="field-color" label="Cor" placeholder="cor" />
+                <x-form.input type="color" name="field-color" label="Rótulo" placeholder="cor" value="#0000FF" />
             </div>
         </div>
     </div>

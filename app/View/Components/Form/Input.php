@@ -28,16 +28,16 @@ class Input extends Component
      * - Validação Laravel (old input, erros)
      * - Acessibilidade e IDs únicos
      *
-     * @param  string      $name         Nome do campo (ex: 'email'). Usado em `name` e `id`.
-     * @param  ?string     $icon         Ícone à esquerda (ex: 'bi bi-envelope'). Deve ser compatível com o frontend.
-     * @param  ?string     $mask         Máscara estática (ex: '999 999 999'). Usada com Alpine.JS e o Alpinejs Mask.
-     * @param  ?string     $label        Rótulo exibido acima do campo (opcional).
-     * @param  ?string     $value        Valor inicial do campo (substituído por `old()` se houver).
-     * @param  ?string     $corner       Texto no canto superior direito (ex: "máx. 100 caracteres").
-     * @param  ?string     $rightIcon    Ícone à direita (ex: 'bi bi-eye').
-     * @param  ?string     $placeholder  Texto de placeholder (quando o campo está vazio).
-     * @param  bool        $required     Define se o campo é obrigatório (exibe * e marca `required`).
-     * @param  ?string     $type         Tipo do input (text, email, password, number, etc.). Padrão: 'text'.
+     * @param  string  $name        Nome do campo (ex: 'email'). Usado em `name` e `id`.
+     * @param  ?string $icon        Ícone à direita do campo (ex: 'pencil').
+     * @param  ?string $mask        Máscara estática (ex: '999 999 999'). Usada com Alpine.JS e o Alpinejs Mask.
+     * @param  ?string $label       Rótulo exibido acima do campo (opcional).
+     * @param  ?string $value       Valor inicial do campo (substituído por `old()` se houver).
+     * @param  ?string $corner      Texto no canto superior direito (ex: "máx. 100 caracteres").
+     * @param  ?string $leftIcon    Ícone à esquerda (ex: 'envelope').
+     * @param  ?string $placeholder Texto de placeholder (quando o campo está vazio).
+     * @param  bool    $required    Define se o campo é obrigatório (exibe * e marca `required`).
+     * @param  ?string $type        Tipo do input (text, email, password, number, etc.). Padrão: 'text'.
      * @return void
      */
     public function __construct(
@@ -47,10 +47,11 @@ class Input extends Component
         public ?string $label,
         public ?string $value,
         public ?string $corner,
-        public ?string $rightIcon,
+        public ?string $leftIcon,
         public ?string $placeholder,
         public bool $required = false,
-        public string $type = 'text'
+        public string $type = 'text',
+        public string $size = 'md',
     ) {
         $this->processFieldData();
     }
@@ -64,7 +65,7 @@ class Input extends Component
      */
     public function isPasswordType(): bool
     {
-        return $this->type === 'password';
+        return strtolower($this->type) === 'password';
     }
 
     /**
@@ -74,7 +75,7 @@ class Input extends Component
      */
     public function isColor(): bool
     {
-        return $this->type === 'color';
+        return strtolower($this->type) === 'color';
     }
 
     /**
@@ -84,7 +85,7 @@ class Input extends Component
      */
     public function hasStaticMask(): bool
     {
-        return filled($this->mask) && is_string($this->mask) && !empty(trim($this->mask));
+        return filled($this->mask) && is_string($this->mask) && !empty($this->mask);
     }
 
     /**
