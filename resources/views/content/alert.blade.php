@@ -9,15 +9,17 @@
             <div class="accordion-body">
                 <x-alert icon="person" />
                 <x-alert title="Default Alert" />
-                <x-alert type="secondary" icon="person" title="Secondary" />
-                <x-alert type="warning" icon="person" title="Warning" />
-                <x-alert type="primary" icon="person" title="Primary" />
-                <x-alert type="success" icon="person" title="Success" />
-                <x-alert type="danger" icon="person" title="Danger" />
-                <x-alert type="light" icon="person" title="Light" />
-                <x-alert type="info" icon="person" title="Info" />
-                <x-alert type="dark" icon="person" title="Dark" />
-                <x-alert type="warning" icon="alarm" title="Alert Warning com conteúdo">
+                <x-alert>
+                    <samp>Whenever you need to, be sure to use margin utilities to keep things tidy.</samp>
+                </x-alert>
+                <x-alert type="secondary" title="Secondary" />
+                <x-alert type="warning" title="Warning" />
+                <x-alert type="success" title="Success" />
+                <x-alert type="danger" title="Danger" />
+                <x-alert type="light" title="Light" />
+                <x-alert type="info" title="Info" />
+                <x-alert type="dark" title="Dark" />
+                <x-alert title="Alert Warning com conteúdo">
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, aliquid minima earum
                         doloremque
@@ -26,9 +28,9 @@
                         libero neque magni tenetur omnis illo veritatis eius ipsum eaque quia!
                     </p>
                     <hr>
-                    <p class="my-0">Whenever you need to, be sure to use margin utilities to keep things nice and
+                    <samp>Whenever you need to, be sure to use margin utilities to keep things nice and
                         tidy.
-                    </p>
+                    </samp>
                 </x-alert>
             </div>
         </div>

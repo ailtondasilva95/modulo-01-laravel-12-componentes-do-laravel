@@ -229,6 +229,8 @@
 
     "app.description": "Componentes do Laravel usando (Bootstrap, FlatPickr, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons e SweetAlert2)",
 
+    "required field": "必填字段",
+
     "flatpickr.confirm": "确认",
     
     "select2.noResults" : "未找到结果",

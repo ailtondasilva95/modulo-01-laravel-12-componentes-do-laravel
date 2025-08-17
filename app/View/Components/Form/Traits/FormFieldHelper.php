@@ -62,7 +62,7 @@ trait FormFieldHelper
     public function requiredMark(): HtmlString
     {
         if (property_exists($this, 'required') && $this->required) {
-            return new HtmlString('<sup class="text-danger" data-bs-toggle="tooltip" title="campo obrigatório">*</sup>');
+            return new HtmlString('<sup class="text-danger" data-bs-toggle="tooltip" title="' . __('required field') . '">*</sup>');
         }
 
         return new HtmlString('');

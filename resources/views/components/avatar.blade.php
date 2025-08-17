@@ -56,7 +56,7 @@
 @endonce
 <span
     {{ $attributes->class([
-        'avatar badge border rounded-circle',
+        'avatar badge border rounded-circle user-select-none',
         $outline ? "bg-{$type}-subtle text-{$type}-emphasis" : "text-bg-{$type}",
     ]) }}>
 
