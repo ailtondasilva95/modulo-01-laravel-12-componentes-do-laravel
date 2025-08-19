@@ -154,7 +154,12 @@ npm i sweetalert2
 > [FullCalendar é uma biblioteca JavaScript/jQuery para renderizar um calendário completo e interativo. É muito usado em aplicações web para mostrar eventos, agendamentos, reuniões, etc.](https://fullcalendar.io)
 
 ```sh
-npm i fullcalendar
+npm i @fullcalendar/core @fullcalendar/interaction @fullcalendar/daygrid  @fullcalendar/bootstrap5
+```
+
+> **Outros Plungins do FullCalendar** 
+```sh
+npm i @fullcalendar/list @fullcalendar/timegrid @fullcalendar/multimonth
 ```
 
 **Pacote de dependência (jQuery)**

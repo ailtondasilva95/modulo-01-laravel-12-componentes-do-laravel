@@ -13,7 +13,7 @@
 
 {{-- Input --}}
 <input type="file" id="{{ $id }}" name="{{ $name }}" {{ $multiple ? 'multiple' : '' }}
-    {{ $attributes->class(['file-loading', 'is-invalid' => $hasError()]) }} accept="{{ $getAcceptAttr() }}" />
+    {{ $attributes->class(['is-invalid' => $hasError()]) }} accept="{{ $getAcceptAttr() }}" />
 
 {{-- Erro de validação --}}
 @if ($hasError())

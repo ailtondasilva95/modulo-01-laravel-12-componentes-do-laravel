@@ -85,26 +85,30 @@ if (document.documentElement.lang === "de") {
     flatpickr.localize(Portuguese);
 }
 
-// // 4. Importar o FullCalendar
-// import { Calendar } from "@fullcalendar/core";
-// window.Calendar = Calendar;
+// 4. Importar o FullCalendar
+import { Calendar } from "@fullcalendar/core";
+window.Calendar = Calendar;
 
-// // 4.1. Importar o plugin interaction do FullCalendar
-// import interactionPlugin from "@fullcalendar/interaction";
-// window.interactionPlugin = interactionPlugin;
+// 4.1. Importar os idiomas do FullCalendar
+import allLocales from "@fullcalendar/core/locales-all";
+window.fullcalendarLocales = allLocales;
 
-// // 4.2. Importar o plugin multimonth do FullCalendar
-// import multiMonthPlugin from "@fullcalendar/multimonth";
-// window.multiMonthPlugin = multiMonthPlugin;
+// 4.2. Importar os plugins do FullCalendar
+import interactionPlugin from "@fullcalendar/interaction";
+import bootstrap5Plugin from "@fullcalendar/bootstrap5";
+import multiMonthPlugin from "@fullcalendar/multimonth";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import listPlugin from "@fullcalendar/list";
 
-// // 4.3. Importar o plugin timegrid do FullCalendar
-// import timeGridPlugin from "@fullcalendar/timegrid";
-// window.timeGridPlugin = timeGridPlugin;
-
-// // 4.4. Importar o plugin daygrid do FullCalendar
-// import dayGridPlugin from "@fullcalendar/daygrid";
-// window.dayGridPlugin = dayGridPlugin;
-
-// // 4.5. Importar o plugin list do FullCalendar
-// import listPlugin from "@fullcalendar/list";
-// window.listPlugin = listPlugin;
+// 4.3. Definir os plugins padrão do FullCalendar
+// Esses plugins são usados por padrão em todas as instâncias do FullCalendar
+// Você pode personalizar essa lista conforme necessário
+window.DEFAULT_PLUGINS_FULL_CALENDAR = [
+    interactionPlugin,
+    bootstrap5Plugin,
+    multiMonthPlugin,
+    timeGridPlugin,
+    dayGridPlugin,
+    listPlugin,
+];

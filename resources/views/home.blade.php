@@ -30,6 +30,9 @@
 
             <h2 class="text-center">Componentes de formulário</h2>
             @include('content.inputs-fields')
+
+            <h2 class="text-center">Full Calendar</h2>
+            @include('content.fullcalendar')
         </div>
     @endsection
 </x-layout.app>
