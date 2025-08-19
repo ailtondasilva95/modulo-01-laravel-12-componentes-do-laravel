@@ -48,6 +48,8 @@
 
                 headerToolbar: @json($headerToolbar), // cabecalho do calendário
 
+                timeZone: @json(config('app.timezone')), // fuso horário do calendário
+
                 initialView: @json($initialView), // visualização inicial do calendário
 
                 initialDate: @json($initialDate), // data inicial do calendário

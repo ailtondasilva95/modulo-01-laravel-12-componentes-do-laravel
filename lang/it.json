@@ -227,7 +227,7 @@
     "Yes": "Sì",
     "You are receiving this email because we received a password reset request for your account.": "Hai ricevuto questa email perché abbiamo ricevuto una richiesta di reset della password per il tuo account.",
 
-    "app.description" : "Componentes do Laravel usando (Bootstrap, FlatPickr, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons e SweetAlert2)",
+    "app.description" : "Componenti Laravel che utilizzano Bootstrap, JQuery, Select2, Bootstrap Fileinput, icone Bootstrap, icone Flag, Alpine, FlatPickr, FullCalendar e SweetAlert2",
 
     "required field": "campo obbligatorio",
 

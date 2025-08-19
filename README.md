@@ -1,7 +1,7 @@
 # Aplicação de demostração de componentes do Laravel
 
 > **NOTA**  
-> Componentes do Laravel usando Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons e SweetAlert2
+> Componentes do Laravel usando Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar e SweetAlert2
 
 **Clone o repositório localmente:**
 
