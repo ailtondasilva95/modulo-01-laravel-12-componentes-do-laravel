@@ -1,38 +1,43 @@
 <x-layout.app>
     @section('content')
-        <div class="container mb-4">
+        <div class="container-fluid mt-3">
+            <div class="card">
+                <div class="card-header text-center user-select-none">
+                    <h2 class="card-title text-orange-500">{{ config('app.name') }}</h2>
+                    <p class="card-text text-orange-300">{{ __('app.description') }}</p>
+                </div>
+                <div class="card-body">
+                    <h2 class="text-center user-select-none">Badges</h2>
+                    @include('content.badge')
 
-            <h6 class="text-center mt-3 mb-4 text-orange-500">{{ __('app.description') }}</h6>
+                    <h2 class="text-center user-select-none">Alertas</h2>
+                    @include('content.alert')
 
-            <h2 class="text-center">Badges</h2>
-            @include('content.badge')
+                    <h2 class="text-center user-select-none">Botões</h2>
+                    @include('content.button')
 
-            <h2 class="text-center">Alertas</h2>
-            @include('content.alert')
+                    <h2 class="text-center user-select-none">Avatar</h2>
+                    @include('content.avatar')
 
-            <h2 class="text-center">Botões</h2>
-            @include('content.button')
+                    <h2 class="text-center user-select-none">Modal</h2>
+                    @include('content.modal')
 
-            <h2 class="text-center">Avatar</h2>
-            @include('content.avatar')
+                    <h2 class="text-center user-select-none">Bandira de Países</h2>
+                    @include('content.flag-icons')
 
-            <h2 class="text-center">Modal</h2>
-            @include('content.modal')
+                    <h2 class="text-center user-select-none">Tabela</h2>
+                    @include('content.table')
 
-            <h2 class="text-center">Bandira de Países</h2>
-            @include('content.flag-icons')
+                    <h2 class="text-center user-select-none">Sweetalert2</h2>
+                    @include('content.sweetalert2')
 
-            <h2 class="text-center">Tabela</h2>
-            @include('content.table')
+                    <h2 class="text-center user-select-none">Componentes de formulário</h2>
+                    @include('content.inputs-fields')
 
-            <h2 class="text-center">Sweetalert2</h2>
-            @include('content.sweetalert2')
-
-            <h2 class="text-center">Componentes de formulário</h2>
-            @include('content.inputs-fields')
-
-            <h2 class="text-center">Full Calendar</h2>
-            @include('content.fullcalendar')
+                    <h2 class="text-center user-select-none">Full Calendar</h2>
+                    @include('content.fullcalendar')
+                </div>
+            </div>
         </div>
     @endsection
 </x-layout.app>
