@@ -99,7 +99,8 @@ Route::get('/api.dinamic-events', function () {
         'editable' => rand(0, 1) ? true : false,
         // 'end'   => $user->updated_at->format('Y-m-d'),
         // 'color' => fake()->hexColor(),
-    ])->values();
+    ]);
+
 
     return response()->json($users);
 })->name('api.dinamic.events');
