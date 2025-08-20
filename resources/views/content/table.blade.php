@@ -10,9 +10,9 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="my-auto fw-bold">
+                        <h4 class="my-auto fw-bold">
                             <i class="bi bi-person"></i> Usuários do Sistema
-                        </h5>
+                        </h4>
                     </div>
                     <div class="card-body">
                         <div class="row align-items-center g-2 divider-row">
