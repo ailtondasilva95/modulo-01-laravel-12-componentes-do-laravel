@@ -188,3 +188,377 @@ npm i select2 select2-bootstrap-5-theme
 ```sh
 npm i bootstrap-fileinput
 ```
+
+## Como eles foram configurados?
+
+Configuração do arquivo `resources/sass/app.scss`
+
+```scss
+// 1. Importa as funções do Bootstrap (necessárias para manipular mapas e variáveis)
+@import "bootstrap/scss/functions";
+
+// 1.1. Importa as variáveis padrão do Bootstrap (como $primary, $indigo etc.)
+@import "bootstrap/scss/variables";
+
+// 1.2. Adicionar cores personalizadas ao bootstrap para btn-color, text-color, bg-color
+$theme-colors: map-merge(
+    $theme-colors,
+    (
+        "indigo": indigo,
+        "purple": purple,
+        "orange": orange,
+        "yellow": yellow,
+        "green": green,
+        "black": black,
+        "blue": blue,
+        "gray": gray,
+        "teal": teal,
+        "cyan": cyan,
+        "pink": pink,
+        "red": red,
+    )
+);
+
+// 1.3. Importa mapas auxiliares do Bootstrap (ex: paletas de cores como $blues)
+@import "bootstrap/scss/maps";
+
+// 1.4. Importa definições iniciais dos utilitários CSS do Bootstrap
+@import "bootstrap/scss/utilities";
+
+// 1.5. Mescla todas as paletas de cor disponíveis (do Bootstrap) em um único mapa
+// ⚠️ ATENÇÃO: Isso gerará novos .text-color-{level} (por exemplo, .text-color-100 a 900)
+$utilities: map-merge(
+    $utilities,
+    (
+        "color":
+            map-merge(
+                map-get($utilities, "color"),
+                (
+                    values:
+                        map-merge(
+                            map-get(map-get($utilities, "color"), "values"),
+                            (
+                                map-merge-multiple(
+                                    $indigos,
+                                    $purples,
+                                    $oranges,
+                                    $yellows,
+                                    $greens,
+                                    $teals,
+                                    $blues,
+                                    $pinks,
+                                    $cyans,
+                                    $grays,
+                                    $reds
+                                )
+                            )
+                        ),
+                )
+            ),
+    )
+);
+
+// 1.6. Importa o restante do Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// .bg-color-subtle .text-color-emphasis
+@each $color, $value in $theme-colors {
+    .bg-#{$color}-subtle {
+        background-color: rgba(var(--bs-#{$color}-rgb), 0.1);
+    }
+
+    .text-#{$color}-emphasis {
+        color: rgba(var(--bs-#{$color}-rgb), 0.75);
+    }
+}
+
+/* === INPUT GROUP UNIFICADO - Versão Completa === */
+
+.input-group {
+    /* Unir elementos removendo bordas internas */
+    > :not(:first-child):not(:last-child) {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    > :first-child:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: none;
+    }
+
+    > :last-child:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: none;
+    }
+
+    /* Background transparente para input-group-text */
+    > .input-group-text {
+        background-color: transparent;
+        border-color: $input-border-color;
+    }
+
+    /* Estilos comuns para form-control e form-select */
+    > .form-control,
+    > .form-select {
+        border-color: $input-border-color;
+
+        // Remover foco individual
+        &:focus {
+            border-color: $input-border-color;
+            box-shadow: none;
+        }
+    }
+
+    /* Foco do grupo inteiro */
+    &:focus-within {
+        box-shadow: $input-btn-focus-box-shadow;
+        border-radius: $input-border-radius;
+        position: relative;
+        z-index: 3;
+
+        /* Aplicar cor de foco a todos os elementos */
+        > .input-group-text,
+        > .form-control,
+        > .form-select {
+            border-color: $input-focus-border-color;
+        }
+    }
+}
+
+/* Remover foco individual de todos os elementos */
+.form-control:focus,
+.form-select:focus {
+    box-shadow: none;
+}
+
+/* Ajustes para tamanhos diferentes */
+.input-group {
+    &.input-group-sm {
+        &:focus-within {
+            border-radius: $input-border-radius-sm;
+        }
+    }
+
+    &.input-group-lg {
+        &:focus-within {
+            border-radius: $input-border-radius-lg;
+        }
+    }
+}
+
+/* Correção para form-select (garantir altura consistente) */
+.form-select {
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+```
+
+Configuração do arquivo `resources/css/app.css`
+
+```css
+/* 1. Importar a fonte de letra */
+@import url("https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap");
+
+/* 2. Importar o Bootstrap Icons */
+@import "bootstrap-icons/font/bootstrap-icons.min.css";
+
+/* 3. Importar o Flag Icons */
+@import "flag-icons/css/flag-icons.min.css";
+
+/* 4. Importar o Select2 e o seu tema para Bootstrap */
+@import "select2/dist/css/select2.min.css";
+@import "select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css";
+
+/* 5. Importar flatpickr */
+@import "flatpickr/dist/flatpickr.min.css";
+@import "flatpickr/dist/plugins/monthSelect/style.css";
+@import "flatpickr/dist/plugins/confirmDate/confirmDate.css";
+
+/* 6. Importar o  bootstrap-fileinput */
+@import "bootstrap-fileinput/css/fileinput.min.css";
+
+body {
+    font-family: "Kode Mono", monospace;
+}
+
+/* Classes customizadas (btn-default) */
+.btn-default {
+    /* @extend .btn; */
+    --bs-btn-color: #333333;
+    --bs-btn-border-color: #cccccc;
+    --bs-btn-hover-color: #333333;
+    --bs-btn-hover-bg: #e6e6e6;
+    --bs-btn-hover-border-color: #cccccc;
+    --bs-btn-focus-shadow-rgb: 140, 140, 140;
+    --bs-btn-active-color: #333333;
+    --bs-btn-active-bg: #d4d4d4;
+    --bs-btn-active-border-color: #cccccc;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #333333;
+    --bs-btn-disabled-border-color: #cccccc;
+    --bs-gradient: none;
+}
+
+/* Ajustes para o btn-default suportar tambem o modo Dark do Bootstrap 5 */
+:root[data-bs-theme="dark"] .btn-default {
+    --bs-btn-color: #f8f9fa;
+    --bs-btn-border-color: #6c757d;
+    --bs-btn-hover-color: #f8f9fa;
+    --bs-btn-hover-bg: #495057;
+    --bs-btn-hover-border-color: #6c757d;
+    --bs-btn-focus-shadow-rgb: 173, 181, 189;
+    --bs-btn-active-color: #f8f9fa;
+    --bs-btn-active-bg: #343a40;
+    --bs-btn-active-border-color: #6c757d;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #f8f9fa;
+    --bs-btn-disabled-border-color: #6c757d;
+}
+
+/* Ajustes para o SweetAlert2 suportar tambem o modo Dark do Bootstrap 5 */
+:root[data-bs-theme="dark"] {
+    --swal2-dark-theme-black: var(--bs-body-bg);
+    --swal2-dark-theme-white: #e1e1e1;
+    --swal2-background: var(--bs-body-bg);
+    --swal2-color: var(--bs-light);
+    --swal2-footer-border-color: 1px solid var(--bs-gray-700);
+    --swal2-input-background: color-mix(
+        in srgb,
+        var(--bs-body-bg),
+        var(--bs-light) 10%
+    );
+    --swal2-validation-message-background: color-mix(
+        in srgb,
+        var(--bs-body-bg),
+        var(--bs-light) 10%
+    );
+    --swal2-validation-message-color: var(--bs-light);
+    --swal2-timer-progress-bar-background: rgba(255, 255, 255, 0.7);
+}
+
+```
+
+Configuração do arquivo `resources/js/bootstrap.js`
+
+```js
+import axios from "axios";
+window.axios = axios;
+
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+
+// 1. Importar o Alpine
+import Alpine from "alpinejs";
+import mask from "@alpinejs/mask";
+Alpine.plugin(mask);
+Alpine.start();
+
+// 2. Importar o Bootstrap
+import * as bootstrap from "bootstrap";
+window.bootstrap = bootstrap;
+
+// 3. Importar o SweetAlert2
+import Swal from "sweetalert2";
+window.Swal = Swal;
+
+// 4. Importar o jQuery
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
+
+// 5. Importar o Select2
+import select2 from "select2";
+select2();
+
+// 6. Importar o FlatPickr
+import flatpickr from "flatpickr";
+window.flatpickr = flatpickr;
+
+// 6.1. Importar os plugins do FlatPickr
+import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate.js";
+import weekSelectPlugin from "flatpickr/dist/plugins/weekSelect/weekSelect.js";
+import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect/index.js";
+window.confirmDatePlugin = confirmDatePlugin;
+window.monthSelectPlugin = monthSelectPlugin;
+window.weekSelectPlugin = weekSelectPlugin;
+
+// 6.2. Importar os idiomas do FlatPickr
+import { Portuguese } from "flatpickr/dist/l10n/pt.js";
+import { Mandarin } from "flatpickr/dist/l10n/zh.js";
+import { Spanish } from "flatpickr/dist/l10n/es.js";
+import { Italian } from "flatpickr/dist/l10n/it.js";
+import { Russian } from "flatpickr/dist/l10n/ru.js";
+import { German } from "flatpickr/dist/l10n/de.js";
+import { French } from "flatpickr/dist/l10n/fr.js";
+
+// 7. Importar o JS do bootstrap-fileinput
+import "bootstrap-fileinput/js/fileinput.min.js";
+import "bootstrap-fileinput/themes/bs5/theme.min.js";
+
+// 7.1. Importar os idiomas do bootstrap-fileinput
+import "bootstrap-fileinput/js/locales/de.js";
+import "bootstrap-fileinput/js/locales/es.js";
+import "bootstrap-fileinput/js/locales/fr.js";
+import "bootstrap-fileinput/js/locales/it.js";
+import "bootstrap-fileinput/js/locales/pt.js";
+import "bootstrap-fileinput/js/locales/ru.js";
+import "bootstrap-fileinput/js/locales/zh.js";
+
+// Configuração de multi-idiomas no bootstrap-fileinput e o flatPickr
+if (document.documentElement.lang === "de") {
+    $.fn.fileinput.defaults.language = "de";
+    flatpickr.localize(German);
+} else if (document.documentElement.lang === "en") {
+    $.fn.fileinput.defaults.language = "en";
+} else if (document.documentElement.lang === "es") {
+    $.fn.fileinput.defaults.language = "es";
+    flatpickr.localize(Spanish);
+} else if (document.documentElement.lang === "fr") {
+    $.fn.fileinput.defaults.language = "fr";
+    flatpickr.localize(French);
+} else if (document.documentElement.lang === "it") {
+    $.fn.fileinput.defaults.language = "it";
+    flatpickr.localize(Italian);
+} else if (document.documentElement.lang === "zh-CN") {
+    $.fn.fileinput.defaults.language = "zh";
+    flatpickr.localize(Mandarin);
+} else if (document.documentElement.lang === "ru") {
+    $.fn.fileinput.defaults.language = "ru";
+    flatpickr.localize(Russian);
+} else {
+    $.fn.fileinput.defaults.language = "pt";
+    flatpickr.localize(Portuguese);
+}
+
+// 4. Importar o FullCalendar
+import { Calendar } from "@fullcalendar/core";
+window.Calendar = Calendar;
+
+// 4.1. Importar os idiomas do FullCalendar
+import allLocales from "@fullcalendar/core/locales-all";
+window.fullcalendarLocales = allLocales;
+
+// 4.2. Importar os plugins do FullCalendar
+import interactionPlugin from "@fullcalendar/interaction";
+import bootstrap5Plugin from "@fullcalendar/bootstrap5";
+import multiMonthPlugin from "@fullcalendar/multimonth";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import listPlugin from "@fullcalendar/list";
+
+// 4.3. Definir os plugins padrão do FullCalendar
+// Esses plugins são usados por padrão em todas as instâncias do FullCalendar
+// Você pode personalizar essa lista conforme necessário
+window.DEFAULT_PLUGINS_FULL_CALENDAR = [
+    interactionPlugin,
+    bootstrap5Plugin,
+    multiMonthPlugin,
+    timeGridPlugin,
+    dayGridPlugin,
+    listPlugin,
+];
+
+```
