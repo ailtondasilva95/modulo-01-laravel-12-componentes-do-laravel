@@ -16,7 +16,7 @@
     <meta name="author" content="Ailton Domingos Dias da Silva">
 
     {{-- Description --}}
-    <meta name="description" content="{{ __('lang.description') }}">
+    <meta name="description" content="{{ __('Laravel Components using Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar and SweetAlert2') }}">
 
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('favicon.ico') }}">

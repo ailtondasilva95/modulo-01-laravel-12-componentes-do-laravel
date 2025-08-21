@@ -67,7 +67,7 @@
 
                 multiMonthMaxColumns: 2, // número máximo de colunas para visualização de vários meses
 
-                locales: fullcalendarLocales, // aqui ele já terá todos os idiomas disponíveis
+                locales: LOCALES_ALL_FULL_CALENDAR, // aqui ele já terá todos os idiomas disponíveis
                 locale: document.documentElement.lang, // idioma do atributo lang da tag <html>
             });
 

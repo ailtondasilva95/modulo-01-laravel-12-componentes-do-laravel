@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-header text-center user-select-none">
                     <h2 class="card-title text-orange-500">{{ config('app.name') }}</h2>
-                    <p class="card-text text-orange-300">{{ __('app.description') }}</p>
+                    <p class="card-text text-orange-300">{{ __('Laravel Components using Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar and SweetAlert2') }}</p>
                 </div>
                 <div class="card-body">
                     <h2 class="text-center user-select-none">Badges</h2>

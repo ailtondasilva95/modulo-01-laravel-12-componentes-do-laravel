@@ -227,12 +227,10 @@
     "Yes": "是的",
     "You are receiving this email because we received a password reset request for your account.": "您收到此电子邮件是因为我们收到了您帐户的密码重设请求。",
 
-    "app.description": "Laravel 组件使用 Bootstrap、JQuery、Select2、Bootstrap Fileinput、Bootstrap Icons、Flag Icons、Alpine、FlatPickr、FullCalendar 和 SweetAlert2",
+    "Laravel Components using Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar and SweetAlert2": "Laravel 组件使用 Bootstrap、JQuery、Select2、Bootstrap Fileinput、Bootstrap Icons、Flag Icons、Alpine、FlatPickr、FullCalendar 和 SweetAlert2",
 
     "required field": "必填字段",
 
-    "flatpickr.confirm": "确认",
-    
-    "select2.noResults" : "未找到结果",
-    "select2.searching" : "搜索中…"
+    "No results found" : "未找到结果",
+    "Searching…" : "搜索中…"
 }

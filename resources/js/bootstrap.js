@@ -30,34 +30,60 @@ import flatpickr from "flatpickr";
 window.flatpickr = flatpickr;
 
 // 6.1. Importar os plugins do FlatPickr
-import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate.js";
-import weekSelectPlugin from "flatpickr/dist/plugins/weekSelect/weekSelect.js";
-import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect/index.js";
-window.confirmDatePlugin = confirmDatePlugin;
-window.monthSelectPlugin = monthSelectPlugin;
-window.weekSelectPlugin = weekSelectPlugin;
+import CONFIRM_DATE_PLUGIN_FLAPICKR from "flatpickr/dist/plugins/confirmDate/confirmDate";
+import WEEK_SELECT_PLUGIN_FLAPICKR from "flatpickr/dist/plugins/weekSelect/weekSelect";
+import MONTH_SELECT_PLUGIN_FLAPICKR from "flatpickr/dist/plugins/monthSelect/index";
+window.CONFIRM_DATE_PLUGIN_FLAPICKR = CONFIRM_DATE_PLUGIN_FLAPICKR;
+window.MONTH_SELECT_PLUGIN_FLAPICKR = MONTH_SELECT_PLUGIN_FLAPICKR;
+window.WEEK_SELECT_PLUGIN_FLAPICKR = WEEK_SELECT_PLUGIN_FLAPICKR;
 
 // 6.2. Importar os idiomas do FlatPickr
-import { Portuguese } from "flatpickr/dist/l10n/pt.js";
-import { Mandarin } from "flatpickr/dist/l10n/zh.js";
-import { Spanish } from "flatpickr/dist/l10n/es.js";
-import { Italian } from "flatpickr/dist/l10n/it.js";
-import { Russian } from "flatpickr/dist/l10n/ru.js";
-import { German } from "flatpickr/dist/l10n/de.js";
-import { French } from "flatpickr/dist/l10n/fr.js";
+import { Portuguese } from "flatpickr/dist/l10n/pt";
+import { Mandarin } from "flatpickr/dist/l10n/zh";
+import { Spanish } from "flatpickr/dist/l10n/es";
+import { Italian } from "flatpickr/dist/l10n/it";
+import { Russian } from "flatpickr/dist/l10n/ru";
+import { German } from "flatpickr/dist/l10n/de";
+import { French } from "flatpickr/dist/l10n/fr";
 
 // 7. Importar o JS do bootstrap-fileinput
-import "bootstrap-fileinput/js/fileinput.min.js";
-import "bootstrap-fileinput/themes/bs5/theme.min.js";
+import "bootstrap-fileinput/js/fileinput";
+import "bootstrap-fileinput/themes/bs5/theme";
 
 // 7.1. Importar os idiomas do bootstrap-fileinput
-import "bootstrap-fileinput/js/locales/de.js";
-import "bootstrap-fileinput/js/locales/es.js";
-import "bootstrap-fileinput/js/locales/fr.js";
-import "bootstrap-fileinput/js/locales/it.js";
-import "bootstrap-fileinput/js/locales/pt.js";
-import "bootstrap-fileinput/js/locales/ru.js";
-import "bootstrap-fileinput/js/locales/zh.js";
+import "bootstrap-fileinput/js/locales/de";
+import "bootstrap-fileinput/js/locales/es";
+import "bootstrap-fileinput/js/locales/fr";
+import "bootstrap-fileinput/js/locales/it";
+import "bootstrap-fileinput/js/locales/pt";
+import "bootstrap-fileinput/js/locales/ru";
+import "bootstrap-fileinput/js/locales/zh";
+
+// 8. Importar o FullCalendar
+import { Calendar } from "@fullcalendar/core";
+window.Calendar = Calendar;
+
+// 8.1. Importar os idiomas do FullCalendar
+import LOCALES_ALL_FULL_CALENDAR from "@fullcalendar/core/locales-all";
+window.LOCALES_ALL_FULL_CALENDAR = LOCALES_ALL_FULL_CALENDAR;
+
+// 8.2. Importar os plugins do FullCalendar
+import INTERACTION_PLUGIN_FULL_CALENDAR from "@fullcalendar/interaction";
+import BOOTSTRAP_PLUGIN_FULL_CALENDAR from "@fullcalendar/bootstrap5";
+import MULTI_MONTH_PLUGIN_FULL_CALENDAR from "@fullcalendar/multimonth";
+import TIME_GRID_PLUGIN_FULL_CALENDAR from "@fullcalendar/timegrid";
+import DAY_GRID_PLUGIN_FULL_CALENDAR from "@fullcalendar/daygrid";
+import LIST_PLUGIN_FULL_CALENDAR from "@fullcalendar/list";
+
+// 8.3. Definir os plugins padrão do FullCalendar como uma variável global
+window.DEFAULT_PLUGINS_FULL_CALENDAR = [
+    INTERACTION_PLUGIN_FULL_CALENDAR,
+    BOOTSTRAP_PLUGIN_FULL_CALENDAR,
+    MULTI_MONTH_PLUGIN_FULL_CALENDAR,
+    TIME_GRID_PLUGIN_FULL_CALENDAR,
+    DAY_GRID_PLUGIN_FULL_CALENDAR,
+    LIST_PLUGIN_FULL_CALENDAR,
+];
 
 // Configuração de multi-idiomas no bootstrap-fileinput e o flatPickr
 if (document.documentElement.lang === "de") {
@@ -84,31 +110,3 @@ if (document.documentElement.lang === "de") {
     $.fn.fileinput.defaults.language = "pt";
     flatpickr.localize(Portuguese);
 }
-
-// 4. Importar o FullCalendar
-import { Calendar } from "@fullcalendar/core";
-window.Calendar = Calendar;
-
-// 4.1. Importar os idiomas do FullCalendar
-import allLocales from "@fullcalendar/core/locales-all";
-window.fullcalendarLocales = allLocales;
-
-// 4.2. Importar os plugins do FullCalendar
-import interactionPlugin from "@fullcalendar/interaction";
-import bootstrap5Plugin from "@fullcalendar/bootstrap5";
-import multiMonthPlugin from "@fullcalendar/multimonth";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import listPlugin from "@fullcalendar/list";
-
-// 4.3. Definir os plugins padrão do FullCalendar
-// Esses plugins são usados por padrão em todas as instâncias do FullCalendar
-// Você pode personalizar essa lista conforme necessário
-window.DEFAULT_PLUGINS_FULL_CALENDAR = [
-    interactionPlugin,
-    bootstrap5Plugin,
-    multiMonthPlugin,
-    timeGridPlugin,
-    dayGridPlugin,
-    listPlugin,
-];

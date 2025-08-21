@@ -947,14 +947,14 @@
             flatpickr($(@json("#$id")), {
                 plugins: [
                     @if ($type === 'month')
-                        new monthSelectPlugin({
+                        new MONTH_SELECT_PLUGIN_FLAPICKR({
                                 dateFormat: @json($format)
                             }),
                     @elseif ($type === 'week')
-                        new weekSelectPlugin(),
+                        new WEEK_SELECT_PLUGIN_FLAPICKR(),
                     @elseif ($type === 'datetime-local' || $type === 'datetime')
-                        new confirmDatePlugin({
-                                confirmText: @json(__('flatpickr.confirm')),
+                        new CONFIRM_DATE_PLUGIN_FLAPICKR({
+                                confirmText: @json(__('Confirm')),
                                 confirmIcon: '',
                             }),
                     @endif

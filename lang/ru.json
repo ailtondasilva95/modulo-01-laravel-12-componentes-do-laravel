@@ -227,12 +227,10 @@
     "Yes": "Да",
     "You are receiving this email because we received a password reset request for your account.": "Вы получили это письмо, потому что мы получили запрос на сброс пароля для Вашей учётной записи.",
 
-    "app.description" : "Компоненты Laravel с использованием Bootstrap, JQuery, Select2, Bootstrap Fileinput, иконок Bootstrap, иконок флагов, Alpine, FlatPickr, FullCalendar и SweetAlert2",
+    "Laravel Components using Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar and SweetAlert2" : "Компоненты Laravel с использованием Bootstrap, JQuery, Select2, Bootstrap Fileinput, иконок Bootstrap, иконок флагов, Alpine, FlatPickr, FullCalendar и SweetAlert2",
 
     "required field": "обязательное поле",
 
-    "flatpickr.confirm": "Подтвердить",
-    
-    "select2.noResults" : "Совпадений не найдено",
-    "select2.searching" : "Поиск…"
+    "No results found" : "Совпадений не найдено",
+    "Searching…" : "Поиск…"
 }

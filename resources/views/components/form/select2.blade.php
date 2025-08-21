@@ -122,8 +122,8 @@
                     placeholder: $(this).data("placeholder"),
                     theme: "bootstrap-5",
                     language: {
-                        noResults: () => @json(__('select2.noResults')),
-                        searching: () => @json(__('select2.searching'))
+                        noResults: () => @json(__('No results found')),
+                        searching: () => @json(__('Searching…'))
                     }
                 });
             });

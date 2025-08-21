@@ -227,12 +227,10 @@
     "Yes": "Sim",
     "You are receiving this email because we received a password reset request for your account.": "Recebeu esse e-mail porque foi solicitada a redefinição da palavra-passe da sua conta.",
 
-    "app.description" : "Componentes do Laravel usando Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar e SweetAlert2",
+    "Laravel Components using Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar and SweetAlert2" : "Componentes do Laravel usando Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar e SweetAlert2",
 
     "required field": "campo obrigatório",
 
-    "flatpickr.confirm": "Confirmar",
-    
-    "select2.noResults" : "Nenhum resultado encontrado",
-    "select2.searching" : "A procurar…"
+    "No results found" : "Nenhum resultado encontrado",
+    "Searching…" : "A procurar…"
 }
