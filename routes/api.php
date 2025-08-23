@@ -134,18 +134,19 @@ Route::get('api-static-chart-2', function () {
 
 Route::get('api-dinamic-chart', function () {
 
-    $connection = DB::connection()->getDriverName();
-
-    // Agrupar usuários por mês/ano de criação
+    // Com conexão SQLite
     $query = User::query()
-        ->selectRaw(
-            $connection === 'sqlite'
-                ? "strftime('%Y-%m', created_at) as month, COUNT(*) as total"
-                : "DATE_FORMAT(created_at, '%Y-%m') as month, COUNT(*) as total"
-        )
+        ->selectRaw("strftime('%Y-%m', created_at) as month, COUNT(*) as total")
         ->groupBy('month')
         ->orderBy('month')
         ->get();
+
+    // Com conexão MySQL
+    // $query = User::query()
+    //     ->selectRaw("DATE_FORMAT(created_at, '%Y-%m') as month, COUNT(*) as total")
+    //     ->groupBy('month')
+    //     ->orderBy('month')
+    //     ->get();
 
     // Montar labels e dados
     $labels = $query->map(
