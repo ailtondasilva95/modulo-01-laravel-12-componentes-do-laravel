@@ -1,6 +1,6 @@
 # Aplicação de Demonstração de Componentes do Laravel
 
-> **NOTA**  
+> **NOTA**
 > Este projeto demonstra o uso de **componentes do Laravel** com integração de pacotes modernos do ecossistema web:  
 > Bootstrap, jQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine.js, Flatpickr, FullCalendar, SweetAlert2, Day.js e Chart.js.
 
