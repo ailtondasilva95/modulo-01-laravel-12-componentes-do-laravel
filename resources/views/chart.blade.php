@@ -8,7 +8,7 @@
                 <div class="card-header text-center user-select-none">
                     <h2 class="card-title text-orange-500">{{ config('app.name') }}</h2>
                     <p class="card-text text-orange-300">
-                        {{ __('Laravel Components using Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar and SweetAlert2') }}
+                        {{ __('Laravel Components using Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar, SweetAlert2.js and Chart.js') }}
                     </p>
                     <a href="{{ route('home') }}" class="btn btn-sm btn-default">Home</a>
                     <a href="{{ route('inputs') }}" class="btn btn-sm btn-default">Componentes de entrada de
