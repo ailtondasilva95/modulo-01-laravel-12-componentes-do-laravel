@@ -1,208 +1,231 @@
-# Aplicação de demostração de componentes do Laravel
+# Aplicação de Demonstração de Componentes do Laravel
 
 > **NOTA**  
-> Componentes do Laravel usando Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar e SweetAlert2
+> Este projeto demonstra o uso de **componentes do Laravel** com integração de pacotes modernos do ecossistema web:  
+> Bootstrap, jQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine.js, Flatpickr, FullCalendar, SweetAlert2, Day.js e Chart.js.
 
-**Clone o repositório localmente:**
+---
 
+## 🚀 Tecnologias Utilizadas
+
+- [Laravel 11](https://laravel.com)
+- [Bootstrap 5](https://getbootstrap.com)
+- [Bootstrap Icons](https://icons.getbootstrap.com)
+- [Flag Icons](https://flagicons.lipis.dev)
+- [jQuery](https://jquery.com)
+- [Alpine.js](https://alpinejs.dev) (+ plugin **Mask**)
+- [Flatpickr](https://flatpickr.js.org)
+- [SweetAlert2](https://sweetalert2.github.io)
+- [FullCalendar](https://fullcalendar.io)
+- [Select2](https://select2.org) + tema **Bootstrap 5**
+- [Bootstrap Fileinput](http://plugins.krajee.com/file-input)
+- [Day.js](https://day.js.org)
+- [Chart.js](https://www.chartjs.org)
+
+---
+
+## 📦 Pré-requisitos
+
+Antes de começar, você precisará ter instalado em sua máquina:
+
+- [PHP 8.2+](https://www.php.net)
+- [Composer](https://getcomposer.org)
+- [Node.js & NPM](https://nodejs.org)
+- Banco de dados compatível (MySQL, MariaDB, PostgreSQL ou SQLite)
+
+---
+
+## 📂 Estrutura de Assets
+
+-   `resources/js/bootstrap.js` → Arquivo principal de JavaScript
+-   `resources/js/app.js`
+-   `resources/css/app.css` → Arquivo principal de estilos (CSS)
+-   `resources/sass/app.scss` → Arquivo principal de estilos (Sass)
+
+---
+
+## ⚙️ Configurações
+
+### 1. Vite
+
+Configuração para compilar **JavaScript** e **Sass** de forma otimizada.
+
+### 2. Bootstrap
+
+Adicionadas as variáveis **dark mode** e suporte ao
+`data-bs-theme="dark"` aplicado diretamente na tag `<html>`.
+
+### 3. Botão Customizado
+
+Criada a classe personalizada: - `.btn-default`
+
+Essa classe suporta **modo claro** e **modo escuro** via Bootstrap.
+
+### 4. Select2
+
+Customizado para manter consistência
+visual no modo claro/escuro `data-bs-theme="light"` `data-bs-theme="dark"`.
+
+---
+
+## 📦 Scripts e Estilos Importados
+
+### JavaScript (`bootstrap.js`)
+
+-   Alpine
+-   Bootstrap JS (dropdowns, popovers, tooltips, etc.)
+-   SweetAlert2
+-   jQuery
+-   Bootstrap Fileinput
+-   Day.js
+-   FlatPickr
+-   FullCalendar
+-   Chart.js
+
+### CSS (`app.css`)
+
+-   Bootstrap Icons
+-   Select2
+-   Select2 Bootstrap 5 Theme
+-   Flag Icons
+-   SweetAlert2
+-   Flatpickr
+-   Bootstrap Fileinput
+-   Criação da classe `btn-default`
+
+### Sass (`app.scss`)
+
+-   Bootstrap (com cores adicionais do Bootstrap `text-color-100` a `900, bg-color-subtle`, text-color-emphasis e custumização do input-group)
+
+---
+
+## ⚙️ Instalação
+
+### 1. Clone o repositório
 ```sh
-https://github.com/ailtondasilva95/modulo-01-laravel-componets.git nome-do-projeto
+git clone https://github.com/ailtondasilva95/modulo-01-laravel-componets.git nome-do-projeto
 ```
 
-**Entrar na pasta do projecto 'nome-do-projeto':**
-
+### 2. Entre na pasta do projeto
 ```sh
 cd nome-do-projeto
 ```
 
-Instalar dependências do PHP:
-
+### 3. Instale as dependências do PHP
 ```sh
 composer install
 ```
 
-Instalar dependências do Node:
-
+### 4. Instale as dependências do Node
 ```sh
-npm i && npm run build  
+npm i && npm run build
 ```
 
-**Crie o arquivo .env:**
-
+### 5. Configure o arquivo `.env`
 ```sh
 cp .env.example .env
 ```
 
-**Gerar chave da aplicação:**
+Edite as credenciais de banco de dados conforme o seu ambiente.
 
+### 6. Gere a chave da aplicação
 ```sh
 php artisan key:generate
 ```
 
-> **NOTA**  
-> Configure as informações do banco de dados e acordo com as informações de seu servidor de banco de dados
-
-**Executar migrações de banco de dados:**
-
+### 7. Rode as migrações
 ```sh
 php artisan migrate
 ```
 
-**Execute o semeador de banco de dados:**
-
+### 8. Execute o seeder
 ```sh
 php artisan db:seed
 ```
 
-**Crie um link simbólico para o armazenamento das imagens:**
-
-```sh
-php artisan storage:link
-```
-
-**Execute o servidor de desenvolvimento:**
-
+### 9. Inicie o servidor
 ```sh
 php artisan serve
 ```
 
-Ou
-
-```sh
-composer run dev
-```
-
 > **NOTA**  
-> Você está pronto para ir! Visite a url (http://127.0.0.1:8000) no seu navegador
+> Agora você já pode acessar o projeto em [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-## Como foi instalada os pacotes dependência do Node
+---
 
-**Pacote de dependência (Alpine.JS)**
+## 📥 Instalação manual dos pacotes Node
 
-> **O que é Alpine.JS?**  
-> [É uma ferramenta robusta e minimalista para compor comportamento diretamente na sua marcação. Pense nela como o jQuery para a web moderna.](https://alpinejs.dev)
+Abaixo estão os principais pacotes utilizados e como foram instalados:
 
-```sh
-npm i alpinejs
-```
+- **Alpine.js**
+  ```sh
+  npm i alpinejs
+  npm i @alpinejs/mask
+  ```
 
-> **Plugins do Alpine usado no projeto**
+- **Sass**
+  ```sh
+  npm i -D sass
+  ```
 
-> Alpinejs Mask: serve para mascarar os inputs form
+- **Bootstrap + Popper**
+  ```sh
+  npm i bootstrap @popperjs/core
+  ```
 
-```sh
-npm i @alpinejs/mask
-```
+- **Bootstrap Icons**
+  ```sh
+  npm i bootstrap-icons
+  ```
 
-**Pacote de dependência para desenvolvimento (Sass)**
+- **Flag Icons**
+  ```sh
+  npm i flag-icons
+  ```
 
-> **O que é Sass**  
-> [É a linguagem de extensão CSS de nível profissional mais madura, estável e poderosa do mundo.](https://sass-lang.com)
+- **Flatpickr**
+  ```sh
+  npm i flatpickr
+  ```
 
-```sh
-npm i -D sass
-```
+- **SweetAlert2**
+  ```sh
+  npm i sweetalert2
+  ```
 
-**Pacote de dependência (Bootstrap)**
+- **FullCalendar**
+  ```sh
+  npm i @fullcalendar/core @fullcalendar/interaction @fullcalendar/daygrid @fullcalendar/bootstrap5
+  npm i @fullcalendar/list @fullcalendar/timegrid @fullcalendar/multimonth
+  ```
 
-> **O que é Bootstrap**  
-> [É o kit de ferramentas front-end poderoso, extensível e repleto de recursos. Crie e personalize com Sass, utilize sistemas de grade e componentes pré-construídos e dê vida a projetos com poderosos plugins JavaScript.](https://getbootstrap.com)
+- **jQuery**
+  ```sh
+  npm i jquery
+  ```
 
-```sh
-npm i bootstrap @popperjs/core
-```
+- **Day.js**
+  ```sh
+  npm i dayjs
+  ```
 
-**Pacote de dependência (Bootstrap Icons)**
+- **Select2 + Tema Bootstrap 5**
+  ```sh
+  npm i select2 select2-bootstrap-5-theme
+  ```
 
-> **O que é Icheck Bootstrap Icons?**  
-> [É uma biblioteca de ícones gratuita, de alta qualidade e código aberto com mais de 2.000 ícones. Inclua-os como quiser — SVGs, sprites SVG ou fontes da web.](https://icons.getbootstrap.com)
+- **Bootstrap Fileinput**
+  ```sh
+  npm i bootstrap-fileinput
+  ```
 
-```sh
-npm i bootstrap-icons
-```
+- **Chart.js**
+  ```sh
+  npm i chart.js
+  ```
 
-**Pacote de dependência (Flag Icons)**
+---
 
-> **O que é Icheck Flag Icons?**  
-> [É uma coleção selecionada de todas as bandeiras de países em SVG — além do CSS para facilitar a integração.](https://flagicons.lipis.dev)
+## 📄 Licença
 
-```sh
-npm i flag-icons
-```
-
-**Pacote de dependência (FlatPickr)**
-
-> **O que é FlatPickr?**  
-> [É um seletor de data e hora leve e poderoso.](https://flatpickr.js.org)
-
-```sh
-npm i flatpickr
-```
-
-**Pacote de dependência (Sweetalert2)**
-
-> **O que é Sweetalert2?**  
-> [É um substituto bonito, responsivo, personalizável e acessível para caixas pop-up do JavaScript.](https://sweetalert2.github.io)
-
-```sh
-npm i sweetalert2
-```
-
-**Pacote de dependência (FullCalendar)**
-
-> **O que é FullCalendar?**  
-> [FullCalendar é uma biblioteca JavaScript/jQuery para renderizar um calendário completo e interativo. É muito usado em aplicações web para mostrar eventos, agendamentos, reuniões, etc.](https://fullcalendar.io)
-
-```sh
-npm i @fullcalendar/core @fullcalendar/interaction @fullcalendar/daygrid  @fullcalendar/bootstrap5
-```
-
-> **Outros Plungins do FullCalendar** 
-```sh
-npm i @fullcalendar/list @fullcalendar/timegrid @fullcalendar/multimonth
-```
-
-**Pacote de dependência (jQuery)**
-
-> **O que é jQuery?**  
-> [É uma biblioteca JavaScript rápida, pequena e rica em recursos. Ela simplifica funções como navegação e manipulação de documentos HTML, tratamento de eventos, animação e Ajax com uma API fácil de usar que funciona em diversos navegadores. Com uma combinação de versatilidade e extensibilidade, o jQuery mudou a maneira como milhões de pessoas escrevem JavaScript.](https://jquery.com)
-
-```sh
-npm i jquery
-```
-
-**Pacote de dependência (Day.js)**
-
-> **O que é Day.js?**  
-> [Day.js é uma biblioteca JavaScript minimalista que analisa, valida, manipula e exibe datas e horas para navegadores modernos com uma API amplamente compatível com Moment.js.](https://day.js.org)
-
-```sh
-npm i dayjs
-```
-
-**Pacote de dependência (Select2 e o seu tema para Bootstrap)**
-
-> **O que é Select2?**  
-> [ele oferece uma caixa de seleção (select) personalizável com suporte para pesquisa, marcação, conjuntos de dados remotos, rolagem infinita e muitas outras opções muito utilizadas.](https://select2.org)
-
-```sh
-npm i select2 select2-bootstrap-5-theme
-```
-
-**Pacote de dependência (Bootstrap-Fileinput)**
-
-> **O que é Bootstrap-Fileinput?**  
-> [Uma entrada de arquivos HTML 5 aprimorada para Bootstrap 5.x, 4.x e 3.x com pré-visualização para vários arquivos, oferece seleção múltipla, uploads de blocos retomáveis e muito mais. O plugin permite uma maneira simples de configurar um seletor de arquivos/controle de upload avançado, desenvolvido especialmente para funcionar com estilos CSS3 do Bootstrap 5.x, 4.x e 3.x. Ele aprimora ainda mais a funcionalidade de entrada de arquivos, oferecendo suporte à pré-visualização de uma ampla variedade de arquivos, como imagens, texto, HTML, vídeo, áudio, Flash e objetos. Além disso, inclui uploads baseados em AJAX, arrastar e soltar arquivos, visualizar o progresso do upload e pré-visualizar, adicionar ou excluir arquivos seletivamente.](http://plugins.krajee.com/file-input)
-
-```sh
-npm i bootstrap-fileinput
-```
-
-**Pacote de dependência (Chart.js)**
-
-> **O que é Chart.js?**  
-> [O Chart.js é uma biblioteca JavaScript open-source usada para criar gráficos interativos e responsivos no navegador usando o elemento <canvas> do HTML5.](https://www.chartjs.org)
-
-```sh
-npm i chart.js
-```
+Este projeto está sob a licença [MIT](LICENSE).
