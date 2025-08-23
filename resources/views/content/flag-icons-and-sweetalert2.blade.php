@@ -1,12 +1,36 @@
-<div class="accordion mb-2" id="Swal">
-    {{-- Sweetalert2 com classes do bootstrap --}}
+<div class="accordion mb-2" id="flag-icons-and-swal">
+
+    {{-- Bandira de Países --}}
     <div class="accordion-item">
         <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#main-Swal">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#flag-icons">
+                Bandira de Países
+            </button>
+        </h2>
+        <div id="flag-icons" class="accordion-collapse collapse" data-bs-parent="#flag-icons-and-swal">
+            <div class="accordion-body text-center">
+                <i class="fi fi-ao"></i>
+                <i class="fi fi-pt"></i>
+                <i class="fi fi-br"></i>
+                <i class="fi fi-ru"></i>
+                <i class="fi fi-fr"></i>
+                <i class="fi fi-it"></i>
+                <i class="fi fi-jp"></i>
+                <i class="fi fi-mz"></i>
+                <i class="fi fi-cn"></i>
+                <i class="fi fi-cv"></i>
+            </div>
+        </div>
+    </div>
+
+    {{-- Sweetalert2 --}}
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#Swal">
                 Sweetalert2 com classes do bootstrap
             </button>
         </h2>
-        <div id="main-Swal" class="accordion-collapse collapse" data-bs-parent="#Swal">
+        <div id="Swal" class="accordion-collapse collapse" data-bs-parent="#flag-icons-and-swal">
             <div class="accordion-body text-center">
                 <x-button id="basic" label="Básica" />
                 <x-button id="success" label="Sucesso" />
@@ -21,6 +45,7 @@
     </div>
 </div>
 
+{{-- Sweetalert2 JS --}}
 @push('scripts')
     <script type="module">
         // Básica

@@ -33,29 +33,27 @@
 
 @push('scripts')
     <script type="module">
-        $(() => {
-            $(@json("#$id")).fileinput({
-                // Imagem inicial (avatar padrão)
-                initialPreview: @json($previewImage) ? '<img src="' + @json($previewImage) +
-                    '">' : [],
+        $(@json("#$id")).fileinput({
+            // Imagem inicial (avatar padrão)
+            initialPreview: @json($previewImage) ? '<img src="' + @json($previewImage) +
+                '">' : [],
 
-                allowedFileExtensions: @json($extensions), // Extensões aceites
-                maxFileSize: @json($maxFileSize), // Tamanho máximo de cada arquivo aceite em KB
-                browseClass: "btn btn-sm btn-default", // classe do botão procurar
-                mainClass: "d-flex justify-content-end",
-                initialPreviewFileType: 'image',
-                showCaption: false, // O input do arquivo
-                showRemove: false, // Botão remover
-                showUpload: false, // Botão enviar
+            allowedFileExtensions: @json($extensions), // Extensões aceites
+            maxFileSize: @json($maxFileSize), // Tamanho máximo de cada arquivo aceite em KB
+            browseClass: "btn btn-sm btn-default", // classe do botão procurar
+            mainClass: "d-flex justify-content-end",
+            initialPreviewFileType: 'image',
+            showCaption: false, // O input do arquivo
+            showRemove: false, // Botão remover
+            showUpload: false, // Botão enviar
 
-                fileActionSettings: {
-                    showRotate: false,
-                    showRemove: false,
-                    showUpload: false,
-                    showZoom: false,
-                    showDrag: false,
-                },
-            });
+            fileActionSettings: {
+                showRotate: false,
+                showRemove: false,
+                showUpload: false,
+                showZoom: false,
+                showDrag: false,
+            },
         });
     </script>
 @endpush

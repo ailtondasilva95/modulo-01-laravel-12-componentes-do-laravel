@@ -39,30 +39,28 @@
 
 @push('scripts')
     <script type="module">
-        $(() => {
-            $(@json("#$id")).fileinput({
-                allowedFileExtensions: @json($extensions), // Extensões aceites
-                maxFileCount: @json($maxFileCount), // Quantidade máxima de arquivos aceites
-                maxFileSize: @json($maxFileSize), // Tamanho máximo de cada arquivo aceite em KB
-                browseClass: "btn btn-sm btn-default", // classe do botão procurar
-                mainClass: "d-flex justify-content-end",
-                showCaption: false, // O input do arquivo
-                showRemove: false, // Botão remover
-                showUpload: false, // Botão enviar
+        $(@json("#$id")).fileinput({
+            allowedFileExtensions: @json($extensions), // Extensões aceites
+            maxFileCount: @json($maxFileCount), // Quantidade máxima de arquivos aceites
+            maxFileSize: @json($maxFileSize), // Tamanho máximo de cada arquivo aceite em KB
+            browseClass: "btn btn-sm btn-default", // classe do botão procurar
+            mainClass: "d-flex justify-content-end",
+            showCaption: false, // O input do arquivo
+            showRemove: false, // Botão remover
+            showUpload: false, // Botão enviar
 
-                initialPreviewAsData: true,
-                initialPreview: @json($previewFile),
-                initialPreviewConfig: @json($getInitialPreviewConfig()),
-                previewFileIconSettings: @json($getPreviewFileIconSettings()), // Configurações de ícones
+            initialPreviewAsData: true,
+            initialPreview: @json($previewFile),
+            initialPreviewConfig: @json($getInitialPreviewConfig()),
+            previewFileIconSettings: @json($getPreviewFileIconSettings()), // Configurações de ícones
 
-                fileActionSettings: {
-                    showRotate: false,
-                    showRemove: false,
-                    showUpload: false,
-                    showZoom: false,
-                    showDrag: false,
-                }
-            });
+            fileActionSettings: {
+                showRotate: false,
+                showRemove: false,
+                showUpload: false,
+                showZoom: false,
+                showDrag: false,
+            }
         });
     </script>
 @endpush

@@ -18,6 +18,9 @@
     {{-- Description --}}
     <meta name="description" content="{{ __('Laravel Components using Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar and SweetAlert2') }}">
 
+    {{-- Language --}}
+    <meta name="language" content="{{ str_replace('_', '-', app()->getLocale()) }}">
+
     {{-- Favicon --}}
     <link rel="icon" href="{{ asset('favicon.ico') }}">
 

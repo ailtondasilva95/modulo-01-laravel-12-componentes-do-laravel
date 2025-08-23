@@ -924,7 +924,6 @@
 
     {{-- Input --}}
     <input id="{{ $id }}" name="{{ $name }}"
-        @if ($hasValue()) value="{{ $value }}" @endif
         @if ($placeholder) placeholder="{{ $placeholder }}" @endif
         {{ $attributes->class(['form-control', 'is-invalid' => $hasError()]) }} />
 
@@ -943,27 +942,34 @@
 
 @push('scripts')
     <script type="module">
-        $(() => {
-            flatpickr($(@json("#$id")), {
-                plugins: [
-                    @if ($type === 'month')
-                        new MONTH_SELECT_PLUGIN_FLAPICKR({
-                                dateFormat: @json($format)
-                            }),
-                    @elseif ($type === 'week')
-                        new WEEK_SELECT_PLUGIN_FLAPICKR(),
-                    @elseif ($type === 'datetime-local' || $type === 'datetime')
-                        new CONFIRM_DATE_PLUGIN_FLAPICKR({
-                                confirmText: @json(__('Confirm')),
-                                confirmIcon: '',
-                            }),
-                    @endif
-                ],
-                weekNumbers: {{ $type === 'week' ? 'true' : 'false' }},
-                noCalendar: {{ $noCalendar() ? 'true' : 'false' }},
-                enableTime: {{ $needsTime() ? 'true' : 'false' }},
-                dateFormat: @json($format),
-            });
+        flatpickr(@json("#$id"), {
+            enableTime: ['datetime', 'time'].includes(@json($type)),
+            mode: @json($range ? 'range' : 'single'),
+            weekNumbers: @json($type === 'week'),
+            noCalendar: @json($noCalendar()),
+            enableTime: @json($needsTime()),
+            dateFormat: @json($format),
+
+            defaultDate: (d => d === null ? null :
+                Array.isArray(d) ?
+                d.map(v => dayjs(v).toDate()) :
+                dayjs(d).toDate()
+            )(@json($defaultDate)),
+
+            plugins: [
+                @if ($type === 'month')
+                    new MONTH_SELECT_PLUGIN_FLAPICKR({
+                            dateFormat: @json($format)
+                        }),
+                @elseif ($type === 'week')
+                    new WEEK_SELECT_PLUGIN_FLAPICKR(),
+                @elseif ($type === 'datetime')
+                    new CONFIRM_DATE_PLUGIN_FLAPICKR({
+                            confirmText: @json(__('Confirm')),
+                            confirmIcon: '',
+                        }),
+                @endif
+            ]
         });
     </script>
 @endPush

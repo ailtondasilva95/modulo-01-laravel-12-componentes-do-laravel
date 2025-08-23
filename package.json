@@ -28,6 +28,8 @@
         "bootstrap": "^5.3.7",
         "bootstrap-fileinput": "^5.5.4",
         "bootstrap-icons": "^1.13.1",
+        "chart.js": "^4.5.0",
+        "dayjs": "^1.11.13",
         "flag-icons": "^7.5.0",
         "flatpickr": "^4.6.13",
         "jquery": "^3.7.1",

@@ -18,11 +18,11 @@ trait FormFieldHelper
 
         $this->dotName = $this->convertToDotNotation($this->name);
 
-        if (property_exists($this, 'value') && isset($this->value)) {
-            $this->value = old($this->dotName, $this->value);
-        }
-
         $this->id = $this->id ?? $this->generateId();
+
+        if (property_exists($this, 'value') && isset($this->value)) {
+            $this->value = old($this->dotName, $this->value ?? '');
+        }
     }
 
     /**
@@ -43,7 +43,7 @@ trait FormFieldHelper
      */
     protected function generateId(): string
     {
-        return Str::slug($this->name, '-') . '-' . substr(md5($this->name), 0, 6);
+        return Str::slug($this->name, '-') . '-' . Str::random(6);
     }
 
     /**
@@ -73,7 +73,7 @@ trait FormFieldHelper
      */
     public function hasError(): bool
     {
-        return session()->has('errors') && session('errors')->has($this->dotName);
+        return session('errors')?->has($this->dotName) ?? false;
     }
 
     /**

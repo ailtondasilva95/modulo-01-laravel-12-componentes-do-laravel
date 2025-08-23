@@ -85,7 +85,7 @@ class Input extends Component
      */
     public function hasStaticMask(): bool
     {
-        return filled($this->mask) && is_string($this->mask) && !empty($this->mask);
+        return is_string($this->mask) && filled($this->mask);
     }
 
     /**
@@ -97,7 +97,7 @@ class Input extends Component
      */
     public function hasDynamicMask(): bool
     {
-        return $this->attributes->has('mask:dynamic') && filled($this->attributes->get('mask:dynamic'));
+        return filled($this->attributes->get('mask:dynamic'));
     }
 
     /**

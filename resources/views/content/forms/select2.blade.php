@@ -24,8 +24,7 @@
                 <x-form.select2 name="select2-corner" label="Rótulo" corner="com informação adicional" />
             </div>
             <div class="mb-2">
-                <x-form.select2 name="select2-icon" label="Rótulo" icon="chat-dots"
-                    placeholder="com ícone à direita" />
+                <x-form.select2 name="select2-icon" label="Rótulo" icon="chat-dots" placeholder="com ícone à direita" />
             </div>
             <div class="mb-2">
                 <x-form.select2 name="select2-left-icon" label="Rótulo" left-icon="chat-dots"

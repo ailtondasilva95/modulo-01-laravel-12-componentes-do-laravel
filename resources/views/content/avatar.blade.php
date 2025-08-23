@@ -84,13 +84,13 @@
         <div id="image-avatar" class="accordion-collapse collapse" data-bs-parent="#avatar">
             <div class="accordion-body">
                 <div class="text-center mb-2">
-                    <x-avatar type="orange" label="João Manuel Quindai" outline :src="Storage::url('images/avatar.jpg')" />
+                    <x-avatar type="orange" label="João Manuel Quindai" outline :src="asset('images/avatar.jpg')" />
 
-                    <x-avatar type="orange" label="Josemar Berbardo" :src="Storage::url('images/avatar.jpg')" />
+                    <x-avatar type="orange" label="Josemar Berbardo" :src="asset('images/avatar.jpg')" />
 
-                    <x-avatar type="secondary" label="João Manuel Quindai" outline :src="Storage::url('images/avatar.jpg')" />
+                    <x-avatar type="secondary" label="João Manuel Quindai" outline :src="asset('images/avatar.jpg')" />
 
-                    <x-avatar type="secondary" label="Josemar Berbardo" :src="Storage::url('images/avatar.jpg')" />
+                    <x-avatar type="secondary" label="Josemar Berbardo" :src="asset('images/avatar.jpg')" />
                 </div>
             </div>
         </div>
@@ -114,21 +114,17 @@
                     <x-avatar type="pink" label="João Pedro" class="avatar-xxl" outline />
                 </div>
                 <div class="text-center mb-2">
-                    <x-avatar type="pink" label="Ailton Senna" class="avatar-xs" :src="Storage::url('images/avatar.jpg')" />
+                    <x-avatar type="pink" label="Ailton Senna" class="avatar-xs" :src="asset('images/avatar.jpg')" />
 
-                    <x-avatar type="pink" label="Ailton da Silva" class="avatar-sm" outline
-                        :src="Storage::url('images/avatar.jpg')" />
+                    <x-avatar type="pink" label="Ailton da Silva" class="avatar-sm" outline :src="asset('images/avatar.jpg')" />
 
-                    <x-avatar type="pink" label="Guilherme da Paixão" :src="Storage::url('images/avatar.jpg')" />
+                    <x-avatar type="pink" label="Guilherme da Paixão" :src="asset('images/avatar.jpg')" />
 
-                    <x-avatar type="pink" label="Josemar Berbardo" class="avatar-lg" outline
-                        :src="Storage::url('images/avatar.jpg')" />
+                    <x-avatar type="pink" label="Josemar Berbardo" class="avatar-lg" outline :src="asset('images/avatar.jpg')" />
 
-                    <x-avatar type="pink" label="João Manuel Quindai" class="avatar-xl"
-                        :src="Storage::url('images/avatar.jpg')" />
+                    <x-avatar type="pink" label="João Manuel Quindai" class="avatar-xl" :src="asset('images/avatar.jpg')" />
 
-                    <x-avatar type="pink" label="João Pedro" class="avatar-xxl" outline
-                        :src="Storage::url('images/avatar.jpg')" />
+                    <x-avatar type="pink" label="João Pedro" class="avatar-xxl" outline :src="asset('images/avatar.jpg')" />
                 </div>
             </div>
         </div>

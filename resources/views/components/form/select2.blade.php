@@ -87,7 +87,7 @@
 
     {{-- Select com o select2 --}}
     <select name="{{ $name }}" id="{{ $id }}" {{ $multiple ? 'multiple' : '' }}
-        {{ $attributes->class(["form-select select2 form-select-{$size}", 'is-invalid' => $hasError()]) }}
+        {{ $attributes->class(["form-control form-select form-select-{$size} select2", 'is-invalid' => $hasError()]) }}
         data-placeholder="{{ $placeholder }}">
 
         <option></option>
@@ -107,6 +107,7 @@
     @endif
 </div>
 
+
 {{-- Erro de validação --}}
 @if ($hasError())
     <div class="invalid-feedback d-block">{{ $errors->first($dotName) }}</div>
@@ -114,18 +115,16 @@
 
 @pushOnce('scripts')
     <script type="module">
-        $(() => {
-            $(".select2").each(function() {
-                $(this).select2({
-                    width: $(this).data("width") ?
-                        $(this).data("width") : $(this).hasClass("w-100") ? "100%" : "style",
-                    placeholder: $(this).data("placeholder"),
-                    theme: "bootstrap-5",
-                    language: {
-                        noResults: () => @json(__('No results found')),
-                        searching: () => @json(__('Searching…'))
-                    }
-                });
+        $(".select2").each(function() {
+            $(this).select2({
+                theme: "bootstrap-5",
+                width: $(this).data("width") ?
+                    $(this).data("width") : $(this).hasClass("w-100") ? "100%" : "style",
+                placeholder: $(this).data("placeholder"),
+                language: {
+                    noResults: () => @json(__('No results found')),
+                    searching: () => @json(__('Searching…'))
+                }
             });
         });
     </script>

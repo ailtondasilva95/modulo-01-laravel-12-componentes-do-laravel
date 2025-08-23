@@ -48,9 +48,7 @@ class Select2 extends Component
         public string $size = 'md',
     ) {
         // Garante que o nome termine com [] se for múltiplo
-        if ($this->multiple && !str_ends_with($this->name, '[]')) {
-            $this->name .= '[]';
-        }
+        if ($this->multiple && !str_ends_with($this->name, '[]')) $this->name .= '[]';
 
         $this->processFieldData();
         $this->selectedValues = $this->determineSelectedValues();

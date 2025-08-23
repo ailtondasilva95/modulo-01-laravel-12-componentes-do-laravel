@@ -24,11 +24,11 @@ class File extends Component
      *
      * @param  string  $name         Nome do campo (atributo name)
      * @param  ?string $label        Rótulo do campo
-     * @param  ?array  $previewFile  Arquivos de pré-visualização
      * @param  ?string $corner       Texto auxiliar no canto superior direito
+     * @param  ?int    $maxFileSize  Tamanho máximo por arquivo (em KB)
      * @param  ?array  $extensions   Extensões permitidas (ex: ['pdf', 'docx'])
      * @param  ?int    $maxFileCount Número máximo de arquivos (quando multiple=true)
-     * @param  ?int    $maxFileSize  Tamanho máximo por arquivo (em KB)
+     * @param  ?array  $previewFile  Arquivos de pré-visualização
      * @param  bool    $multiple     Permite seleção múltipla de arquivos
      * @param  bool    $required     Indica se o campo é obrigatório
      * @return void
@@ -36,18 +36,16 @@ class File extends Component
     public function __construct(
         public string $name,
         public ?string $label,
-        public ?array $previewFile,
         public ?string $corner,
+        public ?int $maxFileSize,
         public ?array $extensions,
         public ?int $maxFileCount,
-        public ?int $maxFileSize,
+        public ?array $previewFile,
         public bool $multiple = false,
         public bool $required = false
     ) {
         // Garante que o nome termine com [] se for múltiplo
-        if ($this->multiple && !str_ends_with($this->name, '[]')) {
-            $this->name .= '[]';
-        }
+        if ($this->multiple && !str_ends_with($this->name, '[]')) $this->name .= '[]';
 
         $this->processFieldData();
         $this->previewFile = $previewFile ?? old($this->dotName, []);
@@ -66,66 +64,46 @@ class File extends Component
      */
     public function getPreviewFileIconSettings(): array
     {
-        return [
-            // Documentos (Documentos de texto e PDF)
-            'docx' => "<i class='icon-4x bi bi-file-earmark-word text-primary'></i>",
-            'doc'  => "<i class='icon-4x bi bi-file-earmark-word text-primary'></i>",
-            'pdf'  => "<i class='icon-4x bi bi-file-earmark-pdf text-danger'></i>",
-            'txt'  => "<i class='icon-4x bi bi-file-earmark-text text-info'></i>",
+        $groups = [
+            // Documentos
+            ['extensions' => ['docx', 'doc'], 'icon' => "bi-file-earmark-word text-primary"],
+            ['extensions' => ['pdf'], 'icon' => "bi-file-earmark-pdf text-danger"],
+            ['extensions' => ['txt'], 'icon' => "bi-file-earmark-text text-info"],
 
-            // Planilhas (Arquivos de dados tabulares)
-            'csv'  => "<i class='icon-4x bi bi-file-earmark-excel text-success'></i>",
-            'xlsx' => "<i class='icon-4x bi bi-file-earmark-excel text-success'></i>",
-            'xls'  => "<i class='icon-4x bi bi-file-earmark-excel text-success'></i>",
+            // Planilhas
+            ['extensions' => ['csv', 'xlsx', 'xls'], 'icon' => "bi-file-earmark-excel text-success"],
 
-            // Apresentações (Slides e apresentações)
-            'pptx' => "<i class='icon-4x bi bi-filetype-pptx text-warning'></i>",
-            'ppt'  => "<i class='icon-4x bi bi-filetype-ppt text-warning'></i>",
+            // Apresentações
+            ['extensions' => ['pptx'], 'icon' => "bi-filetype-pptx text-warning"],
+            ['extensions' => ['ppt'], 'icon' => "bi-filetype-ppt text-warning"],
 
-            // Imagens (Arquivos de imagem)
-            'jpeg' => "<i class='icon-4x bi bi-file-earmark-image text-info'></i>",
-            'webp' => "<i class='icon-4x bi bi-file-earmark-image text-info'></i>",
-            'jpg'  => "<i class='icon-4x bi bi-file-earmark-image text-info'></i>",
-            'png'  => "<i class='icon-4x bi bi-file-earmark-image text-info'></i>",
-            'gif'  => "<i class='icon-4x bi bi-file-earmark-image text-info'></i>",
-            'svg'  => "<i class='icon-4x bi bi-file-earmark-image text-info'></i>",
+            // Imagens
+            ['extensions' => ['jpeg', 'webp', 'jpg', 'png', 'gif', 'svg'], 'icon' => "bi-file-earmark-image text-info"],
 
-            // Músicas (Arquivos de áudio)
-            'flac' => "<i class='icon-4x bi bi-file-earmark-music text-purple'></i>",
-            'mp3'  => "<i class='icon-4x bi bi-file-earmark-music text-purple'></i>",
-            'wav'  => "<i class='icon-4x bi bi-file-earmark-music text-purple'></i>",
-            'ogg'  => "<i class='icon-4x bi bi-file-earmark-music text-purple'></i>",
+            // Músicas
+            ['extensions' => ['flac', 'mp3', 'wav', 'ogg'], 'icon' => "bi-file-earmark-music text-purple"],
 
-            // Vídeos (Arquivos de vídeo)
-            'mp4' => "<i class='icon-4x bi bi-file-earmark-play text-indigo'></i>",
-            'mov' => "<i class='icon-4x bi bi-file-earmark-play text-indigo'></i>",
-            'avi' => "<i class='icon-4x bi bi-file-earmark-play text-indigo'></i>",
-            'mkv' => "<i class='icon-4x bi bi-file-earmark-play text-indigo'></i>",
-            'flv' => "<i class='icon-4x bi bi-file-earmark-play text-indigo'></i>",
-            'wmv' => "<i class='icon-4x bi bi-file-earmark-play text-indigo'></i>",
+            // Vídeos
+            ['extensions' => ['mp4', 'mov', 'avi', 'mkv', 'flv', 'wmv'], 'icon' => "bi-file-earmark-play text-indigo"],
 
-            // Arquivos compactados (ZIP, RAR, etc)
-            'zip' => "<i class='icon-4x bi bi-file-earmark-zip text-warning'></i>",
-            'rar' => "<i class='icon-4x bi bi-file-earmark-zip text-warning'></i>",
-            '7z'  => "<i class='icon-4x bi bi-file-earmark-zip text-warning'></i>",
+            // Compactados
+            ['extensions' => ['zip', 'rar', '7z'], 'icon' => "bi-file-earmark-zip text-warning"],
 
             // Dev
-            'java' => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-            'js'   => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-            'ts'   => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-            'php'  => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-            'py'   => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-            'cpp'  => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-            'c'    => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-            'cs'   => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-            'html' => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-            'css'  => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-            'sql'  => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-            'json' => "<i class='icon-4x bi bi-file-earmark-code text-teal'></i>",
-
-            // Padrão (Para extensões não mapeadas)
-            'default' => "<i class='icon-4x bi bi-file-earmark text-muted'></i>",
+            ['extensions' => ['java', 'js', 'ts', 'php', 'py', 'cpp', 'c', 'cs', 'html', 'css', 'sql', 'json'], 'icon' => "bi-file-earmark-code text-teal"],
         ];
+
+        $icons = [];
+        foreach ($groups as $group) {
+            foreach ($group['extensions'] as $ext) {
+                $icons[$ext] = "<i class='icon-4x bi {$group['icon']}'></i>";
+            }
+        }
+
+        // Ícone padrão para extensões não mapeadas
+        $icons['default'] = "<i class='icon-4x bi bi-file-earmark text-muted'></i>";
+
+        return $icons;
     }
 
     /**
@@ -133,13 +111,13 @@ class File extends Component
      *
      * @param string $filename Nome do arquivo ou caminho completo
      * @return string Retorna uma das seguintes categorias:
-     *               - 'image' para imagens
-     *               - 'video' para vídeos
-     *               - 'code' para linguagens de programação
-     *               - 'document' para documentos comuns
-     *               - 'archive' para arquivos compactados
-     *               - 'audio' para arquivos de som
-     *               - 'other' para outros tipos não categorizados
+     *  - 'image' para imagens
+     *  - 'video' para vídeos
+     *  - 'code' para linguagens de programação
+     *  - 'document' para documentos comuns
+     *  - 'archive' para arquivos compactados
+     *  - 'audio' para arquivos de som
+     *  - 'other' para outros tipos não categorizados
      */
     private function getFileTypeByExtension(string $extension): string
     {
@@ -198,13 +176,8 @@ class File extends Component
     {
         $headers = @get_headers($url, 1);
 
-        if ($headers && isset($headers['Content-Length'])) {
-            return is_array($headers['Content-Length'])
-                ? (int) end($headers['Content-Length'])
-                : (int) $headers['Content-Length'];
-        }
-
-        return 0;
+        return ($headers && isset($headers['Content-Length'])) ? (int) (is_array($headers['Content-Length'])
+            ? end($headers['Content-Length']) : $headers['Content-Length']) : 0;
     }
 
     /**
@@ -215,21 +188,10 @@ class File extends Component
      */
     private function isLocalUrl(string $url): bool
     {
-        $appUrl = config('app.url');
-
-        // Remove protocolo e www para comparação
-        $normalize = function ($url) {
-            return preg_replace(['/^https?:\/\//', '/^www\./'], '', $url);
-        };
-
+        $appHost = parse_url(config('app.url'), PHP_URL_HOST);
         $urlHost = parse_url($url, PHP_URL_HOST);
 
-        // URLs sem host são consideradas locais (caminhos relativos)
-        if (!$urlHost) {
-            return true;
-        }
-
-        return $normalize($urlHost) === $normalize(parse_url($appUrl, PHP_URL_HOST));
+        return !$urlHost || preg_replace('/^www\./', '', $urlHost) === preg_replace('/^www\./', '', $appHost);
     }
 
     /**
@@ -240,17 +202,10 @@ class File extends Component
      */
     private function getLocalUrlSize(string $url): int
     {
-        $localPath = $this->convertUrlToPath($url);
+        $path = $this->convertUrlToPath($url);
 
-        if (Storage::exists($localPath)) {
-            return Storage::size($localPath);
-        }
-
-        if (file_exists($localPath)) {
-            return filesize($localPath);
-        }
-
-        return 0;
+        return Storage::exists($path)
+            ? Storage::size($path) : (file_exists($path) ? filesize($path) : 0);
     }
 
     /**
@@ -261,11 +216,8 @@ class File extends Component
      */
     private function handleUrlSize(string $url): int
     {
-        if ($this->isLocalUrl($url)) {
-            return $this->getLocalUrlSize($url);
-        }
-
-        return $this->getRemoteFileSize($url);
+        return $this->isLocalUrl($url)
+            ? $this->getLocalUrlSize($url) : $this->getRemoteFileSize($url);
     }
 
     /**
@@ -301,11 +253,8 @@ class File extends Component
         }
 
         // Verificação terciária - URLs (locais ou remotas)
-        if (filter_var($path, FILTER_VALIDATE_URL)) {
-            return $this->handleUrlSize($path);
-        }
-
-        return 0;
+        return filter_var($path, FILTER_VALIDATE_URL)
+            ? $this->handleUrlSize($path) : 0;
     }
 
     /**
@@ -329,18 +278,14 @@ class File extends Component
             return [];
         }
 
-        return collect($this->previewFile)->map(function ($value, $index) {
-            $ext = strtolower(pathinfo($value, PATHINFO_EXTENSION));
-
-            return [
-                'size' => $this->getFileSize($value),
-                'filename' => basename(path: $value),
-                'caption' => basename(path: $value),
-                // 'downloadUrl' => trim($value),
-                'type' => $this->getFileTypeByExtension($ext),
-                'key' => $index + 1,
-            ];
-        })->toArray();
+        return collect($this->previewFile)->map(fn($value, $index) => [
+            'size' => $this->getFileSize($value),
+            'filename' => basename(path: $value),
+            'caption' => basename(path: $value),
+            // 'downloadUrl' => trim($value),
+            'type' => $this->getFileTypeByExtension(strtolower(pathinfo($value, PATHINFO_EXTENSION))),
+            'key' => $index + 1,
+        ])->toArray();
     }
 
     /**

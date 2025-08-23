@@ -14,28 +14,4 @@ export default defineConfig({
         }),
         // tailwindcss(),        
     ],
-
-    build: {
-        rollupOptions: {
-            output: {
-                manualChunks: {
-                    jquery: ["jquery"],
-                    bootstrap: ["bootstrap"],
-                    sweetalert2: ["sweetalert2"],
-                    select2: ["select2"],
-                    flatpickr: ["flatpickr"],
-                    fileinput: ["bootstrap-fileinput"],
-                    fullcalendar: [
-                        "@fullcalendar/core",
-                        "@fullcalendar/interaction",
-                        "@fullcalendar/bootstrap5",
-                        "@fullcalendar/multimonth",
-                        "@fullcalendar/timegrid",
-                        "@fullcalendar/daygrid",
-                        "@fullcalendar/list",
-                    ],
-                },
-            },
-        },
-    },
 });

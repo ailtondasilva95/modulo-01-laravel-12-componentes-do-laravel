@@ -30,7 +30,7 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'created_at' => fake()->dateTimeThisYear(),
-            'updated_at' => fake()->dateTimeThisMonth(),
+            'updated_at' => now()->subDays(rand(1,10)),
         ];
     }
 

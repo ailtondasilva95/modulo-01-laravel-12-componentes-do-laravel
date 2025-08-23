@@ -49,9 +49,7 @@ class Checkbox extends Component
         public array $options = []
     ) {
         // Se não terminar com [] e houver múltiplas opções, força o formato array
-        if (count($options) > 1 && !str_ends_with($name, '[]')) {
-            $this->name .= '[]';
-        }
+        if (count($options) > 1 && !str_ends_with($name, '[]')) $this->name .= '[]';
         
         $this->processFieldData();
         $this->checkedValues = $this->determineCheckedValues();

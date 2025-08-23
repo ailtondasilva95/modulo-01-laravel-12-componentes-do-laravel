@@ -37,12 +37,12 @@
     @endpush
 @endonce
 
-<div id="{{ $generateId() }}" {{ $attributes->class(['card p-3']) }}></div>
+<div id="{{ $id }}" {{ $attributes->class(['card p-3 my-2 w-100 h-auto']) }}></div>
 
 @push('scripts')
     <script type="module">
-        $(() => {
-            const calendar = new Calendar(document.getElementById(@json($generateId())), {
+        
+            new Calendar(document.getElementById(@json($id)), {
 
                 plugins: DEFAULT_PLUGINS_FULL_CALENDAR, // plugins padrão do FullCalendar
 
@@ -61,7 +61,7 @@
                 firstDay: @json($firstDay), // primeiro dia da semana de 0 (Domingo) a 6 (Sábado)
                 editable: @json($editable), // se o calendário deve permitir edição de eventos
 
-                events: @json($events), // eventos do calendário, pode ser uma URL ou um array de eventos
+                events: @json($config ?? $api), // eventos do calendário, pode ser uma URL ou um array de eventos
 
                 themeSystem: "bootstrap5", // tema do Bootstrap 5
 
@@ -69,9 +69,6 @@
 
                 locales: LOCALES_ALL_FULL_CALENDAR, // aqui ele já terá todos os idiomas disponíveis
                 locale: document.documentElement.lang, // idioma do atributo lang da tag <html>
-            });
-
-            calendar.render();
-        });
+            }).render();
     </script>
 @endpush
