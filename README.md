@@ -225,7 +225,3 @@ Abaixo estão os principais pacotes utilizados e como foram instalados:
   ```
 
 ---
-
-## 📄 Licença
-
-Este projeto está sob a licença [MIT](LICENSE).
