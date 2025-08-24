@@ -102,7 +102,7 @@ visual no modo claro/escuro `data-bs-theme="light"` `data-bs-theme="dark"`.
 
 ### 1. Clone o repositório
 ```sh
-git clone https://github.com/ailtondasilva95/modulo-01-laravel-components.git nome-do-projeto
+git clone https://github.com/ailtondasilva95/modulo-01-laravel-12-componentes-do-laravel.git nome-do-projeto
 ```
 
 ### 2. Entre na pasta do projeto
