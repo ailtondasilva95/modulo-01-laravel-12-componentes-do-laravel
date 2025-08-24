@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Select2 extends Component
+class Select extends Component
 {
     use Traits\FormFieldHelper;
 
@@ -20,7 +20,7 @@ class Select2 extends Component
     public array $selectedValues;
 
     /**
-     * Cria uma nova instância do componente Select2.
+     * Cria uma nova instância do componente Select.
      *
      * @param  string            $name        Nome do campo (ex: 'tags[]'). Use '[]' para múltiplos.
      * @param  ?string           $icon        Ícone à direita do campo (ex: 'pencil').
@@ -96,6 +96,6 @@ class Select2 extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form.select2');
+        return view('components.form.select');
     }
 }

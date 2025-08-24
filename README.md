@@ -8,7 +8,7 @@
 
 ## 🚀 Tecnologias Utilizadas
 
-- [Laravel 11](https://laravel.com)
+- [Laravel 12](https://laravel.com)
 - [Bootstrap 5](https://getbootstrap.com)
 - [Bootstrap Icons](https://icons.getbootstrap.com)
 - [Flag Icons](https://flagicons.lipis.dev)
@@ -37,8 +37,7 @@ Antes de começar, você precisará ter instalado em sua máquina:
 
 ## 📂 Estrutura de Assets
 
--   `resources/js/bootstrap.js` → Arquivo principal de JavaScript
--   `resources/js/app.js`
+-   `resources/js/app.js` → Arquivo principal de JavaScript
 -   `resources/css/app.css` → Arquivo principal de estilos (CSS)
 -   `resources/sass/app.scss` → Arquivo principal de estilos (Sass)
 
@@ -157,20 +156,24 @@ php artisan serve
 
 Abaixo estão os principais pacotes utilizados e como foram instalados:
 
-- **Alpine.js**
-  ```sh
-  npm i alpinejs
-  npm i @alpinejs/mask
-  ```
-
 - **Sass**
   ```sh
   npm i -D sass
   ```
 
-- **Bootstrap + Popper**
+- **Alpine.js**
+  ```sh
+  npm i alpinejs @alpinejs/mask
+  ```
+
+- **Bootstrap**
   ```sh
   npm i bootstrap @popperjs/core
+  ```
+
+- **jQuery**
+  ```sh
+  npm i jquery
   ```
 
 - **Bootstrap Icons**
@@ -195,13 +198,7 @@ Abaixo estão os principais pacotes utilizados e como foram instalados:
 
 - **FullCalendar**
   ```sh
-  npm i @fullcalendar/core @fullcalendar/interaction @fullcalendar/daygrid @fullcalendar/bootstrap5
-  npm i @fullcalendar/list @fullcalendar/timegrid @fullcalendar/multimonth
-  ```
-
-- **jQuery**
-  ```sh
-  npm i jquery
+  npm i fullcalendar @fullcalendar/bootstrap5
   ```
 
 - **Day.js**
@@ -223,5 +220,95 @@ Abaixo estão os principais pacotes utilizados e como foram instalados:
   ```sh
   npm i chart.js
   ```
-
 ---
+
+## Os componetes criados foram:
+
+- **Modal**
+  ```sh
+  php artisan make:component Modal
+  ```
+---
+
+- **Alert**
+  ```sh
+  php artisan make:component Alert
+  ```
+---
+
+- **Avatar**
+  ```sh
+  php artisan make:component Avatar
+  ```
+---
+
+- **Badge**
+  ```sh
+  php artisan make:component Badge
+  ```
+---
+
+- **Button**
+  ```sh
+  php artisan make:component Button
+  ```
+---
+
+- **Chart**
+  ```sh
+  php artisan make:component Chart
+  ```
+---
+
+- **FullCalendar**
+  ```sh
+  php artisan make:component FullCalendar
+  ```
+---
+
+- **Textarea**
+  ```sh
+  php artisan make:component Form/Textarea
+  ```
+---
+
+- **Select**
+  ```sh
+  php artisan make:component Form/Select
+  ```
+---
+
+- **Input**
+  ```sh
+  php artisan make:component Form/Input
+  ```
+---
+
+- **Date**
+  ```sh
+  php artisan make:component Form/Date
+  ```
+---
+
+- **File**
+  ```sh
+  php artisan make:component Form/File
+  ```
+---
+
+- **Radio**
+  ```sh
+  php artisan make:component Form/Radio
+  ```
+---
+
+- **Checkbox**
+  ```sh
+  php artisan make:component Form/Checkbox
+  ```
+---
+
+- **FileAvatar**
+  ```sh
+  php artisan make:component Form/FileAvatar
+  ```

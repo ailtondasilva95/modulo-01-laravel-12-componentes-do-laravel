@@ -16,7 +16,8 @@
     <meta name="author" content="Ailton Domingos Dias da Silva">
 
     {{-- Description --}}
-    <meta name="description" content="{{ __('Laravel Components using Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar and SweetAlert2') }}">
+    <meta name="description"
+        content="{{ __('Laravel Components using Bootstrap, JQuery, Select2, Bootstrap Fileinput, Bootstrap Icons, Flag Icons, Alpine, FlatPickr, FullCalendar and SweetAlert2') }}">
 
     {{-- Language --}}
     <meta name="language" content="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -41,6 +42,21 @@
 
     {{-- Custom Scripts --}}
     @stack('scripts')
+
+    <script type="module">
+        // 1. Inicializar todos tooltips
+        $("[data-bs-toggle='tooltip']").each(function() {
+            new bootstrap.Tooltip(this);
+        });
+
+        // 2. Inicializar todos popovers
+        $("[data-bs-toggle='popover']").each(function() {
+            new bootstrap.Popover(this);
+        });
+
+        const theme = document.documentElement.getAttribute("data-bs-theme") || "light";
+        console.log(theme === "dark" ? "Tema escuro ativo" : "Tema claro ativo");
+    </script>
 
 </body>
 

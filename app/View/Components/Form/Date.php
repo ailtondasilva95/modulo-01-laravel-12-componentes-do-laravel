@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Flatpickr extends Component
+class Date extends Component
 {
     use Traits\FormFieldHelper;
 
@@ -17,7 +17,7 @@ class Flatpickr extends Component
     public string $dotName;
 
     /**
-     * Cria uma nova instância do componente Flatpickr.
+     * Cria uma nova instância do componente Date.
      *
      * Renderiza um input com suporte a seleção de data/hora usando Flatpickr.js.
      * Compatível com:
@@ -168,6 +168,6 @@ class Flatpickr extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form.flatpickr');
+        return view('components.form.date');
     }
 }

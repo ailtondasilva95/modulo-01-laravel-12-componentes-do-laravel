@@ -34,10 +34,10 @@
                         @include('content.forms.input-mask')
 
                         {{-- Campo de entrada de data/hora com (Flatpickr) --}}
-                        @include('content.forms.flatpickr')
+                        @include('content.forms.date')
 
                         {{-- Campo de entrada select com (Select2) --}}
-                        @include('content.forms.select2')
+                        @include('content.forms.select')
 
                         {{-- Campo de entrada file para Upload com (Bootstrap-Fileinput) --}}
                         @include('content.forms.file')

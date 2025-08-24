@@ -9,16 +9,30 @@
         </h2>
         <div id="flag-icons" class="accordion-collapse collapse" data-bs-parent="#flag-icons-and-swal">
             <div class="accordion-body text-center">
-                <i class="fi fi-ao"></i>
-                <i class="fi fi-pt"></i>
-                <i class="fi fi-br"></i>
-                <i class="fi fi-ru"></i>
-                <i class="fi fi-fr"></i>
-                <i class="fi fi-it"></i>
-                <i class="fi fi-jp"></i>
-                <i class="fi fi-mz"></i>
-                <i class="fi fi-cn"></i>
-                <i class="fi fi-cv"></i>
+                <p>
+                    <i class="fi fi-mz" data-bs-toggle="tooltip" data-bs-title="bandira de moçambique"></i>
+                    <i class="fi fi-cv" data-bs-toggle="tooltip" data-bs-title="bandira do cabo verde"></i>
+                    <i class="fi fi-pt" data-bs-toggle="tooltip" data-bs-title="bandira de portugal"></i>
+                    <i class="fi fi-ao" data-bs-toggle="tooltip" data-bs-title="bandira de angola"></i>
+                    <i class="fi fi-br" data-bs-toggle="tooltip" data-bs-title="bandira do brasil"></i>
+                    <i class="fi fi-ru" data-bs-toggle="tooltip" data-bs-title="bandira da russia"></i>
+                    <i class="fi fi-fr" data-bs-toggle="tooltip" data-bs-title="bandira da frança"></i>
+                    <i class="fi fi-it" data-bs-toggle="tooltip" data-bs-title="bandira da itatia"></i>
+                    <i class="fi fi-jp" data-bs-toggle="tooltip" data-bs-title="bandira do japão"></i>
+                    <i class="fi fi-cn" data-bs-toggle="tooltip" data-bs-title="bandira da china"></i>
+                </p>
+                <p>
+                    <i class="fi fi-mz fis" data-bs-toggle="popover" data-bs-content="bandira de moçambique"></i>
+                    <i class="fi fi-cv fis" data-bs-toggle="popover" data-bs-content="bandira do cabo verde"></i>
+                    <i class="fi fi-pt fis" data-bs-toggle="popover" data-bs-content="bandira de portugal"></i>
+                    <i class="fi fi-ao fis" data-bs-toggle="popover" data-bs-content="bandira de angola"></i>
+                    <i class="fi fi-br fis" data-bs-toggle="popover" data-bs-content="bandira do brasil"></i>
+                    <i class="fi fi-ru fis" data-bs-toggle="popover" data-bs-content="bandira da russia"></i>
+                    <i class="fi fi-fr fis" data-bs-toggle="popover" data-bs-content="bandira da frança"></i>
+                    <i class="fi fi-it fis" data-bs-toggle="popover" data-bs-content="bandira da itatia"></i>
+                    <i class="fi fi-jp fis" data-bs-toggle="popover" data-bs-content="bandira do japão"></i>
+                    <i class="fi fi-cn fis" data-bs-toggle="popover" data-bs-content="bandira da china"></i>
+                </p>
             </div>
         </div>
     </div>
